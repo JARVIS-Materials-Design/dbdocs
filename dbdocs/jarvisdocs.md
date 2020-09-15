@@ -12,22 +12,22 @@ This website contains information about the data available in the NIST-JARVIS ([
 **Outline**
 
 1. **JARVIS-DFT**
-  1. Overview
-  2. Methodology
-    1. Obtaining initial/input crystal structure
-    2. Geometric and electronic optimization
-    3. Functional selection
-    4. K-point and cut-off convergence
-    5. DFT+U
-    6. Spin-orbit coupling
-    7. Beyond DFT methods
-    8. Density functional perturbation theory
-    9. Finite-difference method
-    10. Linear Optics
-    11. Wannierization
-    12. Boltzmann transport
-    13. Partial charge density
-  3. Property Details
+  1.1. Overview
+  1.2. Methodology
+   1.2.1. Obtaining initial/input crystal structure
+   1.2.2. Geometric and electronic optimization
+   1.2.3. Functional selection
+   1.2.4. K-point and cut-off convergence
+   1.2.5. DFT+U
+   1.2.6. Spin-orbit coupling
+   1.2.7. Beyond DFT methods
+   1.2.8. Density functional perturbation theory
+   1.2.9. Finite-difference method
+   1.2.10. Linear Optics
+   1.2.11. Wannierization
+   1.2.12. Boltzmann transport
+   1.2.13. Partial charge density
+  1.3. Property Details
 
 1.3.1Atomic structure and derived properties
 
@@ -57,12 +57,12 @@ This website contains information about the data available in the NIST-JARVIS ([
 
 1.3.15 Scanning tunneling microscopy images
 
-    1. Electric field gradients
-    2. FT convergence parameters
+1.3.16 Electric field gradients
+1.3.17 FT convergence parameters
 
-  1. Data Quality assessment table
-  2. Statistics
-  3. References
+1.4 Data Quality assessment table
+1.5 Statistics
+1.6 References
 
 1. **JARVIS-FF**
 
