@@ -1,6 +1,10 @@
 **JARVIS-DB Documentation**
 
-This website contains information about the data available in the NIST-JARVIS (<https://jarvis.nist.gov/>) infrastructure. There are multiple apps and resources in JARVIS such as JARVIS-FF, JARVIS-DFT, JARVIS-ML, JARVIS-Tools, JARVIS-WannierTB, JARVIS-Heterostructure etc. Documentation on each of them contains the following sections:
+This website contains information about the data available in the
+NIST-JARVIS (<https://jarvis.nist.gov/>) infrastructure. There are
+multiple apps and resources in JARVIS such as JARVIS-FF, JARVIS-DFT,
+JARVIS-ML, JARVIS-Tools, JARVIS-WannierTB, JARVIS-Heterostructure etc.
+Documentation on each of them contains the following sections:
 
 -   Overview,
 
@@ -62,7 +66,8 @@ This website contains information about the data available in the NIST-JARVIS (<
 
         1.3.6 Electronic Bandstructure
 
-        1.3.8 Frequency dependent dielectric function and optoelectronic properties
+        1.3.8 Frequency dependent dielectric function and optoelectronic
+        properties
 
         1.3.9 Static dielectric tensor
 
@@ -112,75 +117,226 @@ This website contains information about the data available in the NIST-JARVIS (<
 
 **1.1 Overview**
 
-JARVIS-DFT is a density functional theory-based database for \~40000 3D, \~1000 2D materials and around a million calculated properties. JARVIS-DFT mainly uses vdW-DF-OptB88 functional for geometry optimization. It also uses beyond-GGA approaches, including Tran-Blaha modified Becke-Johnson (TBmBJ) meta-GGA, PBE0, HSE06, DMFT, G0W0 for analyzing selective cases. In addition to hosting conventional properties such as formation energies, bandgaps, elastic constants, piezoelectric constants, dielectric constants, and magnetic moments, it also contains unique datasets, such as exfoliation energies for van der Waals bonded materials, spin-orbit coupling spillage, improved meta-GGA bandgaps, frequency-dependent dielectric function, spin-orbit spillage, spectroscopy limited maximum efficiency (SLME), infrared (IR) intensities, electric field gradient (EFG), heterojunction classifications, and Wannier tight-binding Hamiltonians. These datasets are compared to experimental results wherever possible, to evaluate their accuracy as predictive tools. JARVIS-DFT introduces protocols such as automatic k-point convergence that can be critical for obtaining precise and accurate calculation results.
+JARVIS-DFT is a density functional theory-based database for \~40000 3D,
+\~1000 2D materials and around a million calculated properties.
+JARVIS-DFT mainly uses vdW-DF-OptB88 functional for geometry
+optimization. It also uses beyond-GGA approaches, including Tran-Blaha
+modified Becke-Johnson (TBmBJ) meta-GGA, PBE0, HSE06, DMFT, G0W0 for
+analyzing selective cases. In addition to hosting conventional
+properties such as formation energies, bandgaps, elastic constants,
+piezoelectric constants, dielectric constants, and magnetic moments, it
+also contains unique datasets, such as exfoliation energies for van der
+Waals bonded materials, spin-orbit coupling spillage, improved meta-GGA
+bandgaps, frequency-dependent dielectric function, spin-orbit spillage,
+spectroscopy limited maximum efficiency (SLME), infrared (IR)
+intensities, electric field gradient (EFG), heterojunction
+classifications, and Wannier tight-binding Hamiltonians. These datasets
+are compared to experimental results wherever possible, to evaluate
+their accuracy as predictive tools. JARVIS-DFT introduces protocols such
+as automatic k-point convergence that can be critical for obtaining
+precise and accurate calculation results.
 
-![JARVIS-DFT overview]
+![JARVIS-DFT overview](./myMediaFolder/media/image1.png){width="6.5in"
+height="3.2083333333333335in"}
 
 **1.2 Methodology**
 
 **1.2.1 Obtaining initial/input crystal structure**
 
-The initial/input crystal structures were obtained from the Inorganic Crystal Structure Database, Materials Project, OQMD, AFLOW, COD databases. These input structures are then subjected to a set of geometric and electronic optimizations (discussed below) following JARVIS-DFT workflow protocols. After the geometric optimization, several materials properties are calculated (discussed below). A typical flow chart is shown below:
+The initial/input crystal structures were obtained from the Inorganic
+Crystal Structure Database, Materials Project, OQMD, AFLOW, COD
+databases. These input structures are then subjected to a set of
+geometric and electronic optimizations (discussed below) following
+JARVIS-DFT workflow protocols. After the geometric optimization, several
+materials properties are calculated (discussed below). A typical flow
+chart is shown below:
 
-![][1]
+![](./myMediaFolder/media/image2.png){width="3.9618055555555554in"
+height="3.7233923884514435in"}
 
 **1.2.2 Geometric and electronic optimization**
 
-DFT calculations were carried out using the Vienna Ab-initio simulation package (VASP) software using the workflow given on our JARVIS-Tools github page (<https://github.com/usnistgov/jarvis>). We use the projected augmented wave method .  Both the internal atomic positions and the lattice constants are allowed to relax in spin-unrestricted calculations until the maximal residual Hellmann--Feynman forces on atoms are smaller than 0.001 eV Å^−1^ and energy-tolerance of 10^-7^ eV with accurate precision setting (PREC=Accurate). Note that force convergence is very important for properties such as phonons, elastic constants etc. We use spin-polarized set-up with initial magnetic moment of default value 1 muB during geometric optimization. Also use conjugate gradient algorithm for ionic relaxation (IBRION=2).
+DFT calculations were carried out using the Vienna Ab-initio simulation
+package (VASP) software using the workflow given on our JARVIS-Tools
+github page (<https://github.com/usnistgov/jarvis>). We use the
+projected augmented wave method .  Both the internal atomic positions
+and the lattice constants are allowed to relax in spin-unrestricted
+calculations until the maximal residual Hellmann--Feynman forces on
+atoms are smaller than 0.001 eV Å^−1^ and energy-tolerance of 10^-7^ eV
+with accurate precision setting (PREC=Accurate). Note that force
+convergence is very important for properties such as phonons, elastic
+constants etc. We use spin-polarized set-up with initial magnetic moment
+of default value 1 muB during geometric optimization. Also use conjugate
+gradient algorithm for ionic relaxation (IBRION=2).
 
 **1.2.3 Functional selection**
 
-We mainly used OptB88vdW method for our calculations, but we also carryout local density approximation (LDA) and generalized gradient approximation with Perdew-Burke-Ernzerhof (GGA-PBE)-based calculations for benchmarking purposes. OptB88vdW functional, has been shown to gives accurate lattice parameters for both van der Waals (vdW) and non-vdW solids. The exchange-correlation energy within vdW-DF is given by:
+We mainly used OptB88vdW method for our calculations, but we also
+carryout local density approximation (LDA) and generalized gradient
+approximation with Perdew-Burke-Ernzerhof (GGA-PBE)-based calculations
+for benchmarking purposes. OptB88vdW functional, has been shown to gives
+accurate lattice parameters for both van der Waals (vdW) and non-vdW
+solids. The exchange-correlation energy within vdW-DF is given by:
 
 $E_{\text{xc}} = E_{x}^{\text{GGA}} + E_{c}^{\text{LDA}} + E_{c}^{\text{NL}}$
 
-where $E_{x}^{\text{GGA}}$ is the exchange energy within the generalized gradient approximation (GGA) and $E_{c}^{\text{LDA}}$ is the correlation energy within the local-density approximation (LDA). The nonlocal correlation energy is given by:
+where $E_{x}^{\text{GGA}}$ is the exchange energy within the generalized
+gradient approximation (GGA) and $E_{c}^{\text{LDA}}$ is the correlation
+energy within the local-density approximation (LDA). The nonlocal
+correlation energy is given by:
 
 $E_{c}^{\text{NL}} = \frac{1}{2}\iint_{}^{}{d\mathbf{r}d\mathbf{r}^{\mathbf{'}}n\left( \mathbf{r} \right)ф\left( d,d^{'} \right)n\left( \mathbf{r}^{'} \right)}$
 
-where $ф$ is a kernel function, $d = q_{0}\left( r \right)\left| r - r^{'} \right|$ and $d' = q_{0}\left( r' \right)\left| r - r^{'} \right|$. The q~0~ is a function of n(r) and \|∇n(r)\|, and it is proportional to the gradient corrected LDA exchange-correlation energy per electron. This function controls the behavior of $E_{c}^{\text{NL}}$ in the slowly varying as well as nonuniform density regions. It is noted that the use of the LDA correlation is motivated by the fact that $E_{c}^{\text{NL}}$vanishes in the uniform electron gas limit, and to avoid the possible double counting of the gradient correction contained in $E_{c}^{\text{NL}}$. Hence, the vdW-DF-optB88 is an example of the truly nonlocal-correlation functionals in the vdW-DF-method for approximating the vdW forces in regular DFT.
+where $ф$ is a kernel function,
+$d = q_{0}\left( r \right)\left| r - r^{'} \right|$ and
+$d' = q_{0}\left( r' \right)\left| r - r^{'} \right|$. The q~0~ is a
+function of n(r) and \|∇n(r)\|, and it is proportional to the gradient
+corrected LDA exchange-correlation energy per electron. This function
+controls the behavior of $E_{c}^{\text{NL}}$ in the slowly varying as
+well as nonuniform density regions. It is noted that the use of the LDA
+correlation is motivated by the fact that $E_{c}^{\text{NL}}$vanishes in
+the uniform electron gas limit, and to avoid the possible double
+counting of the gradient correction contained in $E_{c}^{\text{NL}}$.
+Hence, the vdW-DF-optB88 is an example of the truly nonlocal-correlation
+functionals in the vdW-DF-method for approximating the vdW forces in
+regular DFT.
 
-TBmBJ potential is used as a meta-GGA method for better predicting the bandgaps and dielectric function of a material. The TBmBJ potential is given by:
+TBmBJ potential is used as a meta-GGA method for better predicting the
+bandgaps and dielectric function of a material. The TBmBJ potential is
+given by:
 
-where *c* is a system-dependent parameter, with *c* = 1 corresponding to the Becke-Roussel (BR) potential, which was originally proposed to mimic the Slater potential, the Coulomb potential corresponding to the exact exchange hole. For bulk crystalline materials, Tran and Blaha proposed to determine *c* by the following empirical relation:
+where *c* is a system-dependent parameter, with *c* = 1 corresponding to
+the Becke-Roussel (BR) potential, which was originally proposed to mimic
+the Slater potential, the Coulomb potential corresponding to the exact
+exchange hole. For bulk crystalline materials, Tran and Blaha proposed
+to determine *c* by the following empirical relation:
 
-With , Å^1/2^ and V~cell~ is the volume of the unit cell. The *c*-parameter was automatically determined in VASP through a self-consistent run.
+With , Å^1/2^ and V~cell~ is the volume of the unit cell. The
+*c*-parameter was automatically determined in VASP through a
+self-consistent run.
 
 **1.2.4 K-point and cut-off convergence**
 
-We use the Monkhorst-Pack scheme to generate k-points, but after the generation, the grid is shifted so that one of the k-points lies on the Г-point. Here a "k-points line density" (L) is defined, which is related to the reciprocal lattice vectors by:
+We use the Monkhorst-Pack scheme to generate k-points, but after the
+generation, the grid is shifted so that one of the k-points lies on the
+Г-point. Here a "k-points line density" (L) is defined, which is related
+to the reciprocal lattice vectors by:
 
 , , ,
 
  Where are the reciprocal lattice vectors, and   their norms.
 
-We included the gamma-point because we were interested in computing quantities that require gamma-point contribution, such as optical transition for our optoelectronic database, gamma-point phonons for our elastic properties, finding multiferroic materials which have negative phonons at the gamma-point. The k-points are continuously stored in memory, to check that each of the new k-points generated by equation is unique. The k-points line density starts from length 0, with Г-point being the only k-point and is increased by 5 Å at each successive iteration if the difference between the energy computed with the new k-points and the one computed with previous k-points is more than the tolerance. After the convergence with a particular tolerance, we compute five extra points to further ensure the convergence. This procedure is repeated until convergence is found for all 5 extra points. A similar convergence procedure is carried out for the plane wave cut-off until the energy difference between successive iterations is less than the tolerance for 6 successive points. The plane wave cut-off is increased by 50 eV each time, starting from 500 eV. In both convergence procedures, we perform only single step electronic relaxation, i.e. no ionic relaxation is considered. When starting the cut-off energy convergence, we used a minimal k-point length of 10 Å. Similarly, for the k-point convergence we started with a cut-off of 500 eV. Note that complete ionic and electronic relaxation for determining converged parameters might be needed for very sophisticated calculation (such as Raman intensity calculation), but those calculations are beyond the scope of this work.
+We included the gamma-point because we were interested in computing
+quantities that require gamma-point contribution, such as optical
+transition for our optoelectronic database, gamma-point phonons for our
+elastic properties, finding multiferroic materials which have negative
+phonons at the gamma-point. The k-points are continuously stored in
+memory, to check that each of the new k-points generated by equation is
+unique. The k-points line density starts from length 0, with Г-point
+being the only k-point and is increased by 5 Å at each successive
+iteration if the difference between the energy computed with the new
+k-points and the one computed with previous k-points is more than the
+tolerance. After the convergence with a particular tolerance, we compute
+five extra points to further ensure the convergence. This procedure is
+repeated until convergence is found for all 5 extra points. A similar
+convergence procedure is carried out for the plane wave cut-off until
+the energy difference between successive iterations is less than the
+tolerance for 6 successive points. The plane wave cut-off is increased
+by 50 eV each time, starting from 500 eV. In both convergence
+procedures, we perform only single step electronic relaxation, i.e. no
+ionic relaxation is considered. When starting the cut-off energy
+convergence, we used a minimal k-point length of 10 Å. Similarly, for
+the k-point convergence we started with a cut-off of 500 eV. Note that
+complete ionic and electronic relaxation for determining converged
+parameters might be needed for very sophisticated calculation (such as
+Raman intensity calculation), but those calculations are beyond the
+scope of this work.
 
-The plane wave cutoff is converged using the same procedure as for the 3D bulk materials. In this work, we used Gaussian smearing (with 0.01 eV parameter) which is recommended by several DFT codes, because it is less sensitive than other methods to determine partial occupancies for each orbital. This leads to an easier DFT-SCF convergence, especially when the materials are not apriori known to be a metal or insulator, which is always the case in this work. However, it is to be emphasized that, in principle, k-points and smearing parameters should be converged together, but this requires a very computationally expensive workflow. For this reason, we choose to converge k-points and cut-off only.
+The plane wave cutoff is converged using the same procedure as for the
+3D bulk materials. In this work, we used Gaussian smearing (with 0.01 eV
+parameter) which is recommended by several DFT codes, because it is less
+sensitive than other methods to determine partial occupancies for each
+orbital. This leads to an easier DFT-SCF convergence, especially when
+the materials are not apriori known to be a metal or insulator, which is
+always the case in this work. However, it is to be emphasized that, in
+principle, k-points and smearing parameters should be converged
+together, but this requires a very computationally expensive workflow.
+For this reason, we choose to converge k-points and cut-off only.
 
-In addition to the above convergence procedure, we further increase the cut-off by 30% for elastic, dielectric and electric field gradient, piezoelectric tensors as the volume and shape of the material may change during the distortions.
+In addition to the above convergence procedure, we further increase the
+cut-off by 30% for elastic, dielectric and electric field gradient,
+piezoelectric tensors as the volume and shape of the material may change
+during the distortions.
 
 **1.2.5 DFT+U **
 
-DFT+U corrections are used only for special cases because it is somewhat tricky to get formation energies from the total energies obtained from such calculations. DFT+U calculations are used during magnetic topologic insulator search cases mainly. We generally use U=3.0 eV or complete U-scan (0 to 3 eV) for enumerating the effects of U-parameter. Refer to: <https://www.nature.com/articles/s41524-020-0319-4>
+DFT+U corrections are used only for special cases because it is somewhat
+tricky to get formation energies from the total energies obtained from
+such calculations. DFT+U calculations are used during magnetic topologic
+insulator search cases mainly. We generally use U=3.0 eV or complete
+U-scan (0 to 3 eV) for enumerating the effects of U-parameter. Refer to:
+<https://www.nature.com/articles/s41524-020-0319-4>
 
 **1.2.6 Spin-orbit coupling**
 
-Spin-orbit coupling usually split states that are degenerate in a nonrelativistic description. We consider spin-orbit coupling (LSORBIT = .TRUE.) only during spin-orbit spillage for topological materials calculations but not during geometric optimization or any other major property calculations. We take into account only scalar relativistic effects. Accurate lattice-constants of materials with vdW bonding can play a critical role in predicting the correct topology, as emphasized. We calculate the spillage using the Perdew, Burke and Ernzerhof (PBE) functional and 1000/atom k-points, as well as by analyzing the spillage along a high-symmetry Brillouin-zone path, with a 600 eV plane-wave cut-off. We calculate the spin-orbit spillage, $\eta\left( \mathbf{k} \right),$ given by the following equation:
+Spin-orbit coupling usually split states that are degenerate in a
+nonrelativistic description. We consider spin-orbit coupling (LSORBIT =
+.TRUE.) only during spin-orbit spillage for topological materials
+calculations but not during geometric optimization or any other major
+property calculations. We take into account only scalar relativistic
+effects. Accurate lattice-constants of materials with vdW bonding can
+play a critical role in predicting the correct topology, as emphasized.
+We calculate the spillage using the Perdew, Burke and Ernzerhof (PBE)
+functional and 1000/atom k-points, as well as by analyzing the spillage
+along a high-symmetry Brillouin-zone path, with a 600 eV plane-wave
+cut-off. We calculate the spin-orbit spillage,
+$\eta\left( \mathbf{k} \right),$ given by the following equation:
 
 $\eta\left( \mathbf{k} \right) = n_{\text{occ}}(\mathbf{k}) - \text{Tr}\left( P\widetilde{P} \right)$
 
 where
 
-$P\left( \mathbf{k} \right) = \sum_{n = 1}^{n_{\text{occ}}(\mathbf{k})}{\left. \ |\psi_{n\mathbf{k}} \right\rangle\left\langle \psi_{n\mathbf{k}} \right.\ |}$ for wavefunctions without SOC and $\widetilde{P}\ $with SOC calculations.
+$P\left( \mathbf{k} \right) = \sum_{n = 1}^{n_{\text{occ}}(\mathbf{k})}{\left. \ |\psi_{n\mathbf{k}} \right\rangle\left\langle \psi_{n\mathbf{k}} \right.\ |}$
+for wavefunctions without SOC and $\widetilde{P}\ $with SOC
+calculations.
 
 **1.2.7 Beyond DFT methods**
 
-JARVIS-DFT contains data using conventional local and semi-local methods, as well as beyond conventional DFT based methods such as meta-GGA (TBmBJ), G0W0, HSE06, PBE0, DMFT etc. BDFT methods are used to better predict electronic bandgaps, dielectric functions hence solar-cell efficiencies, as well magnetic moment (using DMFT) of a material. HSE06 and PBE0 were used to predict accurate bandgaps for exfoliable bulk and corresponding monolayer materials. We utilized two hybrid functionals: PBE0 and HSE06. In PBE0 the exchange energy is given by a 3:1 ratio mix of the PBE and Hartree--Fock exchange energies, respectively, while the correlation is completely given by the PBE correlation energy. In HSE (Heyd--Scuseria--Ernzerhof)^32^, the exchange is given by a screened Coulomb potential, to improve computational efficiency. An adjustable parameter (ω) controls how short range the interaction is. HSE06 is characterized by ω=0.2, while for a choice of ω=0 HSE becomes PBE0.
+JARVIS-DFT contains data using conventional local and semi-local
+methods, as well as beyond conventional DFT based methods such as
+meta-GGA (TBmBJ), G0W0, HSE06, PBE0, DMFT etc. BDFT methods are used to
+better predict electronic bandgaps, dielectric functions hence
+solar-cell efficiencies, as well magnetic moment (using DMFT) of a
+material. HSE06 and PBE0 were used to predict accurate bandgaps for
+exfoliable bulk and corresponding monolayer materials. We utilized two
+hybrid functionals: PBE0 and HSE06. In PBE0 the exchange energy is given
+by a 3:1 ratio mix of the PBE and Hartree--Fock exchange energies,
+respectively, while the correlation is completely given by the PBE
+correlation energy. In HSE (Heyd--Scuseria--Ernzerhof)^32^, the exchange
+is given by a screened Coulomb potential, to improve computational
+efficiency. An adjustable parameter (ω) controls how short range the
+interaction is. HSE06 is characterized by ω=0.2, while for a choice of
+ω=0 HSE becomes PBE0.
 
 **1.2.8 Density functional perturbation theory**
 
-We carry out the Density functional perturbation theory (DFPT) (as implemented in the VASP code) calculation on the standard conventional cell for each material. We determine the Born-effective charge, piezoelectric and dielectric (ionic+electronic parts) tensors and the phonon eigenvectors. DFPT is also used to calculate Infrared and Raman intensities for selected materials. As mentioned earlier, it is important to converge K-points, cut-off and parameters to get reliable results which is taken into account in the JARVIS-DFT. Given an insulating system with *N* atoms per cell, with cell volume Ω~0~, atomic displacements u~m~ (m=(1...3N)), homogenous strain η~j~ (j=(1...6)), homogenous electric fields $\mathcal{\text{\ E}}$~α~ (α=(x,y,z)), energy *E*, the force-constant matrix ($K_{\text{mn}}$), internal strain tensor ($\Lambda_{\text{mj}}$), the dielectric susceptibility ($\chi_{\text{αβ}}$), Born dynamical effective charge ($Z_{\text{mα}}$), piezoelectric stress tensor ($e_{\text{αj}}$) and piezoelectric strain tensor ($d_{\text{αj}}$) are calculated as follows (SI units are used throughout)^65-69^:
+We carry out the Density functional perturbation theory (DFPT) (as
+implemented in the VASP code) calculation on the standard conventional
+cell for each material. We determine the Born-effective charge,
+piezoelectric and dielectric (ionic+electronic parts) tensors and the
+phonon eigenvectors. DFPT is also used to calculate Infrared and Raman
+intensities for selected materials. As mentioned earlier, it is
+important to converge K-points, cut-off and parameters to get reliable
+results which is taken into account in the JARVIS-DFT. Given an
+insulating system with *N* atoms per cell, with cell volume Ω~0~, atomic
+displacements u~m~ (m=(1...3N)), homogenous strain η~j~ (j=(1...6)),
+homogenous electric fields $\mathcal{\text{\ E}}$~α~ (α=(x,y,z)), energy
+*E*, the force-constant matrix ($K_{\text{mn}}$), internal strain tensor
+($\Lambda_{\text{mj}}$), the dielectric susceptibility
+($\chi_{\text{αβ}}$), Born dynamical effective charge ($Z_{\text{mα}}$),
+piezoelectric stress tensor ($e_{\text{αj}}$) and piezoelectric strain
+tensor ($d_{\text{αj}}$) are calculated as follows (SI units are used
+throughout)^65-69^:
 
 $K_{\text{mn}} = \Omega_{0}\frac{\partial^{2}E}{\partial u_{m}\partial u_{n}}|_{\mathcal{E,}\eta}$
 
@@ -194,104 +350,204 @@ $e_{\text{αj}} = - \frac{\partial^{2}E}{\partial\mathcal{E}_{\alpha}\partial\et
 
 $d_{\text{αj}} = S_{\text{jk}}^{\left( \mathcal{E} \right)}e_{\text{αk}}$
 
-The dielectric constant can be derived from the dielectric susceptibility using:
+The dielectric constant can be derived from the dielectric
+susceptibility using:
 
 ${\varepsilon_{\text{αβ}} = \varepsilon_{0}(\delta_{\text{αβ}} + \chi}_{\text{αβ}})$
 
-The first term represents the electronic contribution and the second term the ionic contribution for DL and PZ constants respectively.
+The first term represents the electronic contribution and the second
+term the ionic contribution for DL and PZ constants respectively.
 
-The PZ is a 3x6 tensor, the DL 3x3 and the BEC *N*x3x3 tensor. The IR intensity of phonon modes is calculated using:
+The PZ is a 3x6 tensor, the DL 3x3 and the BEC *N*x3x3 tensor. The IR
+intensity of phonon modes is calculated using:
 
 $f\left( n \right) = \sum_{\alpha}^{}\left| \sum_{\text{sβ}}^{}Z_{\text{αβ}}\left( s \right)e_{\beta}\left( s,n \right) \right|^{2}$
 
-where $e_{\beta}\left( s,n \right)$ is the normalized vibrational eigenvector of the *n*th phonon mode of the *s*^th^ atom in the unit cell, and α, β are the cartesian coordinates. $Z_{\text{αβ}}\left( s \right)$ is the Born effective charge tensor of *s*^th^ atom (here we explicitly write both the cartesian indices of Z). These approaches are universal and have been already applied to various material classes. More details about the DFPT formalism can be found in elsewhere^65,66^.
+where $e_{\beta}\left( s,n \right)$ is the normalized vibrational
+eigenvector of the *n*th phonon mode of the *s*^th^ atom in the unit
+cell, and α, β are the cartesian coordinates.
+$Z_{\text{αβ}}\left( s \right)$ is the Born effective charge tensor of
+*s*^th^ atom (here we explicitly write both the cartesian indices of Z).
+These approaches are universal and have been already applied to various
+material classes. More details about the DFPT formalism can be found in
+elsewhere^65,66^.
 
 **1.2.9 Finite-difference method**
 
-The elastic tensor is determined by performing six finite distortions of the lattice and deriving the elastic constants from the strain-stress relationship. A set of strains **ε** where ε~1~, ε~2~, and ε~3~ are the normal strains and the others are the shear strains imposed on a crystal with lattice vectors **R** specified in Cartesian coordinates,
+The elastic tensor is determined by performing six finite distortions of
+the lattice and deriving the elastic constants from the strain-stress
+relationship. A set of strains **ε** where ε~1~, ε~2~, and ε~3~ are the
+normal strains and the others are the shear strains imposed on a crystal
+with lattice vectors **R** specified in Cartesian coordinates,
 
 **R**
 
-where *a~1~* is the x-component of the lattice vector , *b~2~* the y-component of the lattice vector , and so on. Corresponding to a set of strains discussed above, a set of stresses **σ** are determined with VASP code. The stress-strain can then be related by general Hooke's law
+where *a~1~* is the x-component of the lattice vector , *b~2~* the
+y-component of the lattice vector , and so on. Corresponding to a set of
+strains discussed above, a set of stresses **σ** are determined with
+VASP code. The stress-strain can then be related by general Hooke's law
 
 **σ = Cε **
 
-where **C** is a 6x6 elastic constant matrix, which can be obtained by matrix-inverse operations. Finite difference method-based phonons were also obtained at Gamma-points only.
+where **C** is a 6x6 elastic constant matrix, which can be obtained by
+matrix-inverse operations. Finite difference method-based phonons were
+also obtained at Gamma-points only.
 
 **1.2.10 Linear Optics**
 
-To obtain the optical properties of the materials, we calculated the imaginary part of the dielectric function from the Bloch wavefunctions and eigenvalues (neglecting local field effects). We introduced three times as many empty conduction bands as valance bands. This treatment is necessary to facilitate proper electronic transitions. We choose 5000 energy grid points to have a sufficiently high resolution in dielectric function spectra. The imaginary part is calculated as:
+To obtain the optical properties of the materials, we calculated the
+imaginary part of the dielectric function from the Bloch wavefunctions
+and eigenvalues (neglecting local field effects). We introduced three
+times as many empty conduction bands as valance bands. This treatment is
+necessary to facilitate proper electronic transitions. We choose 5000
+energy grid points to have a sufficiently high resolution in dielectric
+function spectra. The imaginary part is calculated as:
 
 $\varepsilon_{\text{αβ}}^{(2)}\left( E \right) = \frac{4\pi^{2}e^{2}}{\Omega^{2}}\operatorname{}{\frac{1}{q^{2}}\sum_{c,v,\overrightarrow{k}}^{}{2w_{\overrightarrow{k}}\delta\left( \xi_{c\overrightarrow{k}} - \xi_{v\overrightarrow{k}} - E \right)\left\langle \Psi_{c\overrightarrow{k} + {\overrightarrow{e}}_{\alpha}q}|\Psi_{v\overrightarrow{k}} \right\rangle\left\langle \Psi_{v\overrightarrow{k}}|\Psi_{c\overrightarrow{k} + {\overrightarrow{e}}_{\beta}q} \right\rangle^{*}}}$\
-where *e* is electron charge, $\Omega$ is the cell volume, *E* the energy, ![][2]is the Fermi-weight of each *k*-point, ![][3]are unit vectors along the three Cartesian directions, is the cell-periodic part of the pseudo-wavefunction for band *n* and k-point $k$, *q* stands for the Bloch vector of an incident wave, *c* and *v* stand for conduction and valence bands, stands for eigenvalues of the corresponding bands respectively. The matrix elements on the right side of Eq. (1) capture the transitions allowed by symmetry and selection rules. The real part of the dielectric tensor $\varepsilon_{\text{αβ}}^{(1)}$ is obtained by the usual Kramers-Kronig transformation:
+where *e* is electron charge, $\Omega$ is the cell volume, *E* the
+energy,
+![](./myMediaFolder/media/image22.wmf){width="0.22916666666666666in"
+height="0.2604166666666667in"}is the Fermi-weight of each *k*-point,
+![](./myMediaFolder/media/image23.wmf){width="0.19791666666666666in"
+height="0.2604166666666667in"}are unit vectors along the three Cartesian
+directions, is the cell-periodic part of the pseudo-wavefunction for
+band *n* and k-point $k$, *q* stands for the Bloch vector of an incident
+wave, *c* and *v* stand for conduction and valence bands, stands for
+eigenvalues of the corresponding bands respectively. The matrix elements
+on the right side of Eq. (1) capture the transitions allowed by symmetry
+and selection rules. The real part of the dielectric
+tensor $\varepsilon_{\text{αβ}}^{(1)}$ is obtained by the usual
+Kramers-Kronig transformation:
 
 $\varepsilon_{\text{αβ}}^{(1)}\left( E \right) = 1 + \frac{2}{\pi}P\int_{0}^{\infty}\frac{\varepsilon_{\text{αβ}}^{(2)}\left( E^{'} \right)E^{'}}{\left( E^{'} \right)^{2} - E^{2} + i\eta}dE^{'}$
 
-where *P* denotes the principle value, and *η* is the complex shift parameter taken as 0.1. Moreover, as the dielectric function is a tensorial quantity, we use the crystallographic average of the dielectric function (written as $\varepsilon^{(1)}\ $and $\varepsilon^{(2)}$), obtained by diagonalizing the dielectric tensor for each energy and averaging the diagonal elements.
+where *P* denotes the principle value, and *η* is the complex shift
+parameter taken as 0.1. Moreover, as the dielectric function is a
+tensorial quantity, we use the crystallographic average of the
+dielectric function (written as $\varepsilon^{(1)}\ $and
+$\varepsilon^{(2)}$), obtained by diagonalizing the dielectric tensor
+for each energy and averaging the diagonal elements.
 
-Using, $\varepsilon^{(1)}$ and $\varepsilon^{(2)}$ the absorption coefficient $\alpha\left( E \right)$ is defined as:
+Using, $\varepsilon^{(1)}$ and $\varepsilon^{(2)}$ the absorption
+coefficient $\alpha\left( E \right)$ is defined as:
 
 $\alpha\left( E \right) = \frac{2E}{\text{ℏc}}\sqrt{\frac{\sqrt{\left( \varepsilon^{(1)}\left( E \right) \right)^{2} + \left( \varepsilon^{(2)}\left( E \right) \right)^{2}} - \left( \varepsilon^{(1)}\left( E \right) \right)}{2}}$
 
 where *c* is the speed of light.
 
-Next, the SLME ($ɳ)$ is defined as the ratio of the maximum output power density (*P~max~*) and the total incident solar energy density (*P~in~*). *P~max~* is obtained by numerically maximizing the product of current density *J* and voltage *V*.
+Next, the SLME ($ɳ)$ is defined as the ratio of the maximum output power
+density (*P~max~*) and the total incident solar energy density
+(*P~in~*). *P~max~* is obtained by numerically maximizing the product of
+current density *J* and voltage *V*.
 
 $ɳ = \frac{P_{\max}}{P_{\text{in}}}$
 
-Assuming the solar cell at temperature *T* behaves as an ideal diode and is illuminated under the photon flux *I~sun~*, *J* and *V* follow the following equation:
+Assuming the solar cell at temperature *T* behaves as an ideal diode and
+is illuminated under the photon flux *I~sun~*, *J* and *V* follow the
+following equation:
 
 $J = J_{\text{sc}} - J_{0}\left( e^{\frac{\text{eV}}{\text{kT}}} - 1 \right)$
 
-where *e* is the elementary charge, *V* the potential over the absorber layer and *k* is Boltzmann's constant. The first term is the short-circuit current density *J~sc~* given by:
+where *e* is the elementary charge, *V* the potential over the absorber
+layer and *k* is Boltzmann's constant. The first term is the
+short-circuit current density *J~sc~* given by:
 
 $J_{\text{sc}} = e\int_{0}^{\infty}{a\left( E \right)I_{\text{sun}}\left( E \right)\text{dE}}$
 
-where and *a(E)* is the photon absorptivity, $I_{\text{sun}}\ $is the AM1.5G solar spectrum. The *a(E)* depends on the absorption coefficient ($\alpha$) (Eq. (3)) and thickness (*L*) of the material.
+where and *a(E)* is the photon absorptivity, $I_{\text{sun}}\ $is the
+AM1.5G solar spectrum. The *a(E)* depends on the absorption coefficient
+($\alpha$) (Eq. (3)) and thickness (*L*) of the material.
 
 $a\left( E \right) = 1 - e^{- 2\alpha\left( E \right)L}$
 
-The coefficient of the second term in Eq. (5) is the reverse saturation current (*J~0~*), which corresponds to the total (radiative and non-radiative) electron-hole recombination current at equilibrium in the dark:
+The coefficient of the second term in Eq. (5) is the reverse saturation
+current (*J~0~*), which corresponds to the total (radiative and
+non-radiative) electron-hole recombination current at equilibrium in the
+dark:
 
 $J_{0}^{} = J_{0}^{r} + J_{0}^{\text{nr}} = \frac{J_{0}^{r}}{f_{r}}$
 
-Here, *f~r~* is defined as the fraction of the radiative recombination current. For the SLME, *f~r~* is approximated using:
+Here, *f~r~* is defined as the fraction of the radiative recombination
+current. For the SLME, *f~r~* is approximated using:
 
 $f_{r} = e^{\left( \frac{E_{g} - E_{g}^{\text{da}}}{\text{kT}} \right)}$
 
-Where $E_{g}$ is the fundamental and $E_{g}^{\text{da}}\ $is the direct allowed bandgap of a material.
+Where $E_{g}$ is the fundamental and $E_{g}^{\text{da}}\ $is the direct
+allowed bandgap of a material.
 
-Following the principle of detailed balance, the rates of emission and absorption through cell surfaces must be equal in equilibrium in the dark. Hence, $J_{0}^{r}$ can be calculated from the rate at which black-body photons from the surrounding thermal bath are absorbed through the front surface, given by:
+Following the principle of detailed balance, the rates of emission and
+absorption through cell surfaces must be equal in equilibrium in the
+dark. Hence, $J_{0}^{r}$ can be calculated from the rate at which
+black-body photons from the surrounding thermal bath are absorbed
+through the front surface, given by:
 
 $J_{0}^{r} = e\pi\int_{0}^{\infty}{a\left( E \right)I_{\text{bb}}\left( E,T \right)\text{dE}}$
 
-where *I~bb~* is the black-body spectrum at temperature *T.* Both the solar spectrum $I_{\text{sun}}\ $and black-body spectrum $I_{\text{bb}}$ are expressed in terms of the photon flux.
+where *I~bb~* is the black-body spectrum at temperature *T.* Both the
+solar spectrum $I_{\text{sun}}\ $and black-body spectrum $I_{\text{bb}}$
+are expressed in terms of the photon flux.
 
 In order to maximize the power density, Eq. can be re-written as:
 
 $ɳ = \frac{P_{\max}}{P_{\text{in}}} = \frac{\max\left\{ \left( J_{\text{sc}} - J_{0}\left( e^{\frac{\text{eV}}{\text{kT}}} - 1 \right) \right)V \right\}_{V}}{\int_{0}^{\infty}{EI_{\text{sun}}\left( E \right)\text{dE}}}$
 
-Therefore, the material-property related inputs in calculating the SLME are $\alpha\left( E \right),f_{r},\ L$ and T. In this work, we assume material thickness (*L*) as 500 nm and temperature (*T*) as 300 K.
+Therefore, the material-property related inputs in calculating the SLME
+are $\alpha\left( E \right),f_{r},\ L$ and T. In this work, we assume
+material thickness (*L*) as 500 nm and temperature (*T*) as 300 K.
 
-*VASP uses a complex shift (CSHIFT) in the Kramers-Kronig relation to calculate the real part of the dielectric tensor, and also determines the corresponding imaginary part for consistency.*
+*VASP uses a complex shift (CSHIFT) in the Kramers-Kronig relation to
+calculate the real part of the dielectric tensor, and also determines
+the corresponding imaginary part for consistency.*
 
 **1.2.11 Wannierization**
 
-We use Wannier90 to construct Maximally-Localized Wannier Functions (MLWF) based TB-Hamiltonians. The basic formalism of Wannierization is well-established. We briefly review some aspects here, interested readers can see longer discussions in ^5,16^. For a set of Bloch eigenvectors $|\left. \ \psi_{n,k} \right\rangle$, a general set of WFs $\left. \ |\mathbf{R}n \right\rangle$ (n=1\...N) can be written as:
+We use Wannier90 to construct Maximally-Localized Wannier Functions
+(MLWF) based TB-Hamiltonians. The basic formalism of Wannierization is
+well-established. We briefly review some aspects here, interested
+readers can see longer discussions in ^5,16^. For a set of Bloch
+eigenvectors $|\left. \ \psi_{n,k} \right\rangle$, a general set of WFs
+$\left. \ |\mathbf{R}n \right\rangle$ (n=1\...N) can be written as:
 
 $\left. \ |\mathbf{R}n \right\rangle = \frac{V}{\left( 2\pi \right)^{3}}\int_{\text{BZ}}^{\text{BZ}}{\sum_{m = 1}^{N}U_{\text{mn}}^{(\mathbf{k})}|\left. \ \psi_{\text{mk}} \right\rangle e^{- i\mathbf{k}.\mathbf{R}}d\mathbf{k}}$
 
-where$\ \mathbf{R}$ **labels the unit cell of the WF, *V* is the volume of the unit cell, and** $U_{\text{mn}}^{(\mathbf{k})}$ is an arbitrary unitary matrix. To construct maximally-localized WFs, $U_{\text{mn}}^{(\mathbf{k})}$ is chosen to minimize the following spread functional:
+where$\ \mathbf{R}$ **labels the unit cell of the WF, *V* is the volume
+of the unit cell, and** $U_{\text{mn}}^{(\mathbf{k})}$ is an arbitrary
+unitary matrix. To construct maximally-localized WFs,
+$U_{\text{mn}}^{(\mathbf{k})}$ is chosen to minimize the following
+spread functional:
 
 $\Omega = \sum_{n}^{}\left\lbrack \left\langle r^{2} \right\rangle_{n} - {\overline{r}}_{n}^{2} \right\rbrack$
 
-where ${\overline{\mathbf{r}}}_{n} = \ \left\langle 0n \middle| \mathbf{r} \middle| 0n \right\rangle$ and $\left\langle r^{2} \right\rangle_{n} = \ \left\langle 0n \middle| r^{2} \middle| 0n \right\rangle$. The minimization proceeds iteratively, based on an initial guess of localized orbitals.
+where
+${\overline{\mathbf{r}}}_{n} = \ \left\langle 0n \middle| \mathbf{r} \middle| 0n \right\rangle$
+and
+$\left\langle r^{2} \right\rangle_{n} = \ \left\langle 0n \middle| r^{2} \middle| 0n \right\rangle$.
+The minimization proceeds iteratively, based on an initial guess of
+localized orbitals.
 
-For the case of interest in this work, where we wish to describe both the valence and conduction bands near the Fermi level, it is necessary to first select a set of bands to Wannierize, which includes separating the conduction bands from the free-electron-like bands that generally overlap with them in energy. The procedure to determine this localized subspace of Bloch wavefunctions proceeds similarly to minimization described above, where after an initial guess, the subspace is iteratively updated in order to minimize the spread function. After this initial disentanglement step, the Wannierization of the selected subspace proceeds as described above.
+For the case of interest in this work, where we wish to describe both
+the valence and conduction bands near the Fermi level, it is necessary
+to first select a set of bands to Wannierize, which includes separating
+the conduction bands from the free-electron-like bands that generally
+overlap with them in energy. The procedure to determine this localized
+subspace of Bloch wavefunctions proceeds similarly to minimization
+described above, where after an initial guess, the subspace is
+iteratively updated in order to minimize the spread function. After this
+initial disentanglement step, the Wannierization of the selected
+subspace proceeds as described above.
 
-Due to the iterative non-linear minimization employed during both the disentanglement and Wannierization steps, the localization and utility of the final Wannier functions depend in practice on the initial choice of orbitals that are used to begin the disentanglement procedure, and which are then used as the initial guess for the Wannierization. Our initial guesses consist of a set of atomic orbitals we have chosen to describe all the chemically relevant orbitals for each element in typical elemental systems and compounds. We provide the list of the orbitals we select for each element in Table.
+Due to the iterative non-linear minimization employed during both the
+disentanglement and Wannierization steps, the localization and utility
+of the final Wannier functions depend in practice on the initial choice
+of orbitals that are used to begin the disentanglement procedure, and
+which are then used as the initial guess for the Wannierization. Our
+initial guesses consist of a set of atomic orbitals we have chosen to
+describe all the chemically relevant orbitals for each element in
+typical elemental systems and compounds. We provide the list of the
+orbitals we select for each element in Table.
 
-*Table: Semi-core states used during Wannierization. Note that several lanthanides and actinides are avoided.*
+*Table: Semi-core states used during Wannierization. Note that several
+lanthanides and actinides are avoided.*
 
   Element   POTCARs   N\_electrons   Excluded\_electrons   Projections   N\_Wan\_projections
   --------- --------- -------------- --------------------- ------------- ---------------------
@@ -376,56 +632,132 @@ Due to the iterative non-linear minimization employed during both the disentangl
   Zn        Zn        12             0                     s\_p\_d       9
   Zr        Zr\_sv    4              8                     s\_d          6
 
-For many specific materials, it may be possible to select a smaller set of orbitals while still maintaining high-quality WFs that describe the bands of interest; however, our fairly inclusive set of orbitals is able Wannierize nearly all compounds in a high-throughput manner without human intervention. Because most applications of WFs are computationally inexpensive compared to the DFT calculations used to construct the WFs, in practice, our larger Wannier basis has only minimal computational cost. However, it is necessary to have enough empty bands in the underlying DFT calculation such that any empty orbitals chosen are included in the Bloch basis. We do not include any semicore orbitals in our Wannier basis, as they are generally well-separated in energy from the valence orbitals and are not necessary to describe bands near the Fermi level, and we exclude semicore bands from the disentanglement.
+For many specific materials, it may be possible to select a smaller set
+of orbitals while still maintaining high-quality WFs that describe the
+bands of interest; however, our fairly inclusive set of orbitals is able
+Wannierize nearly all compounds in a high-throughput manner without
+human intervention. Because most applications of WFs are computationally
+inexpensive compared to the DFT calculations used to construct the WFs,
+in practice, our larger Wannier basis has only minimal computational
+cost. However, it is necessary to have enough empty bands in the
+underlying DFT calculation such that any empty orbitals chosen are
+included in the Bloch basis. We do not include any semicore orbitals in
+our Wannier basis, as they are generally well-separated in energy from
+the valence orbitals and are not necessary to describe bands near the
+Fermi level, and we exclude semicore bands from the disentanglement.
 
-During the disentanglement step, it is possible to choose an energy range that is included exactly ("the frozen window"), with the result that the Wannier band structure will exactly match the DFT band structure in this energy range and at the grid of k-points used in the Wannierization. We use a frozen window of $\pm \ $2 eV around the Fermi-energy. This window ensures that bands near the Fermi level are well described by the WTBH. For cases where the original WFs were unsatisfactory (see below), we found that lowering the lower bound of this window to include all of the valence bands often improves that WTBH, which we use as a second Wannierization setting. In order to validate our WTBH, we calculate the maximum absolute difference ($\mu$) between the Wannier and DFT eigenvalues within an energy range of ± 2eV around the Fermi level:
+During the disentanglement step, it is possible to choose an energy
+range that is included exactly ("the frozen window"), with the result
+that the Wannier band structure will exactly match the DFT band
+structure in this energy range and at the grid of k-points used in the
+Wannierization. We use a frozen window of $\pm \ $2 eV around the
+Fermi-energy. This window ensures that bands near the Fermi level are
+well described by the WTBH. For cases where the original WFs were
+unsatisfactory (see below), we found that lowering the lower bound of
+this window to include all of the valence bands often improves that
+WTBH, which we use as a second Wannierization setting. In order to
+validate our WTBH, we calculate the maximum absolute difference ($\mu$)
+between the Wannier and DFT eigenvalues within an energy range of ± 2eV
+around the Fermi level:
 
 $\mu =_{n\mathbf{k}}^{\max}{\ \left( \left| E_{n\mathbf{k}}^{\text{DFT}} - E_{n\mathbf{k}}^{\text{WTB}} \right| \right)}$
 
-As discussed above, at the grid of k-points used in the construction of the WFs and within the frozen window, the eigenvalues should match exactly by construction. Therefore, to test the WTBH, we evaluate Eq. on the dense lines of k-points used to generate our band structure plots, which tests the WFs out of sample. A weakness of this evaluation method is that highly dispersive energy bands (high $\frac{dE_{\text{nk}}}{\text{dk}}$) can result in high $\mu$ values even if the WTBH is of good quality because any slight shift in the *k*-direction of a dispersive band will result in a large energy error. We consider that systems with $\mu$ less than 0.1 eV to useful for most applications, and we provide data for the user to evaluate individual WTBH for their own applications.
+As discussed above, at the grid of k-points used in the construction of
+the WFs and within the frozen window, the eigenvalues should match
+exactly by construction. Therefore, to test the WTBH, we evaluate Eq. on
+the dense lines of k-points used to generate our band structure plots,
+which tests the WFs out of sample. A weakness of this evaluation method
+is that highly dispersive energy bands (high
+$\frac{dE_{\text{nk}}}{\text{dk}}$) can result in high $\mu$ values even
+if the WTBH is of good quality because any slight shift in the
+*k*-direction of a dispersive band will result in a large energy error.
+We consider that systems with $\mu$ less than 0.1 eV to useful for most
+applications, and we provide data for the user to evaluate individual
+WTBH for their own applications.
 
 **1.2.12 Boltzmann transport**
 
-The transport properties were calculated using the Boltzmann transport equation (BTE) implemented in the BoltzTrap code. The BTE is used to investigate the non-equilibrium behavior of electrons and holes by statistically averaging all possible quantum states given by the equation below:
+The transport properties were calculated using the Boltzmann transport
+equation (BTE) implemented in the BoltzTrap code. The BTE is used to
+investigate the non-equilibrium behavior of electrons and holes by
+statistically averaging all possible quantum states given by the
+equation below:
 
 $\frac{\text{df}\left( \mathbf{k},T,t \right)}{\text{dt}} = \left( \frac{\partial f\left( \mathbf{k},T,t \right)}{\partial t} \right)_{s} - \frac{d\mathbf{k}}{\text{dt}}\nabla_{k}f\left( \mathbf{k},T,t \right) - v\left( \mathbf{k} \right)\nabla_{r}f\left( \mathbf{k},T,t \right)$.
 
-*f* is the electron distribution, which is a function of state *k*, temperature *T* and time *t*, and *v(k)* are the electron group velocities. The three terms on the right-hand side of Eq. refer, respectively, to the temporal rate of change of *f* due to all scattering processes, the rate of change of *f* due to external forces, and the diffusion from the carrier density gradient. If the external forces consist only of a low electric field, E, and no magnetic field, B, such that $\frac{\text{dk}}{\text{dt}} = \frac{\text{eE}}{h}$ then the low-filed BTE is given by:
+*f* is the electron distribution, which is a function of state *k*,
+temperature *T* and time *t*, and *v(k)* are the electron group
+velocities. The three terms on the right-hand side of Eq. refer,
+respectively, to the temporal rate of change of *f* due to all
+scattering processes, the rate of change of *f* due to external forces,
+and the diffusion from the carrier density gradient. If the external
+forces consist only of a low electric field, E, and no magnetic field,
+B, such that $\frac{\text{dk}}{\text{dt}} = \frac{\text{eE}}{h}$ then
+the low-filed BTE is given by:
 
 $\frac{\text{df}\left( \mathbf{k},T,t \right)}{\text{dt}} + v\left( \mathbf{k} \right)\nabla_{r}f\left( \mathbf{k},T \right) + \frac{\text{eE}}{h}\nabla_{k}f\left( \mathbf{k},T \right) = \left( \frac{\partial f\left( \mathbf{k},T,t \right)}{\partial t} \right)_{s}$.
 
-Now, *f* can be described as a first-order (linear) perturbation from the (equilibrium) Fermi-Dirac distribution, *f~0~*, due to scattering
+Now, *f* can be described as a first-order (linear) perturbation from
+the (equilibrium) Fermi-Dirac distribution, *f~0~*, due to scattering
 
 $\left( \frac{\partial f\left( \mathbf{k},T,t \right)}{\partial t} \right)_{s} = - \frac{f\left( k \right) - f_{0}\left( k \right)}{\tau}$
 
 where $
 f_{0}\left\lbrack \mathcal{E}\left( k \right) \right\rbrack = \frac{1}{e^{\left\lbrack \mathcal{E}\left( k \right) - \mathcal{E}_{F} \right\rbrack/k_{B}T} + 1}$
 
-where the dependence of $\mathcal{E}$ on *k* is given by the electronic band structure, and the various
+where the dependence of $\mathcal{E}$ on *k* is given by the electronic
+band structure, and the various
 
-scattering terms and time dependence are lumped into the electronic relaxation time,$\text{\ τ}$. The computation of the relaxation time is very computationally expensive, especially in a high-throughput context.
+scattering terms and time dependence are lumped into the electronic
+relaxation time,$\text{\ τ}$. The computation of the relaxation time is
+very computationally expensive, especially in a high-throughput context.
 
 **1.2.13 Partial charge density**
 
-The partial charge densities are used to calculate scanning tunneling microscopy images. The surface charge and probability densities are calculated by integrating the local density of states function (ILDOS) over an energy range of ±0.5 eV from the conduction band minima (CBM) to Fermi energy (E~F~) and valence band maxima (VBM) to Fermi energy (E~F~). The STM images are calculated using Tersoff-Hamann approach:
+The partial charge densities are used to calculate scanning tunneling
+microscopy images. The surface charge and probability densities are
+calculated by integrating the local density of states function (ILDOS)
+over an energy range of ±0.5 eV from the conduction band minima (CBM) to
+Fermi energy (E~F~) and valence band maxima (VBM) to Fermi energy
+(E~F~). The STM images are calculated using Tersoff-Hamann approach:
 
 $I_{\mu} \propto \rho\left( r,E_{F} \right) \equiv \sum_{\mu}^{}{\left| \psi_{\mu}\left( r \right) \right|^{2}\delta\left( \varepsilon_{\mu} - E_{F} \right)}$
 
-where $I_{\mu}$ is the tunneling current, $\psi_{\mu}$ the eigenvector and $\varepsilon_{\mu}$ the eigenenergy due to the state μ and $E_{F}$ is the Fermi-energy.
+where $I_{\mu}$ is the tunneling current, $\psi_{\mu}$ the eigenvector
+and $\varepsilon_{\mu}$ the eigenenergy due to the state μ and $E_{F}$
+is the Fermi-energy.
 
 3.  **Property Details**
 
 **1.3.1 Atomic structure and derived properties**
 
-Atomic structure is generally defined using lattice parameter and atomic positions (xyz coordinate) and element information. Experimentally, this information is obtained with experimental techniques such as X-ray diffraction, EBSD, Neutron diffraction, NMR etc. After geometric optimization following the JARVIS-DFT protocol several atomic properties are calculated. Some of these properties are lattice-constants/parameters (lengths and angles), density, packing fraction, spacegroup, crystal system, radial distribution, angular distribution, dihedral distribution, X-ray diffraction information. This can be done with the help of JARVIS-Tools jarvis.core.Atoms class. Example:
+Atomic structure is generally defined using lattice parameter and atomic
+positions (xyz coordinate) and element information. Experimentally, this
+information is obtained with experimental techniques such as X-ray
+diffraction, EBSD, Neutron diffraction, NMR etc. After geometric
+optimization following the JARVIS-DFT protocol several atomic properties
+are calculated. Some of these properties are
+lattice-constants/parameters (lengths and angles), density, packing
+fraction, spacegroup, crystal system, radial distribution, angular
+distribution, dihedral distribution, X-ray diffraction information. This
+can be done with the help of JARVIS-Tools jarvis.core.Atoms class.
+Example:
 
-![][4]
+![](./myMediaFolder/media/image26.png){width="4.840277777777778in"
+height="5.703875765529308in"}
 
-![][5]
+![](./myMediaFolder/media/image27.png){width="6.5in" height="2.16875in"}
 
-![][6]
+![](./myMediaFolder/media/image28.png){width="6.5in"
+height="1.992361111111111in"}
 
-*Table Mean absolute error (MAE) and root-mean-squared error (RMSE) in a, b and c crystallographic directions computed for all materials in our database with respect to experimental data (ICSD data). To facilitate comparison between the functionals, both MAE and RMSE have been computed for all materials, only for predicted vdW bonded materials and only for predicted non-vdW bonded materials, using Material's project PBE and JARVIS-DFT OPT functional.*
+*Table Mean absolute error (MAE) and root-mean-squared error (RMSE) in
+a, b and c crystallographic directions computed for all materials in our
+database with respect to experimental data (ICSD data). To facilitate
+comparison between the functionals, both MAE and RMSE have been computed
+for all materials, only for predicted vdW bonded materials and only for
+predicted non-vdW bonded materials, using Material's project PBE and
+JARVIS-DFT OPT functional.*
 
                   \#Mats.   MAE (*a*)   MAE (*b*)   MAE (*c*)   RMSE (*a*)   RMSE (*b*)   RMSE (*c*)
   --------------- --------- ----------- ----------- ----------- ------------ ------------ ------------
@@ -438,47 +770,107 @@ Atomic structure is generally defined using lattice parameter and atomic positio
 
 **1.3.2 Formation energy**
 
-The enthalpy of formation is the standard reaction enthalpy for the formation of the compound from its elements (atoms or molecules) in their most stable reference states. We report formation energies at 0K only based on energies directly obtained from the DFT especially with OptB88vdW functional. We have calculated the elemental energies (in respective crystalline forms) and treat those energies as the chemical potential. These chemical potentials are subtracted from the total energies of the system to predict the formation energies. If functional other than OptB88vdW is used then the unary energy needs to be provided.
+The enthalpy of formation is the standard reaction enthalpy for the
+formation of the compound from its elements (atoms or molecules) in
+their most stable reference states. We report formation energies at 0K
+only based on energies directly obtained from the DFT especially with
+OptB88vdW functional. We have calculated the elemental energies (in
+respective crystalline forms) and treat those energies as the chemical
+potential. These chemical potentials are subtracted from the total
+energies of the system to predict the formation energies. If functional
+other than OptB88vdW is used then the unary energy needs to be provided.
 
-![][7]
+![](./myMediaFolder/media/image29.png){width="6.5in"
+height="1.5631944444444446in"}
 
 **1.3.3 Exfoliation energies**
 
 The exfoliation energy for 2D materials is computed as equation:
 
-Here, *E~1L~* and *E~bulk~* are the energies of the single layer and 3D bulk materials and *N~1L~* and *N~bulk~* are the number of the atoms in the single layer and bulk systems respectively.
+Here, *E~1L~* and *E~bulk~* are the energies of the single layer and 3D
+bulk materials and *N~1L~* and *N~bulk~* are the number of the atoms in
+the single layer and bulk systems respectively.
 
-![C:\\Users\\knc6\\Downloads\\Ef.png]
+![C:\\Users\\knc6\\Downloads\\Ef.png](./myMediaFolder/media/image31.png){width="5.236111111111111in"
+height="3.9270833333333335in"}
 
-*Fig. Exfoliation energy distribution for the materials based on the energy difference of bulk and layered materials phase. Most of the materials have E~f~ \< 200 meV/atom suggesting experimental fabrication of layered structures. Materials inside each bins are grouped and discussed below. Most of the materials are found in the 60-100 meV range. *
+*Fig. Exfoliation energy distribution for the materials based on the
+energy difference of bulk and layered materials phase. Most of the
+materials have E~f~ \< 200 meV/atom suggesting experimental fabrication
+of layered structures. Materials inside each bins are grouped and
+discussed below. Most of the materials are found in the 60-100 meV
+range. *
 
 **1.3.4 Defect formation energies **
 
-Defect formation energies are available for a few 2D materials. For neutral defect formation energies, we generate a at least 11 Angs. Cell for 2D materials and create point defects using unique Wyckoff information. The total energy of the defect system, the energy of the perfect 2D crystal and the elemental chemical potential is then used to predict the defect formation energies. Currently this property is available for OptB88vdW functional only.
+Defect formation energies are available for a few 2D materials. For
+neutral defect formation energies, we generate a at least 11 Angs. Cell
+for 2D materials and create point defects using unique Wyckoff
+information. The total energy of the defect system, the energy of the
+perfect 2D crystal and the elemental chemical potential is then used to
+predict the defect formation energies. Currently this property is
+available for OptB88vdW functional only.
 
-![][8]
+![](./myMediaFolder/media/image32.png){width="6.5in" height="1.16875in"}
 
 **1.3.5 Electronic density of density of states**
 
-EDOS is a spectrum of the number of allowed electron energy levels (occupied and unoccupied) against energy interval (generally in electron volt). EDOS is generally calculated based on a dense k-point grid with a smoothening/smearing setup. EDOS is generally rescaled with respect to the Fermi-energy of the system. A high value for the DOS represents a high number for the electronic states that can be occupied. Experimental methods such as scanning tunneling microscopy can be used obtain EDOS. One of the obvious properties that can be calculated from EDOS is the bandgap. EDOS can be based on total density of states or further resolved into atom-projected and element-projected density of states. The projected EDOS provides information about the particular electronic orbitals (say s,p,d,f) and specific atom (say Si) contributing towards a particular energy level. We calculate EDOS for both semi-local, HSE06 and PBE0 methods. At least, DOS is provided at local or semilocal materials for all the materials. An example is shown below:
+EDOS is a spectrum of the number of allowed electron energy levels
+(occupied and unoccupied) against energy interval (generally in electron
+volt). EDOS is generally calculated based on a dense k-point grid with a
+smoothening/smearing setup. EDOS is generally rescaled with respect to
+the Fermi-energy of the system. A high value for the DOS represents a
+high number for the electronic states that can be occupied. Experimental
+methods such as scanning tunneling microscopy can be used obtain EDOS.
+One of the obvious properties that can be calculated from EDOS is the
+bandgap. EDOS can be based on total density of states or further
+resolved into atom-projected and element-projected density of states.
+The projected EDOS provides information about the particular electronic
+orbitals (say s,p,d,f) and specific atom (say Si) contributing towards a
+particular energy level. We calculate EDOS for both semi-local, HSE06
+and PBE0 methods. At least, DOS is provided at local or semilocal
+materials for all the materials. An example is shown below:
 
-![][9]
+![](./myMediaFolder/media/image33.png){width="6.5in" height="1.875in"}
 
 An example of calculating EDOS using JARVIS-tools is given below:
 
-![][10]
+![](./myMediaFolder/media/image34.png){width="3.2881944444444446in"
+height="1.402049431321085in"}
 
 **1.3.6 Electronic Bandstructure**
 
-Following the laws of quantum mechanics only certain energy levels are allowed and others could be forbidden. These levels can be discrete or spilt called bands. Electronic bands depend on crystal momentum leading to bandstructure. The allowed states which are filled (upto the Fermi level) are valence bands while the unoccupied bands are conduction bands. The difference in energy between the conduction and valence band gives rise to the bandgaps. The materials with no bandgap are termed metals, with low bandgap semiconductors and with high bandgaps insulators. We calculate bandstructure using local, semi-local as well as hybrid functionals. An example is shown below:
+Following the laws of quantum mechanics only certain energy levels are
+allowed and others could be forbidden. These levels can be discrete or
+spilt called bands. Electronic bands depend on crystal momentum leading
+to bandstructure. The allowed states which are filled (upto the Fermi
+level) are valence bands while the unoccupied bands are conduction
+bands. The difference in energy between the conduction and valence band
+gives rise to the bandgaps. The materials with no bandgap are termed
+metals, with low bandgap semiconductors and with high bandgaps
+insulators. We calculate bandstructure using local, semi-local as well
+as hybrid functionals. An example is shown below:
 
-![][11]
+![](./myMediaFolder/media/image35.png){width="5.357638888888889in"
+height="2.7446456692913386in"}
 
 band\_info = vrun.get\_bandstructure(kpoints\_file\_path=\'KPOINTS\')
 
-A comparison of bandgaps for selected materials for which we could find experimental results is shown below.
+A comparison of bandgaps for selected materials for which we could find
+experimental results is shown below.
 
-*Table: Comparison of bandgaps obtained from OPT functional and MBJ potential schemes compared with experimental results and DFT data available in different databases. Materials, space-group (SG), Inorganic Crystal Structure Database (ICSD\#) id, Materials-Project (MP\#) id, JARVIS-DFT id (JV\#), bandgap from MP (MP), bandgap from AFLOW, bandgap from OQMD, our OptB88vdW bandgap (OPT), Tran-Blah modified Becke-Johnson potential bandgap (MBJ), Heyd-Scuseria-Ernzerhof (HSE06) and experimental bandgaps (eV) data are shown. Experimental data were obtained from* *^[18][][21][][46][][47],,,^. MAE denotes the mean absolute error, while SC is the Spearman's coefficient. *
+*Table: Comparison of bandgaps obtained from OPT functional and MBJ
+potential schemes compared with experimental results and DFT data
+available in different databases. Materials, space-group (SG), Inorganic
+Crystal Structure Database (ICSD\#) id, Materials-Project (MP\#) id,
+JARVIS-DFT id (JV\#), bandgap from MP (MP), bandgap from AFLOW, bandgap
+from OQMD, our OptB88vdW bandgap (OPT), Tran-Blah modified Becke-Johnson
+potential bandgap (MBJ), Heyd-Scuseria-Ernzerhof (HSE06) and
+experimental bandgaps (eV) data are shown. Experimental data were
+obtained from*
+*^[18](#_ENREF_18)[21](#_ENREF_21)[46](#_ENREF_46)[47](#_ENREF_47),,,^.
+MAE denotes the mean absolute error, while SC is the Spearman's
+coefficient. *
 
   Mats.       SG          ICSD\#   MP\#    JV\#   MP     AFLOW   OQMD   OPT    MBJ    HSE06   Exp.
   ----------- ----------- -------- ------- ------ ------ ------- ------ ------ ------ ------- ------
@@ -542,53 +934,103 @@ A comparison of bandgaps for selected materials for which we could find experime
   MAE^2^      \-          \-       \-      \-     1.39   1.19    1.09   1.27   0.43   0.42    \-
   S.C.        \-          \-       \-      \-     0.81   0.94    0.88   0.84   0.94   0.97    \-
 
-1.  MAE calculated with respect to experiment using all available data for each method
+1.  MAE calculated with respect to experiment using all available data
+    for each method
 
-2.  MAE calculated with respect to experiment using only data for materials that have results available in all three DFT methods.
+2.  MAE calculated with respect to experiment using only data for
+    materials that have results available in all three DFT methods.
 
 **1.3.7 Spin-orbit spillage and topological properties**
 
-Topological materials driven by spin-orbit coupling have different bandgaps with/without spin orbit coupling effects. Spillage is calculated by comparing the wavefunctions of these two bandstructures. We calculate the spillage values for a large set of low bandgap and high atomic mass materials, with a spillage value of 0.5 as a threshold to screen for potential topologically non-trivial materials. The threshold denotes number of band-inverted electrons. This criterion can be used for predicting non-trivial topological behavior of metals, semiconductors and both perfect and defective structures. Atypical example of SOC spillage and band-inversion for Bi~2~Se~3~ is shown below:
+Topological materials driven by spin-orbit coupling have different
+bandgaps with/without spin orbit coupling effects. Spillage is
+calculated by comparing the wavefunctions of these two bandstructures.
+We calculate the spillage values for a large set of low bandgap and high
+atomic mass materials, with a spillage value of 0.5 as a threshold to
+screen for potential topologically non-trivial materials. The threshold
+denotes number of band-inverted electrons. This criterion can be used
+for predicting non-trivial topological behavior of metals,
+semiconductors and both perfect and defective structures. Atypical
+example of SOC spillage and band-inversion for Bi~2~Se~3~ is shown
+below:
 
-![][12]
+![](./myMediaFolder/media/image36.png){width="5.540277777777778in"
+height="7.540972222222222in"}
 
-![][13]
+![](./myMediaFolder/media/image37.png){width="3.8020833333333335in"
+height="0.5609700349956256in"}
 
-Flow chart for finding 3D non-magnetic topological materials is given below:
+Flow chart for finding 3D non-magnetic topological materials is given
+below:
 
-![][14]
+![](./myMediaFolder/media/image38.png){width="2.6898075240594927in"
+height="3.4420417760279967in"}
 
 A typical flowchart for 2D topological materials is given below:
 
-![][15]
+![](./myMediaFolder/media/image39.png){width="6.5in"
+height="3.6159120734908137in"}
 
 Periodic table trend for high spillage materials are shown below:
 
-![][16]
+![](./myMediaFolder/media/image40.png){width="6.5in"
+height="3.529861111111111in"}
 
-**1.3.8 Frequency dependent dielectric function and optoelectronic properties**
+**1.3.8 Frequency dependent dielectric function and optoelectronic
+properties**
 
-We use linear optics theory at semilocal and meta-GGA levels to calculate frequency dependent real and imaginary part of dielectric function. The meta-GGA based data should predict better bandgaps hence dielectric function. Note that ionic contributions are ignored in such calculations. Several important properties such as absorption coefficient, electron energy loss spectrum, reflectivity, solar cell efficiency etc. can be calculated from the frequency dependent dielectric function.
+We use linear optics theory at semilocal and meta-GGA levels to
+calculate frequency dependent real and imaginary part of dielectric
+function. The meta-GGA based data should predict better bandgaps hence
+dielectric function. Note that ionic contributions are ignored in such
+calculations. Several important properties such as absorption
+coefficient, electron energy loss spectrum, reflectivity, solar cell
+efficiency etc. can be calculated from the frequency dependent
+dielectric function.
 
-![C:\\Users\\knc6\\Downloads\\mbj\_op3.png]
+![C:\\Users\\knc6\\Downloads\\mbj\_op3.png](./myMediaFolder/media/image41.png){width="6.5in"
+height="4.875in"}
 
-*Fig. Imaginary part of the dielectric function in the x-direction obtained from OPT, MBJ and experiments. a) 1T-SnSe~2~ (*$P\overline{3}m1$*), b) 2H-MoS~2~ (P6~3~/mmc), c) Si (*$\text{Fd}\overline{3}m$*), d) Ge (*$\text{Fd}\overline{3}m$*), e) GaAs (*$F\overline{4}3m)$ *and f) InP* $(F\overline{4}3m)$ *.*
+*Fig. Imaginary part of the dielectric function in the x-direction
+obtained from OPT, MBJ and experiments. a) 1T-SnSe~2~
+(*$P\overline{3}m1$*), b) 2H-MoS~2~ (P6~3~/mmc), c) Si
+(*$\text{Fd}\overline{3}m$*), d) Ge (*$\text{Fd}\overline{3}m$*), e)
+GaAs (*$F\overline{4}3m)$ *and f) InP* $(F\overline{4}3m)$ *.*
 
-![][17]
+![](./myMediaFolder/media/image42.png){width="6.5in"
+height="2.073611111111111in"}
 
-![][18]
+![](./myMediaFolder/media/image43.png){width="4.284722222222222in"
+height="0.9146237970253718in"}
 
-Using the absorption coefficient and bandgap (indirect and direct gaps), we calculate theoretical solar cell efficiencies of a material.
+Using the absorption coefficient and bandgap (indirect and direct gaps),
+we calculate theoretical solar cell efficiencies of a material.
 
-![C:\\Users\\kamal\\AppData\\Local\\Microsoft\\Windows\\INetCache\\Content.MSO\\9A11865B.tmp]
+![C:\\Users\\kamal\\AppData\\Local\\Microsoft\\Windows\\INetCache\\Content.MSO\\9A11865B.tmp](./myMediaFolder/media/image44.png){width="6.5in"
+height="5.411111111111111in"}
 
-*Fig. Summary of SLME data. a) SLME-distribution of all the materials in the database, b) SLME (ɳ) vs TBmBJ fundamental bandgap for high-SLME materials, c) colormap of SLME values with the direct versus indirect bandgaps for high-SLME materials, d) SLME vs average effective mass of electrons, e) dimensionality distribution in terms of 3D-bulk, 2D-bulk, 1D-bulk and 0D-bulk materials in the database, f) number of species distribution for high SLME materials, g) space-group distributions (1-230) for high-SLME materials, h and i) compositional-prototype and crystal-system distributions for high-SLME materials. *
+*Fig. Summary of SLME data. a) SLME-distribution of all the materials in
+the database, b) SLME (ɳ) vs TBmBJ fundamental bandgap for high-SLME
+materials, c) colormap of SLME values with the direct versus indirect
+bandgaps for high-SLME materials, d) SLME vs average effective mass of
+electrons, e) dimensionality distribution in terms of 3D-bulk, 2D-bulk,
+1D-bulk and 0D-bulk materials in the database, f) number of species
+distribution for high SLME materials, g) space-group distributions
+(1-230) for high-SLME materials, h and i) compositional-prototype and
+crystal-system distributions for high-SLME materials. *
 
-![][19]
+![](./myMediaFolder/media/image45.png){width="6.5in"
+height="3.7083333333333335in"}
 
-*Fig. Periodic table trends of high SLME materials. The elements in a material are weighed 1 or 0 if the material has high or low-SLME. Then the probability of finding the element in a high-SLME material is calculated.*
+*Fig. Periodic table trends of high SLME materials. The elements in a
+material are weighed 1 or 0 if the material has high or low-SLME. Then
+the probability of finding the element in a high-SLME material is
+calculated.*
 
-*Table Bandgap and SLME properties of a selection of materials with TBmBJ and G~0~W~0~ methods in DFT to evaluate uncertainty in predictions. Here E~g~ denotes the bandgap in eV and ɳ the calculated SLME in percentage.*
+*Table Bandgap and SLME properties of a selection of materials with
+TBmBJ and G~0~W~0~ methods in DFT to evaluate uncertainty in
+predictions. Here E~g~ denotes the bandgap in eV and ɳ the calculated
+SLME in percentage.*
 
   **Materials**     **JID**   **E~g~ (TBmBJ)**   **E~g~ (G~0~W~0~)**   **E~g~ (G~0~W~0~+SOC)**   **Ƞ (TBmBJ)**   **Ƞ (G~0~W~0~)**   **Ƞ (G~0~W~0~+SOC)**
   ----------------- --------- ------------------ --------------------- ------------------------- --------------- ------------------ ----------------------
@@ -601,13 +1043,23 @@ Using the absorption coefficient and bandgap (indirect and direct gaps), we calc
 
 **1.3.9 Static dielectric tensor**
 
-Dielectric materials are important components in many electronic devices such as capacitors, field-effect transistors computer memory (DRAM), sensors and communication circuits. Both high and low-value DL materials have applications in different technologies. Static dielectric constants with both ionic and electronic contributions are obtained using DFPT method. The electronic part of the dielectric constant is generally in close agreement with that obtained from the linear optics method mentioned above.
+Dielectric materials are important components in many electronic devices
+such as capacitors, field-effect transistors computer memory (DRAM),
+sensors and communication circuits. Both high and low-value DL materials
+have applications in different technologies. Static dielectric constants
+with both ionic and electronic contributions are obtained using DFPT
+method. The electronic part of the dielectric constant is generally in
+close agreement with that obtained from the linear optics method
+mentioned above.
 
-![][20]
+![](./myMediaFolder/media/image46.png){width="5.449422572178477in"
+height="4.236111111111111in"}
 
 *Fig. Flow-chart portraying different steps for the DFPT calculations.*
 
-*Table. Comparison of static dielectric constant for DFPT, MBJ and experiment. Experimental data were obtained from. MBJ data were obtained from our optoelectronic property database.*
+*Table. Comparison of static dielectric constant for DFPT, MBJ and
+experiment. Experimental data were obtained from. MBJ data were obtained
+from our optoelectronic property database.*
 
   Materials   JID    DFPT             MBJ             Experiment
   ----------- ------ ---------------- --------------- ---------------
@@ -629,23 +1081,41 @@ Dielectric materials are important components in many electronic devices such as
   ZnGeP~2~    2355   *ε*~11~=14.75    *ε*~11~=9.02    *ε*~11~=15
   MAE         \-     2.46             2.78            \-
 
-![][21]
+![](./myMediaFolder/media/image47.png){width="4.423611111111111in"
+height="1.2377602799650045in"}
 
-![][22]
+![](./myMediaFolder/media/image48.png){width="3.3641524496937882in"
+height="2.629861111111111in"}
 
-*Fig. Dielectric tensor (3x3 shape) distributions of the dataset considered. *
+*Fig. Dielectric tensor (3x3 shape) distributions of the dataset
+considered. *
 
 **1.3.10 Piezoelectric tensor**
 
-The piezoelectric effect is a reversible process where materials exhibit electrical polarization resulting from an applied mechanical stress, or conversely, a strain due to an applied electric field. Common applications for piezoelectricity include medical applications, energy harvesting devices, actuators, sensors, motors, atomic force microscopes, and high voltage power generation. PZ responses can be measured under constant strain, giving the piezoelectric stress tensor $e_{\text{ij}}$ or constant stress, giving the piezoelectric strain tensor $d_{\text{ij}}$ . The PZ data is obtained using DFPT method discussed above. Piezoelectric tensor is a 3x3 matrix. A distribution of the PZ tensor components is shown below:
+The piezoelectric effect is a reversible process where materials exhibit
+electrical polarization resulting from an applied mechanical stress, or
+conversely, a strain due to an applied electric field. Common
+applications for piezoelectricity include medical applications, energy
+harvesting devices, actuators, sensors, motors, atomic force
+microscopes, and high voltage power generation. PZ responses can be
+measured under constant strain, giving the piezoelectric stress tensor
+$e_{\text{ij}}$ or constant stress, giving the piezoelectric strain
+tensor $d_{\text{ij}}$ . The PZ data is obtained using DFPT method
+discussed above. Piezoelectric tensor is a 3x3 matrix. A distribution of
+the PZ tensor components is shown below:
 
-![][23]
+![](./myMediaFolder/media/image49.png){width="3.6006944444444446in"
+height="0.7562992125984253in"}
 
-![][24]
+![](./myMediaFolder/media/image50.png){width="4.222222222222222in"
+height="2.8274453193350833in"}
 
-*Fig. Piezoelectric tensor (3x6 shape) distributions of the dataset considered. *
+*Fig. Piezoelectric tensor (3x6 shape) distributions of the dataset
+considered. *
 
-*Table Comparison of piezoelectric coefficient max(e~ij~) data for experiments and DFT. We take average values for the cases where the experimental data are in a range.*
+*Table Comparison of piezoelectric coefficient max(e~ij~) data for
+experiments and DFT. We take average values for the cases where the
+experimental data are in a range.*
 
   Mats.      JID     Max(e~ij~)       DFT      Reference
   ---------- ------- ---------------- -------- -----------------
@@ -669,7 +1139,12 @@ The piezoelectric effect is a reversible process where materials exhibit electri
 
 **1.3.11 Infrared intensity**
 
-The infrared intensity is important for thermal-imaging, infrared-astronomy, food-quality control. Infrared frequencies are classified in three categories: far (30-400 cm^-1^), mid (400-4000 cm^-1^) and near (4000-14000 cm^-1^) IR frequencies. The IR intensity is calculated obtained from the gamma-point phonon data used in the DFPT calculations.
+The infrared intensity is important for thermal-imaging,
+infrared-astronomy, food-quality control. Infrared frequencies are
+classified in three categories: far (30-400 cm^-1^), mid (400-4000
+cm^-1^) and near (4000-14000 cm^-1^) IR frequencies. The IR intensity is
+calculated obtained from the gamma-point phonon data used in the DFPT
+calculations.
 
 *Table Comparison of experimental and DFPT IR frequencies (cm^-1^).*
 
@@ -685,25 +1160,37 @@ The infrared intensity is important for thermal-imaging, infrared-astronomy, foo
   GeS      2169    106.4, 196.2, 236.5, 253.0, 276.9   118, 201,238,258, 280^8^
   MAD                                                  8.36
 
-![C:\\Users\\kamal\\AppData\\Local\\Microsoft\\Windows\\INetCache\\Content.MSO\\1F32B701.tmp]
+![C:\\Users\\kamal\\AppData\\Local\\Microsoft\\Windows\\INetCache\\Content.MSO\\1F32B701.tmp](./myMediaFolder/media/image51.png){width="6.5in"
+height="6.5in"}
 
-*Fig. Analysis of the IR-data. a) IR peaks for all the materials in the database, b) Comparison of finite-difference (FDM) and DFPT phonon frequencies for conventional cells, c) space-group distributions of materials with at least one far (blue) and mid (green) IR peaks, d) Venn-diagram of the chemistry of materials containing chalcogenides, halides. or pnictides. materials, e) Minimum frequency vs density of the system, f) dimensionality analysis of the far-IR materials*.
+*Fig. Analysis of the IR-data. a) IR peaks for all the materials in the
+database, b) Comparison of finite-difference (FDM) and DFPT phonon
+frequencies for conventional cells, c) space-group distributions of
+materials with at least one far (blue) and mid (green) IR peaks, d)
+Venn-diagram of the chemistry of materials containing chalcogenides,
+halides. or pnictides. materials, e) Minimum frequency vs density of the
+system, f) dimensionality analysis of the far-IR materials*.
 
 **1.3.12 Elastic tensor**
 
-We use finite difference method on conventional cells of systems for ET calculations. For bulk material, the compliance tensor can be obtained by:
+We use finite difference method on conventional cells of systems for ET
+calculations. For bulk material, the compliance tensor can be obtained
+by:
 
 ${s_{\text{ij}} = C}_{\text{ij}}^{- 1}$
 
-Now, several other elastic properties calculated from C~ij~ and s~ij~. Some of the important properties are given below:
+Now, several other elastic properties calculated from C~ij~ and s~ij~.
+Some of the important properties are given below:
 
 K~V~ = ((C~11~+C~22~+C~33~) + 2(C~12~+C~23~+C~31~))/9
 
-G~V~ = ((C~11~+C~22~+C~33~) − (C~12~+C~23~ + C~31~) +3 (C~44~+C~55~+C~66~))/15
+G~V~ = ((C~11~+C~22~+C~33~) − (C~12~+C~23~ + C~31~) +3
+(C~44~+C~55~+C~66~))/15
 
 K~R~ = ((s~11~+s~22~+s~33~) + 2(s~12~+s~23~+s~31~))^-1^
 
-G~R~ = 15(4(s~11~+s~22~+s~33~) - 4(s~12~+s~23~+s~31~) + 3(s~44~+s~55~+s~66~))^-1^
+G~R~ = 15(4(s~11~+s~22~+s~33~) - 4(s~12~+s~23~+s~31~) +
+3(s~44~+s~55~+s~66~))^-1^
 
 K~VRH~ =(K~V~+K~R~)/2
 
@@ -711,21 +1198,48 @@ G~VRH~ =(G~V~+G~R~)/2
 
 ν = (3K~VRH~ − 2G~VRH~)/(6K~VRH~+2G~VRH~))
 
-Here K~V~ and G~V~ are Voigt bulk and shear modulus, and K~R~ and G~R~ Reuss-bulk and shear modulus respectively. The homogenous Poisson ratio is calculated as ν. The EC data can be also used to predict the ductile and brittle nature of materials with Pugh (Gv/Kv) and Pettifor criteria (C~12~-C~44~) . Materials with Pugh ratio value \>0.571 and Pettifor criteria \<0 should be brittle, while materials with Pugh ratio value \<0.571 and Pettifor criteria \>0 should be ductile.
+Here K~V~ and G~V~ are Voigt bulk and shear modulus, and K~R~ and G~R~
+Reuss-bulk and shear modulus respectively. The homogenous Poisson ratio
+is calculated as ν. The EC data can be also used to predict the ductile
+and brittle nature of materials with Pugh (Gv/Kv) and Pettifor criteria
+(C~12~-C~44~) . Materials with Pugh ratio value \>0.571 and Pettifor
+criteria \<0 should be brittle, while materials with Pugh ratio value
+\<0.571 and Pettifor criteria \>0 should be ductile.
 
-For monolayer material calculations, the elastic tensor obtained from DFT code such as VASP, assumes periodic-boundary-condition (PBC). Therefore, cell vectors are used to calculate the area which again is used in computing stress. When dealing with the monolayer, an arbitrary vacuum padding is added in one of the direction (say z-direction). When computing EC we need to correct the output by eliminating the arbitrariness of the vacuum padding. We do that as a post-processing step by multiplying the *C~ij~* components $(i,j \neq 3)$ by the length of the vacuum padding. Therefore, the units of EC turn into Nm^-1^ from Nm^-2^. For example, in order to calculate C~11~ (stress computed in x direction), the area is computed using normal of y and z-vectors. Obviously, the z-vector is arbitrary, so if we multiply the output by z-vector magnitude we get rid of the arbitrariness of z and also get C~11~ in Nm^-1^. As shown in Fig. 1, the z-vector magnitude is the z-simulation. The above discussion can also be expressed as the following:
+For monolayer material calculations, the elastic tensor obtained from
+DFT code such as VASP, assumes periodic-boundary-condition (PBC).
+Therefore, cell vectors are used to calculate the area which again is
+used in computing stress. When dealing with the monolayer, an arbitrary
+vacuum padding is added in one of the direction (say z-direction). When
+computing EC we need to correct the output by eliminating the
+arbitrariness of the vacuum padding. We do that as a post-processing
+step by multiplying the *C~ij~* components $(i,j \neq 3)$ by the length
+of the vacuum padding. Therefore, the units of EC turn into Nm^-1^ from
+Nm^-2^. For example, in order to calculate C~11~ (stress computed in x
+direction), the area is computed using normal of y and z-vectors.
+Obviously, the z-vector is arbitrary, so if we multiply the output by
+z-vector magnitude we get rid of the arbitrariness of z and also get
+C~11~ in Nm^-1^. As shown in Fig. 1, the z-vector magnitude is the
+z-simulation. The above discussion can also be expressed as the
+following:
 
 $\sigma_{\text{VASP}} = \frac{F}{A} = \left. \ \frac{F}{\left| z \right|\left| l \right|} \right|_{l \in \left( x,y \right)}$
 
 $\sigma_{\text{mono}} = {\left| z \right| \times \ \sigma}_{\text{VASP}}$
 
-![][25]
+![](./myMediaFolder/media/image52.png){width="6.5in"
+height="1.7680555555555555in"}
 
-![C:\\Users\\knc6\\Downloads\\Allcij.png]
+![C:\\Users\\knc6\\Downloads\\Allcij.png](./myMediaFolder/media/image53.png){width="3.5766601049868765in"
+height="2.6805555555555554in"}
 
-*Fig. Elastic constant distribution for 3D (magenta), 2D (green), 1D (blue) and 0D (red) materials.*
+*Fig. Elastic constant distribution for 3D (magenta), 2D (green), 1D
+(blue) and 0D (red) materials.*
 
-*Table. Comparison of bulk modulus, K~V~ (GPa), from vdW-DF-optB88 (OPT) and experiments. The experimental data are however not data corrected for zero-point energy effects, which would lead to a slight increase of the values. *
+*Table. Comparison of bulk modulus, K~V~ (GPa), from vdW-DF-optB88 (OPT)
+and experiments. The experimental data are however not data corrected
+for zero-point energy effects, which would lead to a slight increase of
+the values. *
 
   Material         JVASP\#   OPT     Expt.      Material        JVASP\#   OPT     Expt.
   ---------------- --------- ------- ------- -- --------------- --------- ------- -------
@@ -749,25 +1263,53 @@ $\sigma_{\text{mono}} = {\left| z \right| \times \ \sigma}_{\text{VASP}}$
   TiO~2~-rutile    10036     226.3   243.5      **P (black)**   7818      41      36
   MAE (GPa):       8.51                                                           
 
-![C:\\Users\\knc6\\Desktop\\Work\\JARVIS\\JARVIS-DFT-20160822T155347Z\\JARVIS-DFT\\JARVIS-ELAST\\kvbokeh\_plot.png]
+![C:\\Users\\knc6\\Desktop\\Work\\JARVIS\\JARVIS-DFT-20160822T155347Z\\JARVIS-DFT\\JARVIS-ELAST\\kvbokeh\_plot.png](./myMediaFolder/media/image54.png){width="6.5in"
+height="3.71505249343832in"}
 
-*Fig. Periodic table trend for high bulk modulus material constituents. The bulk moduli of all the materials were projected on individual elements and their average contribution is shown. The colorbar is in the unit of GPa. A similar trend was found for shear modulus.*
+*Fig. Periodic table trend for high bulk modulus material constituents.
+The bulk moduli of all the materials were projected on individual
+elements and their average contribution is shown. The colorbar is in the
+unit of GPa. A similar trend was found for shear modulus.*
 
-From DFPT and finite-difference calculations, force constants (mainly at gamma point in our case) can be calculated. Using this information, we can predict the phonon density of states and bandstructure assuming the conventional cell used in the calculation is large enough (at least 11 Angstrom). Note that for smaller lengths the phonon bandstructure and density of states can show unreasonable frequencies at off and away from gamma points.
+From DFPT and finite-difference calculations, force constants (mainly at
+gamma point in our case) can be calculated. Using this information, we
+can predict the phonon density of states and bandstructure assuming the
+conventional cell used in the calculation is large enough (at least 11
+Angstrom). Note that for smaller lengths the phonon bandstructure and
+density of states can show unreasonable frequencies at off and away from
+gamma points.
 
-![][26]
+![](./myMediaFolder/media/image55.png){width="6.5in"
+height="1.9673611111111111in"}
 
-![][27]
+![](./myMediaFolder/media/image56.png){width="4.527777777777778in"
+height="4.191580271216098in"}
 
 **1.3.13 Thermoelectric properties:**
 
-Thermoelectrics[^1-4^] are materials that can convert a temperature gradient into electric voltage, or vice-versa. Themoelectrics can be used to regenerate electricity from waste heat[^5^], refrigeration[^6^] and several other space-technology applications^[7][][8],^. The search for efficient thermoelectric materials is an area of intense research due the potential of converting waste heat into electrical power, and therefore improving energy efficiency and reducing fossil fuel usage. The figure of merit for thermoelectric materials is the dimensionless quantity *zT*:
+Thermoelectrics[^1-4^](#_ENREF_1) are materials that can convert a
+temperature gradient into electric voltage, or vice-versa.
+Themoelectrics can be used to regenerate electricity from waste
+heat[^5^](#_ENREF_5), refrigeration[^6^](#_ENREF_6) and several other
+space-technology applications^[7](#_ENREF_7)[8](#_ENREF_8),^. The search
+for efficient thermoelectric materials is an area of intense research
+due the potential of converting waste heat into electrical power, and
+therefore improving energy efficiency and reducing fossil fuel usage.
+The figure of merit for thermoelectric materials is the dimensionless
+quantity *zT*:
 
 $zT = \frac{S^{2}\sigma}{k_{e} + k_{l}}T$
 
-where *S*, $\sigma$, *k~e~, k~l~*, and *T* are the Seebeck coefficient, electrical conductivity, electronic part of thermal conductivity, lattice thermal conductivity, and temperature, respectively. The numerator, $S^{2}\sigma$, is referred to as the power-factor. To achieve a high *zT*, a material should have a high-power factor and low thermal conductivity.
+where *S*, $\sigma$, *k~e~, k~l~*, and *T* are the Seebeck coefficient,
+electrical conductivity, electronic part of thermal conductivity,
+lattice thermal conductivity, and temperature, respectively. The
+numerator, $S^{2}\sigma$, is referred to as the power-factor. To achieve
+a high *zT*, a material should have a high-power factor and low thermal
+conductivity.
 
-*Table : Chemical formula, experimental Seebeck value (*μV/K)*, DFT value, JARVIS-ID, doping concentration, doping type, temperature, space-group and reference data for the experimental vs DFT comparisons.*
+*Table : Chemical formula, experimental Seebeck value (*μV/K)*, DFT
+value, JARVIS-ID, doping concentration, doping type, temperature,
+space-group and reference data for the experimental vs DFT comparisons.*
 
 +----------------+--------+----------+-------------+-----------+------+-----+------+
 | Formula        | Exp    | DFT      | JID         | Dop.conc. | type | T   | Spg. |
@@ -803,187 +1345,355 @@ where *S*, $\sigma$, *k~e~, k~l~*, and *T* are the Seebeck coefficient, electric
 | Mg~2~Sn        | -71.5  | -91.3387 | JVASP-14507 | -2.00E+19 | n    | 400 | 225  |
 +----------------+--------+----------+-------------+-----------+------+-----+------+
 
-![][28]
+![](./myMediaFolder/media/image57.png){width="6.5in"
+height="4.003472222222222in"}
 
-*Fig. Flow chart associated with the data-driven thermoelectric materials design.*
+*Fig. Flow chart associated with the data-driven thermoelectric
+materials design.*
 
-![][29]
+![](./myMediaFolder/media/image58.png){width="4.3125in"
+height="0.9868985126859142in"}
 
-![C:\\Users\\kamal\\AppData\\Local\\Microsoft\\Windows\\INetCache\\Content.MSO\\39BDF3E3.tmp]
+![C:\\Users\\kamal\\AppData\\Local\\Microsoft\\Windows\\INetCache\\Content.MSO\\39BDF3E3.tmp](./myMediaFolder/media/image59.png){width="6.5in"
+height="4.011111111111111in"}
 
-*Fig. A brief overview of the thermoelectric data for periodic bulk materials. Figure a) -f) have been computed on all 3D materials, while g-i) display properties only computed on the set of bulk screened materials (bandgap\>0.05 eV, n-type and p-type PF\>1000 (μW/(mK)^2^) at 600 K and 10^20^ cm^-3^ doping concentration). a) n-type Seebeck coefficient distribution, b) n-type power factor of materials, c) n-type electrical conducitivity plotted against the absolute values of Seebeck-coefficient with color-coded power-factor and size of the dots proportional to bandgaps, d) p-type Seebeck coefficient distribution, e) p-type power factor of materials, f) p-type power factor plotted against the bandgaps, g) predicted dimensionality distribution of screened materials, h) space-group distribution of the screened materials, i) power-factor vs Seebeck distribution of the screened materials.*
+*Fig. A brief overview of the thermoelectric data for periodic bulk
+materials. Figure a) -f) have been computed on all 3D materials, while
+g-i) display properties only computed on the set of bulk screened
+materials (bandgap\>0.05 eV, n-type and p-type PF\>1000 (μW/(mK)^2^) at
+600 K and 10^20^ cm^-3^ doping concentration). a) n-type Seebeck
+coefficient distribution, b) n-type power factor of materials, c) n-type
+electrical conducitivity plotted against the absolute values of
+Seebeck-coefficient with color-coded power-factor and size of the dots
+proportional to bandgaps, d) p-type Seebeck coefficient distribution, e)
+p-type power factor of materials, f) p-type power factor plotted against
+the bandgaps, g) predicted dimensionality distribution of screened
+materials, h) space-group distribution of the screened materials, i)
+power-factor vs Seebeck distribution of the screened materials.*
 
-![][30]
+![](./myMediaFolder/media/image60.png){width="6.5in"
+height="3.714583333333333in"}
 
-*Fig. Periodic table trends of high-power factor materials. The elements in a material were assigned 1 or 0 if the material has high or low n-type power-factor (\>1000 (μW/(mK)^2^)). Then the probability of finding the element in a high power-factor material was calculated.*
+*Fig. Periodic table trends of high-power factor materials. The elements
+in a material were assigned 1 or 0 if the material has high or low
+n-type power-factor (\>1000 (μW/(mK)^2^)). Then the probability of
+finding the element in a high power-factor material was calculated.*
 
 **1.3.14 Wannier tight binding Hamiltonians**
 
-Wannier functions (WF) were first introduced in 1937, and have proven to be a powerful tool in the investigation of solid-state phenomenon such as polarization, topology, and magnetization. WTBH is not necessarily a material properties but can be useful in calculating several material properties. Mathematically, WFs are a complete orthonormalized basis set that act as a bridge between a delocalized plane wave representation commonly used in electronic structure calculations and a localized atomic orbital basis that more naturally describes chemical bonds. One of the most common ways of obtaining Wannier tight-bonding Hamiltonians (WTBH) is by using the Wannier90 software package to generate maximally localized Wannier functions, based on underlying density functional theory (DFT) calculations.
+Wannier functions (WF) were first introduced in 1937, and have proven to
+be a powerful tool in the investigation of solid-state phenomenon such
+as polarization, topology, and magnetization. WTBH is not necessarily a
+material properties but can be useful in calculating several material
+properties. Mathematically, WFs are a complete orthonormalized basis set
+that act as a bridge between a delocalized plane wave representation
+commonly used in electronic structure calculations and a localized
+atomic orbital basis that more naturally describes chemical bonds. One
+of the most common ways of obtaining Wannier tight-bonding Hamiltonians
+(WTBH) is by using the Wannier90 software package to generate maximally
+localized Wannier functions, based on underlying density functional
+theory (DFT) calculations.
 
-![][31]
+![](./myMediaFolder/media/image61.png){width="6.5in"
+height="2.611111111111111in"}
 
-*Fig. Workflow showing the Wannierization from using the DFT calculations. *
+*Fig. Workflow showing the Wannierization from using the DFT
+calculations. *
 
-Wannier bands compared with explicit DFT bands to assess the accuracy of the Wannier tight-binding Hamiltonians. For example:
+Wannier bands compared with explicit DFT bands to assess the accuracy of
+the Wannier tight-binding Hamiltonians. For example:
 
-![][32]
+![](./myMediaFolder/media/image62.png){width="6.5in"
+height="4.833333333333333in"}
 
-*Fig. Comparison of DFT and WTB bandstructures for Bi~2~Se~3~. a-b) on dense k-grid, c-d) high-symmetry Brillouin zone points.*
+*Fig. Comparison of DFT and WTB bandstructures for Bi~2~Se~3~. a-b) on
+dense k-grid, c-d) high-symmetry Brillouin zone points.*
 
-![][33]
+![](./myMediaFolder/media/image63.png){width="6.5in"
+height="2.598611111111111in"}
 
-*Fig. DFT-TB maximum difference (μ) distribution for all the Wannier Tight-binding Hamiltonians (WTBHs). A) on a regular k-point grid, b) on high-symmetry k-points. *
+*Fig. DFT-TB maximum difference (μ) distribution for all the Wannier
+Tight-binding Hamiltonians (WTBHs). A) on a regular k-point grid, b) on
+high-symmetry k-points. *
 
 **1.3.15 Scanning tunneling microscopy images**
 
-Since the invention of the scanning tunneling microscope (STM), this technique has become an essential tool for characterizing material surfaces and adsorbates. In addition to providing atomic insights, STM has been proven useful for characterizing the electronic structure, shapes of molecular orbitals, and vibrational and magnetic excitations. It can also be used for manipulating adsorbates and adatoms, and for catalysis and quantum information processing applications. Few examples of computational STM is given below:
+Since the invention of the scanning tunneling microscope (STM), this
+technique has become an essential tool for characterizing material
+surfaces and adsorbates. In addition to providing atomic insights, STM
+has been proven useful for characterizing the electronic structure,
+shapes of molecular orbitals, and vibrational and magnetic excitations.
+It can also be used for manipulating adsorbates and adatoms, and for
+catalysis and quantum information processing applications. Few examples
+of computational STM is given below:
 
-![][34]
+![](./myMediaFolder/media/image64.png){width="6.5in"
+height="4.343055555555556in"}
 
-*Fig. STM images for which we qualitatively compared computational positive bias images.* We compare computational STM images with that of experiments for graphene^16^, 2H-MoS~2~^17^, 2H-NbSe~2~^18^, 2H-WSe~2~^19^, 1T'-WTe~2~^20^, FeSe^21^, black-P^22,23^, SnSe^24^, Bismuth surface^57,58^. *The JVASP identifiers can be used to visualize the detailed webpage for each material.*
+*Fig. STM images for which we qualitatively compared computational
+positive bias images.* We compare computational STM images with that of
+experiments for graphene^16^, 2H-MoS~2~^17^, 2H-NbSe~2~^18^,
+2H-WSe~2~^19^, 1T'-WTe~2~^20^, FeSe^21^, black-P^22,23^, SnSe^24^,
+Bismuth surface^57,58^. *The JVASP identifiers can be used to visualize
+the detailed webpage for each material.*
 
-![][35]
+![](./myMediaFolder/media/image65.png){width="6.5in"
+height="1.0159722222222223in"}
 
 **1.3.16 Electric field gradients**
 
-The key parameters used to define Nuclear Quadrupole Resonance (NQR) spectral lines are the quadrupole coupling constant ν~Q~ = $\text{eQ}V_{\text{zz}}/h\ $and the asymmetry parameter
+The key parameters used to define Nuclear Quadrupole Resonance (NQR)
+spectral lines are the quadrupole coupling constant ν~Q~ =
+$\text{eQ}V_{\text{zz}}/h\ $and the asymmetry parameter
 
 > $\eta = (V_{\text{xx}} - V_{\text{yy}})/V_{\text{zz}}$,
 
-where *e* is electric charge, *h* is Planck's constant, and *Q* is the nuclear quadrupole moment; *V~ii~* are the principal components of the diagonalized EFG tensor, defined as the second derivative in Cartesian coordinates of the Coulomb potential at the nucleus position. By construction, the EFG, *V~ii~* is a traceless tensor. The coordinate system, in accordance with the convention used by experimentalists is chosen so that $\left| V_{\text{zz}} \right| \geq \left| V_{\text{yy}} \right| \geq |V_{\text{xx}}|$, which forces $0 \leq \eta \leq 1$. Note that if the point group of the site in question is cubic, then by symmetry all components are zero; if it is tetragonal or hexagonal, then *η* = 0, but *V*~zz~ ≠ 0.
+where *e* is electric charge, *h* is Planck's constant, and *Q* is the
+nuclear quadrupole moment; *V~ii~* are the principal components of the
+diagonalized EFG tensor, defined as the second derivative in Cartesian
+coordinates of the Coulomb potential at the nucleus position. By
+construction, the EFG, *V~ii~* is a traceless tensor. The coordinate
+system, in accordance with the convention used by experimentalists is
+chosen so that
+$\left| V_{\text{zz}} \right| \geq \left| V_{\text{yy}} \right| \geq |V_{\text{xx}}|$,
+which forces $0 \leq \eta \leq 1$. Note that if the point group of the
+site in question is cubic, then by symmetry all components are zero; if
+it is tetragonal or hexagonal, then *η* = 0, but *V*~zz~ ≠ 0.
 
-Nuclear resonance spectroscopies, such as Nuclear Magnetic Resonance (NMR) and Nuclear Quadrupole Resonance (NQR) are extremely valuable as sensitive probes of the local electronic structure in solids. They are considered to be the golden standard in addressing such disparate physical properties of materials such as magnetism, charge ordering, structural distortion, valence skipping, superconductivity, and many others. Shifts of the NMR/NQR spectral lines yield information of uniform susceptibilities, while their relaxation time informs about the local susceptibility at a nucleus. The very low excitation energies of nuclear resonances (even on the scale of the superconducting gap) provide a window into dynamical effects. Further, nuclear resonances have a plethora of practical applications, ranging from medical (MRI) and pharmaceutical^4-6^ to detecting prohibited substances and combatting terrorism.
+Nuclear resonance spectroscopies, such as Nuclear Magnetic Resonance
+(NMR) and Nuclear Quadrupole Resonance (NQR) are extremely valuable as
+sensitive probes of the local electronic structure in solids. They are
+considered to be the golden standard in addressing such disparate
+physical properties of materials such as magnetism, charge ordering,
+structural distortion, valence skipping, superconductivity, and many
+others. Shifts of the NMR/NQR spectral lines yield information of
+uniform susceptibilities, while their relaxation time informs about the
+local susceptibility at a nucleus. The very low excitation energies of
+nuclear resonances (even on the scale of the superconducting gap)
+provide a window into dynamical effects. Further, nuclear resonances
+have a plethora of practical applications, ranging from medical (MRI)
+and pharmaceutical^4-6^ to detecting prohibited substances and
+combatting terrorism.
 
-The difference between NMR and NQR is that in NMR, the separation of the nuclear levels is predominantly affected through external or internal magnetic fields, while in NQR it comes from the interaction of the nuclear quadrupolar moment with the gradients of the static electric field at the nucleus (Electric Field Gradients, EFG). EFG can also be obtained from Mossbauer spectroscopy, however, NMR and NQR have recently become more commonly used especially for crystalline solids.
+The difference between NMR and NQR is that in NMR, the separation of the
+nuclear levels is predominantly affected through external or internal
+magnetic fields, while in NQR it comes from the interaction of the
+nuclear quadrupolar moment with the gradients of the static electric
+field at the nucleus (Electric Field Gradients, EFG). EFG can also be
+obtained from Mossbauer spectroscopy, however, NMR and NQR have recently
+become more commonly used especially for crystalline solids.
 
-*Table Comparison of current density functional (J-DFT) predictions with experimental (Exp) and previously (Prev.-DFT) reported Electric Field Gradient, V~zz~ (10^21^Vm^-2^) data. The MAD (Mean Absolute Deviation), and MAPD (Mean Absolute Percentage Difference) values are calculated for the whole data. Details of each material are provided at its corresponding webpage. Please look into the references (and references therein) for experimental and previously calculated data.*
+*Table Comparison of current density functional (J-DFT) predictions with
+experimental (Exp) and previously (Prev.-DFT) reported Electric Field
+Gradient, V~zz~ (10^21^Vm^-2^) data. The MAD (Mean Absolute Deviation),
+and MAPD (Mean Absolute Percentage Difference) values are calculated for
+the whole data. Details of each material are provided at its
+corresponding webpage. Please look into the references (and references
+therein) for experimental and previously calculated data.*
 
-+--------------+---------+----------+----------------------+------------------------+----------------------------+-----------+------------+
-| **Material** | **JID** | **Atom** | **\|V~zz\ (Exp)~\|** | **\|V~zz\ (J-DFT)~\|** | **\|V~zz\ (Prev.-DFT)~\|** | **\|Δ\|** | **\|Δ%\|** |
-+--------------+---------+----------+----------------------+------------------------+----------------------------+-----------+------------+
-| Cl~2~        | 855     | Cl       | 55.18^58^            | 52.85                  | 54.23^43^                  | 2.33      | 4.22       |
-+--------------+---------+----------+----------------------+------------------------+----------------------------+-----------+------------+
-| Br~2~        | 840     | Br       | 95.69^58^            | 88.86                  | 94.44^43^                  | 6.83      | 7.14       |
-+--------------+---------+----------+----------------------+------------------------+----------------------------+-----------+------------+
-| I~2~         | 895     | I        | 113.00^58^           | 108.70                 | 119.01^43^                 | 4.30      | 3.81       |
-+--------------+---------+----------+----------------------+------------------------+----------------------------+-----------+------------+
-| Be           | 25056   | Be       | 0.044^59^            | 0.072                  | 0.06^60^                   | 0.028     | 63.64      |
-+--------------+---------+----------+----------------------+------------------------+----------------------------+-----------+------------+
-| Mg           | 14840   | Mg       | 0.048^59^            | 0.079                  | 0.04^60^                   | 0.031     | 64.58      |
-+--------------+---------+----------+----------------------+------------------------+----------------------------+-----------+------------+
-| Sc           | 996     | Sc       | 0.38^59^             | 1.78                   | 0.96^60^                   | 1.40      | 368.4      |
-+--------------+---------+----------+----------------------+------------------------+----------------------------+-----------+------------+
-| Ti           | 14815   | Ti       | 1.61^59,61^          | 1.64                   | 1.75^60^                   | 0.03      | 1.86       |
-+--------------+---------+----------+----------------------+------------------------+----------------------------+-----------+------------+
-| Co           | 858     | Co       | 2.9^59^              | 0.52                   | 0.29^60^                   | 2.38      | 82.06      |
-+--------------+---------+----------+----------------------+------------------------+----------------------------+-----------+------------+
-| Zn           | 1056    | Zn       | 3.48^59^             | 5.62                   | 4.29^60^                   | 2.14      | 61.50      |
-+--------------+---------+----------+----------------------+------------------------+----------------------------+-----------+------------+
-| Zr           | 14612   | Zr       | 4.40^59^             | 3.50                   | 4.14^60^                   | 0.90      | 20.45      |
-+--------------+---------+----------+----------------------+------------------------+----------------------------+-----------+------------+
-| Tc           | 1020    | Tc       | 1.83^59^             | 1.67                   | 1.74^60^                   | 0.16      | 8.74       |
-+--------------+---------+----------+----------------------+------------------------+----------------------------+-----------+------------+
-| Ru           | 987     | Ru       | 0.97^59^             | 1.52                   | 1.62^60^                   | 0.55      | 56.70      |
-+--------------+---------+----------+----------------------+------------------------+----------------------------+-----------+------------+
-| Cd           | 14832   | Cd       | 6.50^59^             | 7.56                   | 8.13^60^                   | 1.06      | 16.31      |
-+--------------+---------+----------+----------------------+------------------------+----------------------------+-----------+------------+
-| La           | 910     | La       | 1.62^59^             | 2.24                   | 0.91^60^                   | 0.62      | 38.27      |
-+--------------+---------+----------+----------------------+------------------------+----------------------------+-----------+------------+
-| Hf           | 14590   | Hf       | 7.33^59^             | 8.87                   | 8.12^60^                   | 1.54      | 21.01      |
-+--------------+---------+----------+----------------------+------------------------+----------------------------+-----------+------------+
-| Re           | 981     | Re       | 5.12^59^             | 6.14                   | 6.49^60^                   | 1.02      | 19.92      |
-+--------------+---------+----------+----------------------+------------------------+----------------------------+-----------+------------+
-| Os           | 952     | Os       | 4.16^59^             | 6.00                   | 7.02^60^                   | 1.84      | 44.23      |
-+--------------+---------+----------+----------------------+------------------------+----------------------------+-----------+------------+
-| BI~3~        | 3630    | I        | 71.29^62^            | 68.98                  | \-                         | 2.31      | 3.24       |
-+--------------+---------+----------+----------------------+------------------------+----------------------------+-----------+------------+
-| CF~3~I       | 32512   | I        | 124.34^63^           | 123.22                 | \-                         | 1.12      | 0.90       |
-+--------------+---------+----------+----------------------+------------------------+----------------------------+-----------+------------+
-| CIN          | 5758    | I        | 157.21^64^           | 151.0                  | \-                         | 6.21      | 3.95       |
-+--------------+---------+----------+----------------------+------------------------+----------------------------+-----------+------------+
-| NaNO~2~      | 1429    | Na       | 0.438^65^            | 0.552                  | 0.575^66^                  | 0.114     | 26.03      |
-+--------------+---------+----------+----------------------+------------------------+----------------------------+-----------+------------+
-| NaNO~2~      | 1429    | N        | 11.10^65^            | 12.194                 | 11.772^66^                 | 1.094     | 9.86       |
-+--------------+---------+----------+----------------------+------------------------+----------------------------+-----------+------------+
-| Cu~2~O       | 1216    | Cu       | 9.80^67^             | 6.47                   | 6.765^66^                  | 3.33      | 33.98      |
-+--------------+---------+----------+----------------------+------------------------+----------------------------+-----------+------------+
-| TiO~2~       | 10036   | Ti       | 2.21^68^             | 2.098                  | 2.269^66^                  | 0.112     | 5.07       |
-+--------------+---------+----------+----------------------+------------------------+----------------------------+-----------+------------+
-| TiO~2~       | 10036   | O        | 2.38^68^             | 2.21                   | 2.235^66^                  | 0.17      | 7.14       |
-+--------------+---------+----------+----------------------+------------------------+----------------------------+-----------+------------+
-| SrTiO~3~     | 8082    | O        | 1.62^69^             | 1.24                   | 1.00^70^                   | 0.38      | 23.46      |
-+--------------+---------+----------+----------------------+------------------------+----------------------------+-----------+------------+
-| BaTiO~3~     | 8029    | O        | 2.46^69^             | 3.56                   | 2.35^70^                   | 1.10      | 44.72      |
-+--------------+---------+----------+----------------------+------------------------+----------------------------+-----------+------------+
-| Li~3~N       | 1375    | N        | 1.04^71^             | 1.25                   | 1.09^66^                   | 0.21      | 20.19      |
-+--------------+---------+----------+----------------------+------------------------+----------------------------+-----------+------------+
-| Li~3~N       | 1375    | Li(2c)   | 0.30^71^             | 0.225                  | 0.291^66^                  | 0.075     | 25.00      |
-+--------------+---------+----------+----------------------+------------------------+----------------------------+-----------+------------+
-| Li~3~N       | 1375    | Li(1b)   | 0.60^71^             | 0.50                   | 0.616^66^                  | 0.144     | 24.00      |
-+--------------+---------+----------+----------------------+------------------------+----------------------------+-----------+------------+
-| FeSi         | 8178    | Fe       | 4.45^72,73^          | 4.84                   | 4.92^43^                   | 0.39      | 8.76       |
-+--------------+---------+----------+----------------------+------------------------+----------------------------+-----------+------------+
-| FeS~2~       | 2142    | Fe       | 3.0^74^              | 2.93                   | 3.21^43^                   | 0.07      | 2.33       |
-|              |         |          |                      |                        |                            |           |            |
-| (marcasite)  |         |          |                      |                        |                            |           |            |
-+--------------+---------+----------+----------------------+------------------------+----------------------------+-----------+------------+
-| FeS~2~       | 9117    | Fe       | 3.66^74^             | 3.51                   | 3.40^43^                   | 0.15      | 4.10       |
-|              |         |          |                      |                        |                            |           |            |
-| (pyrite)     |         |          |                      |                        |                            |           |            |
-+--------------+---------+----------+----------------------+------------------------+----------------------------+-----------+------------+
-| 2H-MoS~2~    | 54      | Mo       | 7.09^39,40^          | 7.70                   | \-                         | 0.61      | 8.60       |
-+--------------+---------+----------+----------------------+------------------------+----------------------------+-----------+------------+
-| 2H-MoS~2~    | 54      | S        | 5.54^39,40^          | 5.33                   | \-                         | 0.21      | 3.80       |
-+--------------+---------+----------+----------------------+------------------------+----------------------------+-----------+------------+
-| 2H-WS~2~     | 72      | S        | 4.82^39,40^          | 4.53                   | \-                         | 0.29      | 6.22       |
-+--------------+---------+----------+----------------------+------------------------+----------------------------+-----------+------------+
-| CaGa~2~      | 16464   | Ga       | 4.44^75^             | 3.55                   | 3.77^76^                   | 0.89      | 20.05      |
-+--------------+---------+----------+----------------------+------------------------+----------------------------+-----------+------------+
-| SrGa~2~      | 14853   | Ga       | 5.22^75^             | 2.54                   | 4.13^76^                   | 2.68      | 51.34      |
-+--------------+---------+----------+----------------------+------------------------+----------------------------+-----------+------------+
-| BaGa~2~      | 19628   | Ga       | 4.48^75^             | 5.10                   | 4.38^76^                   | 0.62      | 13.84      |
-+--------------+---------+----------+----------------------+------------------------+----------------------------+-----------+------------+
-| NaGa~4~      | 14728   | Ga(e)    | 6.49^76^             | 5.20                   | 6.18^76^                   | 1.29      | 19.88      |
-+--------------+---------+----------+----------------------+------------------------+----------------------------+-----------+------------+
-| NaGa~4~      | 14728   | Ga(d)    | 4.64^76^             | 4.33                   | 4.44^76^                   | 0.31      | 6.68       |
-+--------------+---------+----------+----------------------+------------------------+----------------------------+-----------+------------+
-| CaGa~4~      | 20533   | Ga(e)    | 2.89^76^             | 2.67                   | 2.80^76^                   | 0.22      | 7.61       |
-+--------------+---------+----------+----------------------+------------------------+----------------------------+-----------+------------+
-| CaGa~4~      | 20533   | Ga(d)    | 4.87^76^             | 4.99                   | 4.73^76^                   | 0.12      | 2.46       |
-+--------------+---------+----------+----------------------+------------------------+----------------------------+-----------+------------+
-| SrGa~4~      | 20206   | Ga(e)    | 2.51^76^             | 1.67                   | 2.24^76^                   | 0.84      | 33.47      |
-+--------------+---------+----------+----------------------+------------------------+----------------------------+-----------+------------+
-| SrGa~4~      | 20206   | Ga(d)    | 5.95^76^             | 5.31                   | 5.64^76^                   | 0.64      | 10.76      |
-+--------------+---------+----------+----------------------+------------------------+----------------------------+-----------+------------+
-| TaP          | 79643   | Ta       | 3.00^77^             | 2.5                    | 3.54^77^                   | 0.50      | 16.67      |
-+--------------+---------+----------+----------------------+------------------------+----------------------------+-----------+------------+
-| UAs~2~       | 19797   | U        | 15.0^78^             | 9.7                    | 13.03^57^                  | 5.3       | 35.3       |
-+--------------+---------+----------+----------------------+------------------------+----------------------------+-----------+------------+
-| **MAD**      |         |          |                      |                        |                            | 1.17      | \-         |
-+--------------+---------+----------+----------------------+------------------------+----------------------------+-----------+------------+
-| **MAPD**     |         |          |                      |                        |                            | \-        | 28.90      |
-+--------------+---------+----------+----------------------+------------------------+----------------------------+-----------+------------+
++--------+--------+--------+--------+--------+--------+--------+--------+
+| **Mate | **JID* | **Atom | **\|V~ | **\|V~ | **\|V~ | **\|Δ\ | **\|Δ% |
+| rial** | *      | **     | zz\ (E | zz\ (J | zz\ (P | |**    | \|**   |
+|        |        |        | xp)~\| | -DFT)~ | rev.-D |        |        |
+|        |        |        | **     | \|**   | FT)~\| |        |        |
+|        |        |        |        |        | **     |        |        |
++--------+--------+--------+--------+--------+--------+--------+--------+
+| Cl~2~  | 855    | Cl     | 55.18^ | 52.85  | 54.23^ | 2.33   | 4.22   |
+|        |        |        | 58^    |        | 43^    |        |        |
++--------+--------+--------+--------+--------+--------+--------+--------+
+| Br~2~  | 840    | Br     | 95.69^ | 88.86  | 94.44^ | 6.83   | 7.14   |
+|        |        |        | 58^    |        | 43^    |        |        |
++--------+--------+--------+--------+--------+--------+--------+--------+
+| I~2~   | 895    | I      | 113.00 | 108.70 | 119.01 | 4.30   | 3.81   |
+|        |        |        | ^58^   |        | ^43^   |        |        |
++--------+--------+--------+--------+--------+--------+--------+--------+
+| Be     | 25056  | Be     | 0.044^ | 0.072  | 0.06^6 | 0.028  | 63.64  |
+|        |        |        | 59^    |        | 0^     |        |        |
++--------+--------+--------+--------+--------+--------+--------+--------+
+| Mg     | 14840  | Mg     | 0.048^ | 0.079  | 0.04^6 | 0.031  | 64.58  |
+|        |        |        | 59^    |        | 0^     |        |        |
++--------+--------+--------+--------+--------+--------+--------+--------+
+| Sc     | 996    | Sc     | 0.38^5 | 1.78   | 0.96^6 | 1.40   | 368.4  |
+|        |        |        | 9^     |        | 0^     |        |        |
++--------+--------+--------+--------+--------+--------+--------+--------+
+| Ti     | 14815  | Ti     | 1.61^5 | 1.64   | 1.75^6 | 0.03   | 1.86   |
+|        |        |        | 9,61^  |        | 0^     |        |        |
++--------+--------+--------+--------+--------+--------+--------+--------+
+| Co     | 858    | Co     | 2.9^59 | 0.52   | 0.29^6 | 2.38   | 82.06  |
+|        |        |        | ^      |        | 0^     |        |        |
++--------+--------+--------+--------+--------+--------+--------+--------+
+| Zn     | 1056   | Zn     | 3.48^5 | 5.62   | 4.29^6 | 2.14   | 61.50  |
+|        |        |        | 9^     |        | 0^     |        |        |
++--------+--------+--------+--------+--------+--------+--------+--------+
+| Zr     | 14612  | Zr     | 4.40^5 | 3.50   | 4.14^6 | 0.90   | 20.45  |
+|        |        |        | 9^     |        | 0^     |        |        |
++--------+--------+--------+--------+--------+--------+--------+--------+
+| Tc     | 1020   | Tc     | 1.83^5 | 1.67   | 1.74^6 | 0.16   | 8.74   |
+|        |        |        | 9^     |        | 0^     |        |        |
++--------+--------+--------+--------+--------+--------+--------+--------+
+| Ru     | 987    | Ru     | 0.97^5 | 1.52   | 1.62^6 | 0.55   | 56.70  |
+|        |        |        | 9^     |        | 0^     |        |        |
++--------+--------+--------+--------+--------+--------+--------+--------+
+| Cd     | 14832  | Cd     | 6.50^5 | 7.56   | 8.13^6 | 1.06   | 16.31  |
+|        |        |        | 9^     |        | 0^     |        |        |
++--------+--------+--------+--------+--------+--------+--------+--------+
+| La     | 910    | La     | 1.62^5 | 2.24   | 0.91^6 | 0.62   | 38.27  |
+|        |        |        | 9^     |        | 0^     |        |        |
++--------+--------+--------+--------+--------+--------+--------+--------+
+| Hf     | 14590  | Hf     | 7.33^5 | 8.87   | 8.12^6 | 1.54   | 21.01  |
+|        |        |        | 9^     |        | 0^     |        |        |
++--------+--------+--------+--------+--------+--------+--------+--------+
+| Re     | 981    | Re     | 5.12^5 | 6.14   | 6.49^6 | 1.02   | 19.92  |
+|        |        |        | 9^     |        | 0^     |        |        |
++--------+--------+--------+--------+--------+--------+--------+--------+
+| Os     | 952    | Os     | 4.16^5 | 6.00   | 7.02^6 | 1.84   | 44.23  |
+|        |        |        | 9^     |        | 0^     |        |        |
++--------+--------+--------+--------+--------+--------+--------+--------+
+| BI~3~  | 3630   | I      | 71.29^ | 68.98  | \-     | 2.31   | 3.24   |
+|        |        |        | 62^    |        |        |        |        |
++--------+--------+--------+--------+--------+--------+--------+--------+
+| CF~3~I | 32512  | I      | 124.34 | 123.22 | \-     | 1.12   | 0.90   |
+|        |        |        | ^63^   |        |        |        |        |
++--------+--------+--------+--------+--------+--------+--------+--------+
+| CIN    | 5758   | I      | 157.21 | 151.0  | \-     | 6.21   | 3.95   |
+|        |        |        | ^64^   |        |        |        |        |
++--------+--------+--------+--------+--------+--------+--------+--------+
+| NaNO~2 | 1429   | Na     | 0.438^ | 0.552  | 0.575^ | 0.114  | 26.03  |
+| ~      |        |        | 65^    |        | 66^    |        |        |
++--------+--------+--------+--------+--------+--------+--------+--------+
+| NaNO~2 | 1429   | N      | 11.10^ | 12.194 | 11.772 | 1.094  | 9.86   |
+| ~      |        |        | 65^    |        | ^66^   |        |        |
++--------+--------+--------+--------+--------+--------+--------+--------+
+| Cu~2~O | 1216   | Cu     | 9.80^6 | 6.47   | 6.765^ | 3.33   | 33.98  |
+|        |        |        | 7^     |        | 66^    |        |        |
++--------+--------+--------+--------+--------+--------+--------+--------+
+| TiO~2~ | 10036  | Ti     | 2.21^6 | 2.098  | 2.269^ | 0.112  | 5.07   |
+|        |        |        | 8^     |        | 66^    |        |        |
++--------+--------+--------+--------+--------+--------+--------+--------+
+| TiO~2~ | 10036  | O      | 2.38^6 | 2.21   | 2.235^ | 0.17   | 7.14   |
+|        |        |        | 8^     |        | 66^    |        |        |
++--------+--------+--------+--------+--------+--------+--------+--------+
+| SrTiO~ | 8082   | O      | 1.62^6 | 1.24   | 1.00^7 | 0.38   | 23.46  |
+| 3~     |        |        | 9^     |        | 0^     |        |        |
++--------+--------+--------+--------+--------+--------+--------+--------+
+| BaTiO~ | 8029   | O      | 2.46^6 | 3.56   | 2.35^7 | 1.10   | 44.72  |
+| 3~     |        |        | 9^     |        | 0^     |        |        |
++--------+--------+--------+--------+--------+--------+--------+--------+
+| Li~3~N | 1375   | N      | 1.04^7 | 1.25   | 1.09^6 | 0.21   | 20.19  |
+|        |        |        | 1^     |        | 6^     |        |        |
++--------+--------+--------+--------+--------+--------+--------+--------+
+| Li~3~N | 1375   | Li(2c) | 0.30^7 | 0.225  | 0.291^ | 0.075  | 25.00  |
+|        |        |        | 1^     |        | 66^    |        |        |
++--------+--------+--------+--------+--------+--------+--------+--------+
+| Li~3~N | 1375   | Li(1b) | 0.60^7 | 0.50   | 0.616^ | 0.144  | 24.00  |
+|        |        |        | 1^     |        | 66^    |        |        |
++--------+--------+--------+--------+--------+--------+--------+--------+
+| FeSi   | 8178   | Fe     | 4.45^7 | 4.84   | 4.92^4 | 0.39   | 8.76   |
+|        |        |        | 2,73^  |        | 3^     |        |        |
++--------+--------+--------+--------+--------+--------+--------+--------+
+| FeS~2~ | 2142   | Fe     | 3.0^74 | 2.93   | 3.21^4 | 0.07   | 2.33   |
+|        |        |        | ^      |        | 3^     |        |        |
+| (marca |        |        |        |        |        |        |        |
+| site)  |        |        |        |        |        |        |        |
++--------+--------+--------+--------+--------+--------+--------+--------+
+| FeS~2~ | 9117   | Fe     | 3.66^7 | 3.51   | 3.40^4 | 0.15   | 4.10   |
+|        |        |        | 4^     |        | 3^     |        |        |
+| (pyrit |        |        |        |        |        |        |        |
+| e)     |        |        |        |        |        |        |        |
++--------+--------+--------+--------+--------+--------+--------+--------+
+| 2H-MoS | 54     | Mo     | 7.09^3 | 7.70   | \-     | 0.61   | 8.60   |
+| ~2~    |        |        | 9,40^  |        |        |        |        |
++--------+--------+--------+--------+--------+--------+--------+--------+
+| 2H-MoS | 54     | S      | 5.54^3 | 5.33   | \-     | 0.21   | 3.80   |
+| ~2~    |        |        | 9,40^  |        |        |        |        |
++--------+--------+--------+--------+--------+--------+--------+--------+
+| 2H-WS~ | 72     | S      | 4.82^3 | 4.53   | \-     | 0.29   | 6.22   |
+| 2~     |        |        | 9,40^  |        |        |        |        |
++--------+--------+--------+--------+--------+--------+--------+--------+
+| CaGa~2 | 16464  | Ga     | 4.44^7 | 3.55   | 3.77^7 | 0.89   | 20.05  |
+| ~      |        |        | 5^     |        | 6^     |        |        |
++--------+--------+--------+--------+--------+--------+--------+--------+
+| SrGa~2 | 14853  | Ga     | 5.22^7 | 2.54   | 4.13^7 | 2.68   | 51.34  |
+| ~      |        |        | 5^     |        | 6^     |        |        |
++--------+--------+--------+--------+--------+--------+--------+--------+
+| BaGa~2 | 19628  | Ga     | 4.48^7 | 5.10   | 4.38^7 | 0.62   | 13.84  |
+| ~      |        |        | 5^     |        | 6^     |        |        |
++--------+--------+--------+--------+--------+--------+--------+--------+
+| NaGa~4 | 14728  | Ga(e)  | 6.49^7 | 5.20   | 6.18^7 | 1.29   | 19.88  |
+| ~      |        |        | 6^     |        | 6^     |        |        |
++--------+--------+--------+--------+--------+--------+--------+--------+
+| NaGa~4 | 14728  | Ga(d)  | 4.64^7 | 4.33   | 4.44^7 | 0.31   | 6.68   |
+| ~      |        |        | 6^     |        | 6^     |        |        |
++--------+--------+--------+--------+--------+--------+--------+--------+
+| CaGa~4 | 20533  | Ga(e)  | 2.89^7 | 2.67   | 2.80^7 | 0.22   | 7.61   |
+| ~      |        |        | 6^     |        | 6^     |        |        |
++--------+--------+--------+--------+--------+--------+--------+--------+
+| CaGa~4 | 20533  | Ga(d)  | 4.87^7 | 4.99   | 4.73^7 | 0.12   | 2.46   |
+| ~      |        |        | 6^     |        | 6^     |        |        |
++--------+--------+--------+--------+--------+--------+--------+--------+
+| SrGa~4 | 20206  | Ga(e)  | 2.51^7 | 1.67   | 2.24^7 | 0.84   | 33.47  |
+| ~      |        |        | 6^     |        | 6^     |        |        |
++--------+--------+--------+--------+--------+--------+--------+--------+
+| SrGa~4 | 20206  | Ga(d)  | 5.95^7 | 5.31   | 5.64^7 | 0.64   | 10.76  |
+| ~      |        |        | 6^     |        | 6^     |        |        |
++--------+--------+--------+--------+--------+--------+--------+--------+
+| TaP    | 79643  | Ta     | 3.00^7 | 2.5    | 3.54^7 | 0.50   | 16.67  |
+|        |        |        | 7^     |        | 7^     |        |        |
++--------+--------+--------+--------+--------+--------+--------+--------+
+| UAs~2~ | 19797  | U      | 15.0^7 | 9.7    | 13.03^ | 5.3    | 35.3   |
+|        |        |        | 8^     |        | 57^    |        |        |
++--------+--------+--------+--------+--------+--------+--------+--------+
+| **MAD* |        |        |        |        |        | 1.17   | \-     |
+| *      |        |        |        |        |        |        |        |
++--------+--------+--------+--------+--------+--------+--------+--------+
+| **MAPD |        |        |        |        |        | \-     | 28.90  |
+| **     |        |        |        |        |        |        |        |
++--------+--------+--------+--------+--------+--------+--------+--------+
 
-![][36]
+![](./myMediaFolder/media/image66.png){width="6.020485564304462in"
+height="4.7025404636920385in"}
 
-Fig. Histogram (above) and intensity map (below) of the probability are shown as a function of V~ZZ~ and η. The logarithmic z-scale allows for the strong preponderance of small V~ZZ~ and small η values to be clearly seen, while at the same time revealing the bell-shaped distribution in V~ZZ~ for all η values. Values where V~zz~=0, and therefore η is ill-defined, have been excluded.
+Fig. Histogram (above) and intensity map (below) of the probability are
+shown as a function of V~ZZ~ and η. The logarithmic z-scale allows for
+the strong preponderance of small V~ZZ~ and small η values to be clearly
+seen, while at the same time revealing the bell-shaped distribution in
+V~ZZ~ for all η values. Values where V~zz~=0, and therefore η is
+ill-defined, have been excluded.
 
 **1.3.17 DFT convergence parameters**
 
-Although density functional theory is exact in theory, its implementation requires several approximations such as the choice of basis-set, exchange-correlation functional, mesh-size for Brillouin zone (BZ) integration and plane-wave cut-off for plane-wave basis. These parameters need to be converged prior to geometric optimization and property predictions. Such convergences are performed for k-point and plane wave cut-off only in JARVIS-DFT leading to high quality of the data.
+Although density functional theory is exact in theory, its
+implementation requires several approximations such as the choice of
+basis-set, exchange-correlation functional, mesh-size for Brillouin zone
+(BZ) integration and plane-wave cut-off for plane-wave basis. These
+parameters need to be converged prior to geometric optimization and
+property predictions. Such convergences are performed for k-point and
+plane wave cut-off only in JARVIS-DFT leading to high quality of the
+data.
 
-![][37]
+![](./myMediaFolder/media/image67.png){width="6.5in" height="2.3875in"}
 
-*Fig. An example of convergence in a) cut-off and b) k-points for Bi~2~Se~3~*
+*Fig. An example of convergence in a) cut-off and b) k-points for
+Bi~2~Se~3~*
 
-![C:\\Users\\knc6\\Desktop\\Work\\JARVIS\\JARVIS-DFT-20160822T155347Z\\JARVIS-DFT\\JARVIS-CONVRG\\NewFigs\\Fig2.jpg]
+![C:\\Users\\knc6\\Desktop\\Work\\JARVIS\\JARVIS-DFT-20160822T155347Z\\JARVIS-DFT\\JARVIS-CONVRG\\NewFigs\\Fig2.jpg](./myMediaFolder/media/image68.jpeg){width="6.5in"
+height="4.64338801399825in"}
 
-*Fig. Histogram for ranges of the number of k-points. The 'energy per cell' and 'energy per atom' methods are denoted by 'EPC' and 'EPA' respectively. EPA values are derived from EPC. Fig. a) shows the length-based k-points distribution of all the materials in the database using EPC, b) the per reciprocal-atom-based distribution of k-points using EPC, c) length-based k-points distribution of all the materials in the database using EPA, d) the per reciprocal atom-based distribution of k-points using EPA. Similar distributions for non-metals are shown in e-h and for metals in i-l. Metals are in general observed to require more k-points. *
+*Fig. Histogram for ranges of the number of k-points. The 'energy per
+cell' and 'energy per atom' methods are denoted by 'EPC' and 'EPA'
+respectively. EPA values are derived from EPC. Fig. a) shows the
+length-based k-points distribution of all the materials in the database
+using EPC, b) the per reciprocal-atom-based distribution of k-points
+using EPC, c) length-based k-points distribution of all the materials in
+the database using EPA, d) the per reciprocal atom-based distribution of
+k-points using EPA. Similar distributions for non-metals are shown in
+e-h and for metals in i-l. Metals are in general observed to require
+more k-points. *
 
 **1.4 Data Quality assessment table**
 
-*Table. Mean Absolute Error (MAE) for JARVIS-DFT data with respect to available experimental data for various material properties.*
+*Table. Mean Absolute Error (MAE) for JARVIS-DFT data with respect to
+available experimental data for various material properties.*
 
   Property                                       \#Materials   MAE     Typical range
   ---------------------------------------------- ------------- ------- ---------------
@@ -1016,7 +1726,8 @@ Although density functional theory is exact in theory, its implementation requir
   Heterostructure                **3**
   Total DFT calculated systems   **37646**
 
-***Table. A brief summary of functionals used in optimizing crystal geometry in the JARVIS-DFT.***
+***Table. A brief summary of functionals used in optimizing crystal
+geometry in the JARVIS-DFT.***
 
   Functionals           Numbers
   --------------------- -----------
@@ -1026,7 +1737,8 @@ Although density functional theory is exact in theory, its implementation requir
   PBE                   **99**
   LDA                   **92**
 
-***Table. A brief summary of material-properties available in the JARVIS-DFT. The database is continuously expanding***.
+***Table. A brief summary of material-properties available in the
+JARVIS-DFT. The database is continuously expanding***.
 
   JARVIS-DFT DATA Property                               Numbers
   ------------------------------------------------------ ---------
@@ -1061,57 +1773,138 @@ Although density functional theory is exact in theory, its implementation requir
 
 **1.6 References**
 
-1.  *JARVIS: An Integrated Infrastructure for Data-driven Materials Design, arXiv:2007.01831 (2020).*
+1.  *JARVIS: An Integrated Infrastructure for Data-driven Materials
+    Design, arXiv:2007.01831 (2020).*
 
-2.  *High-throughput Identification and Characterization of Two-dimensional Materials using Density functional theory, Scientific Reports 7, 5179 (2017).*
+2.  *High-throughput Identification and Characterization of
+    Two-dimensional Materials using Density functional theory,
+    Scientific Reports 7, 5179 (2017).*
 
-3.  *Computational Screening of High-performance Optoelectronic Materials using OptB88vdW and TBmBJ Formalisms, Scientific Data 5, 180082 (2018)*
+3.  *Computational Screening of High-performance Optoelectronic
+    Materials using OptB88vdW and TBmBJ Formalisms, Scientific Data 5,
+    180082 (2018)*
 
-4.  *Elastic properties of bulk and low-dimensional materials using Van der Waals density functional, Phys. Rev. B, 98, 014107 (2018).*
+4.  *Elastic properties of bulk and low-dimensional materials using Van
+    der Waals density functional, Phys. Rev. B, 98, 014107 (2018).*
 
-5.  *High-throughput Discovery of Topologically Non-trivial Materials using Spin-orbit Spillage, Scientific Reports 9, 8534 (2019)*
+5.  *High-throughput Discovery of Topologically Non-trivial Materials
+    using Spin-orbit Spillage, Scientific Reports 9, 8534 (2019)*
 
-6.  *Convergence and machine learning predictions of Monkhorst-Pack k-points and plane-wave cut-off in high-throughput DFT calculations, Comp. Mat. Sci. 161, 300 (2019).*
+6.  *Convergence and machine learning predictions of Monkhorst-Pack
+    k-points and plane-wave cut-off in high-throughput DFT calculations,
+    Comp. Mat. Sci. 161, 300 (2019).*
 
-7.  *High-throughput Density Functional Perturbation Theory and Machine Learning Predictions of Infrared, Piezoelectric and Dielectric Responses,npj Computational Materials, 6, 64 (2020).*
+7.  *High-throughput Density Functional Perturbation Theory and Machine
+    Learning Predictions of Infrared, Piezoelectric and Dielectric
+    Responses,npj Computational Materials, 6, 64 (2020).*
 
-8.  *Computational Search for Magnetic and Non-magnetic 2D Topological Materials using Unified Spin-orbit Spillage Screening, npj Computational Materials, 6, 49 (2020).*
+8.  *Computational Search for Magnetic and Non-magnetic 2D Topological
+    Materials using Unified Spin-orbit Spillage Screening, npj
+    Computational Materials, 6, 49 (2020).*
 
-9.  *Accelerated Discovery of Efficient Solar-cell Materials using Quantum and Machine-learning Methods, Chem. Mater., 31, 15, 5900 (2019).*
+9.  *Accelerated Discovery of Efficient Solar-cell Materials using
+    Quantum and Machine-learning Methods, Chem. Mater., 31, 15, 5900
+    (2019).*
 
-10. *Data-driven Discovery of 3D and 2D Thermoelectric Materials, J. Phys.: Condens. Matter 32, 475501 (2020).*
+10. *Data-driven Discovery of 3D and 2D Thermoelectric Materials, J.
+    Phys.: Condens. Matter 32, 475501 (2020).*
 
-11. *Efficient Computational Design of 2D van der Waals Heterostructures: Band-Alignment, Lattice-Mismatch, Web-app Generation and Machine-learning, submitted.*
+11. *Efficient Computational Design of 2D van der Waals
+    Heterostructures: Band-Alignment, Lattice-Mismatch, Web-app
+    Generation and Machine-learning, submitted.*
 
-12. *Density Functional Theory based Electric Field Gradient Database, arXiv:2005.09255.*
+12. *Density Functional Theory based Electric Field Gradient Database,
+    arXiv:2005.09255.*
 
-13. *Database of Wannier Tight-binding Hamiltonians using High-throughput Density Functional Theory, arXiv:2007.01205.*
+13. *Database of Wannier Tight-binding Hamiltonians using
+    High-throughput Density Functional Theory, arXiv:2007.01205.*
 
-14. *Density Functional Theory and Deep-learning to Accelerate Data Analytics in Scanning Tunneling Microscopy, arXiv:1912.09027.*
+14. *Density Functional Theory and Deep-learning to Accelerate Data
+    Analytics in Scanning Tunneling Microscopy, arXiv:1912.09027.*
 
 **2 JARVIS-FF**
 
 **2.1 Overview**
 
-JARVIS-FF is a repository of classical force-field/potential calculation data intended to help users select the most appropriate force-field for a specific application. Many classical force-fields are developed for a particular set of properties (such as energies), and may not have been tested for properties not included in training (such as elastic constants, or defect formation energies). JARVIS-FF provides an automatic framework to consistently calculate and compare basic properties, such as the bulk modulus, defect formation energies, phonons, etc. that may be critical for specific molecular-dynamics simulations. JARVIS-FF relies on DFT and experimental data to evaluate accuracy.
+JARVIS-FF is a repository of classical force-field/potential calculation
+data intended to help users select the most appropriate force-field for
+a specific application. Many classical force-fields are developed for a
+particular set of properties (such as energies), and may not have been
+tested for properties not included in training (such as elastic
+constants, or defect formation energies). JARVIS-FF provides an
+automatic framework to consistently calculate and compare basic
+properties, such as the bulk modulus, defect formation energies,
+phonons, etc. that may be critical for specific molecular-dynamics
+simulations. JARVIS-FF relies on DFT and experimental data to evaluate
+accuracy.
 
-![Screen shot of JARVIS-FF]
+![Screen shot of
+JARVIS-FF](./myMediaFolder/media/image69.png){width="6.5in"
+height="3.4194444444444443in"}
 
 2.  **Methodology**
 
-> We started by downloading all the available potentials from the NIST interatomic potential repository (IPR) and from LAMMPS itself (15May2015 version). For each element having at least a potential, we downloaded all the corresponding crystal structures from the Materials Project (MP) or JARVIS-DFT database. We also downloaded all the energetics and mechanical properties data from and stored them in a separate database for a later comparison with the classical results (LAMMPS calculations at T=0 K). The high-throughput setting of LAMMPS jobs was done using JARVIS-tools. In our runs we used 10-06 as strain, 10-10 eV/Å for force convergence during the minimization to optimize the structure and 1000 maximum iteration for structure optimization. These are generalized computational set-up parameters, and the energetics and elastic constant data may or may not depend on them. We tested strain parameters for a range of values (10^-04^, 10^-06^ and 10^-08^) but obviously evaluating such set of parameters for all the calculations was too extensive a work and was not carried out here. The relaxed structure was also stored along with the above files for later use such as for performing defect, phonon or other similar calculations.
+> We started by downloading all the available potentials from the NIST
+> interatomic potential repository (IPR) and from LAMMPS itself
+> (15May2015 version). For each element having at least a potential, we
+> downloaded all the corresponding crystal structures from the Materials
+> Project (MP) or JARVIS-DFT database. We also downloaded all the
+> energetics and mechanical properties data from and stored them in a
+> separate database for a later comparison with the classical results
+> (LAMMPS calculations at T=0 K). The high-throughput setting of LAMMPS
+> jobs was done using JARVIS-tools. In our runs we used 10-06 as strain,
+> 10-10 eV/Å for force convergence during the minimization to optimize
+> the structure and 1000 maximum iteration for structure optimization.
+> These are generalized computational set-up parameters, and the
+> energetics and elastic constant data may or may not depend on them. We
+> tested strain parameters for a range of values (10^-04^, 10^-06^ and
+> 10^-08^) but obviously evaluating such set of parameters for all the
+> calculations was too extensive a work and was not carried out here.
+> The relaxed structure was also stored along with the above files for
+> later use such as for performing defect, phonon or other similar
+> calculations.
 >
-> After the minimization, the crystal structure is stored in LAMMPS data-format and JSON format. Using this JSON file, unique Wyckoff positions were identified and deleted to represent vacancy-structures. The multiplicity of the Wyckoff positions is also recorded. After the defect structure generation, the LAMMPS energy minimization is carried out. In a subsequent run, we calculate the chemical potential of the defect element using the specific force-field.
+> After the minimization, the crystal structure is stored in LAMMPS
+> data-format and JSON format. Using this JSON file, unique Wyckoff
+> positions were identified and deleted to represent vacancy-structures.
+> The multiplicity of the Wyckoff positions is also recorded. After the
+> defect structure generation, the LAMMPS energy minimization is carried
+> out. In a subsequent run, we calculate the chemical potential of the
+> defect element using the specific force-field.
 >
-> The data for the vacancy structure, chemical potential of element and perfect structure energy were used to calculate the defect formation energies. The most stable prototype for chemical potential calculation was determined using the energy above convex hull data from DFT. The defect structures were required to be at least 1.5 nm long in the x, y and z directions to avoid self-interactions with the periodic images of the simulation cell. Similar to the defect structures, distinct surfaces were created up to 3 Miller indices with the relaxed structure stored in the JSON file. A generic code for generating defect and surface structures is given at our github page. We enforce the surfaces to be at least 2.5 nm thick and with 2.5 nm vacuum in the simulation box. The 2.5 nm vacuum is used to ensure no self-interaction and the thickness is used to mimic actual experimental surface. Using the energies of perfect bulk and surface structures, surface energies for a specific plane are calculated. We should point out that only unreconstructed surfaces without any surface-segregation effects are computed, as our high-throughput approach does not allow for taking into account specific, element dependent reconstructions yet.
+> The data for the vacancy structure, chemical potential of element and
+> perfect structure energy were used to calculate the defect formation
+> energies. The most stable prototype for chemical potential calculation
+> was determined using the energy above convex hull data from DFT. The
+> defect structures were required to be at least 1.5 nm long in the x, y
+> and z directions to avoid self-interactions with the periodic images
+> of the simulation cell. Similar to the defect structures, distinct
+> surfaces were created up to 3 Miller indices with the relaxed
+> structure stored in the JSON file. A generic code for generating
+> defect and surface structures is given at our github page. We enforce
+> the surfaces to be at least 2.5 nm thick and with 2.5 nm vacuum in the
+> simulation box. The 2.5 nm vacuum is used to ensure no
+> self-interaction and the thickness is used to mimic actual
+> experimental surface. Using the energies of perfect bulk and surface
+> structures, surface energies for a specific plane are calculated. We
+> should point out that only unreconstructed surfaces without any
+> surface-segregation effects are computed, as our high-throughput
+> approach does not allow for taking into account specific, element
+> dependent reconstructions yet.
 >
-> Phonons were obtained by making an interface of JARVIS-FF with Phonopy package at 0 K. For deformed-structures, constant volume ensemble was used. The deformed structures were taken of at least 1.5 nm size in all directions.
+> Phonons were obtained by making an interface of JARVIS-FF with Phonopy
+> package at 0 K. For deformed-structures, constant volume ensemble was
+> used. The deformed structures were taken of at least 1.5 nm size in
+> all directions.
 >
-> ![][38]
+> ![](./myMediaFolder/media/image70.png){width="3.2520931758530183in"
+> height="4.214865485564305in"}
 
-*Fig. Flow-chart showing the processes involved in creating the JARVIS-FF database. *
+*Fig. Flow-chart showing the processes involved in creating the
+JARVIS-FF database. *
 
-***Table. A summary of various types of force-fields available in the JARVIS-FF.***
+***Table. A summary of various types of force-fields available in the
+JARVIS-FF.***
 
   Force-fields   Numbers
   -------------- ---------
@@ -1125,51 +1918,127 @@ JARVIS-FF is a repository of classical force-field/potential calculation data in
 
 3.  **Property details and assessment**
 
-Using jarvis.core.Atoms class several atomistic properties such as lattice parameters, density, packing fraction etc. can be calculated. The optimized lattice parameters generally compare well with DFT data except for the FFs where a particular phase was not trained during FF-fitting. Similarly, energetics in terms of convex hull plot is compared between DFT and FF results. An example is shown below:
+Using jarvis.core.Atoms class several atomistic properties such as
+lattice parameters, density, packing fraction etc. can be calculated.
+The optimized lattice parameters generally compare well with DFT data
+except for the FFs where a particular phase was not trained during
+FF-fitting. Similarly, energetics in terms of convex hull plot is
+compared between DFT and FF results. An example is shown below:
 
-![C:\\Users\\Kamal\\AppData\\Local\\Microsoft\\Windows\\INetCacheContent.Word\\Fig.3.tif]
+![C:\\Users\\Kamal\\AppData\\Local\\Microsoft\\Windows\\INetCacheContent.Word\\Fig.3.tif](./myMediaFolder/media/image71.tiff){width="6.637962598425196in"
+height="3.7338549868766404in"}
 
-*Figure. Convex hull plot for Ni-Al system using a) DFT data, b) Force-field (Mishin Ni-Al potential). Filled blue circles show stable while the red squares show unstable structures. Here "fu" stands for formula unit.*
+*Figure. Convex hull plot for Ni-Al system using a) DFT data, b)
+Force-field (Mishin Ni-Al potential). Filled blue circles show stable
+while the red squares show unstable structures. Here "fu" stands for
+formula unit.*
 
-Similarly, elastic tensor and derived properties were predicted using LAMMPS runs.
+Similarly, elastic tensor and derived properties were predicted using
+LAMMPS runs.
 
-![C:\\Users\\knc6\\Desktop\\Work\\JARVIS\\Bv.png]
+![C:\\Users\\knc6\\Desktop\\Work\\JARVIS\\Bv.png](./myMediaFolder/media/image72.png){width="5.086666666666667in"
+height="3.6333333333333333in"}
 
-*Figure. Comparison of Voigt-bulk modulus data of force-fields and DFT data. The x-axis shows the bulk modulus for materials (for which FFs were available to us) from DFT calculations, while the y-axis shows the bulk modulus for corresponding materials using the force-field calculations.*
+*Figure. Comparison of Voigt-bulk modulus data of force-fields and DFT
+data. The x-axis shows the bulk modulus for materials (for which FFs
+were available to us) from DFT calculations, while the y-axis shows the
+bulk modulus for corresponding materials using the force-field
+calculations.*
 
-Moreover, vacancy formation energies, surface energies can be compared between FF and DFT for FF quality assessment.
+Moreover, vacancy formation energies, surface energies can be compared
+between FF and DFT for FF quality assessment.
 
-![C:\\Users\\knc6\\Downloads\\VacSurfMPJF.png]
+![C:\\Users\\knc6\\Downloads\\VacSurfMPJF.png](./myMediaFolder/media/image73.png){width="6.499200568678915in"
+height="3.267716535433071in"}
 
-*Fig. Vacancy and surface energies (up to a maximum Miller index of 3) for single elements obtained with all the FF available for such materials are compared to available DFT data. *
+*Fig. Vacancy and surface energies (up to a maximum Miller index of 3)
+for single elements obtained with all the FF available for such
+materials are compared to available DFT data. *
 
-*Phonon data from JARVIS-DFT and JARVIS-FF can be compared for a system to evaluate the phonon quality. However, it is important to note that in DFT there might be only conventional cell Gamma-point phonon data available whereas in JARVIS-FF we use supercell finite difference-based approach for obtaining phonon density of states and bandstructures. For a known stable material if the phonon bandstructure shows high negative values then it signifies the FF maynot be suitable to predict correct dynamical properties of the system.*
+*Phonon data from JARVIS-DFT and JARVIS-FF can be compared for a system
+to evaluate the phonon quality. However, it is important to note that in
+DFT there might be only conventional cell Gamma-point phonon data
+available whereas in JARVIS-FF we use supercell finite difference-based
+approach for obtaining phonon density of states and bandstructures. For
+a known stable material if the phonon bandstructure shows high negative
+values then it signifies the FF maynot be suitable to predict correct
+dynamical properties of the system.*
 
 4.  ***References:***
 
-> *1. Evaluation and comparison of classical interatomic potentials through a user-friendly interactive web-interface, Scientific Data 4, 160125 (2017).*
+> *1. Evaluation and comparison of classical interatomic potentials
+> through a user-friendly interactive web-interface, Scientific Data 4,
+> 160125 (2017).*
 >
-> *2. High-throughput assessment of vacancy formation and surface energies of materials using classical force-fields, J. Phys. Cond. Matt. 30, 395901(2018).*
+> *2. High-throughput assessment of vacancy formation and surface
+> energies of materials using classical force-fields, J. Phys. Cond.
+> Matt. 30, 395901(2018).*
 
 ***3 JARVIS-ML***
 
 **3.1 Overview**
 
-**Machine learning has several applications in materials science and engineering, such as automating experimental data analysis, discovering new functional materials, optimizing known ones by accelerating conventional methods such as DFT, automating literature searches, discovering new physical equations, and efficient clustering of materials and their properties. There are several data types that can be used in ML such as scalar data (e.g., formation energies, bandgaps), vector/spectra data (e.g., density of states, dielectric function, charge density, X-ray diffraction patterns, etc.), image-based data (such as scanning tunneling microscopy and transmission electron microscopy images), and natural language processing-based data (such as scientific papers). In addition, ML can be applied on a variety of materials classes such as bulk crystals, molecules, proteins and free-surfaces. **
+**Machine learning has several applications in materials science and
+engineering, such as automating experimental data analysis, discovering
+new functional materials, optimizing known ones by accelerating
+conventional methods such as DFT, automating literature searches,
+discovering new physical equations, and efficient clustering of
+materials and their properties. There are several data types that can be
+used in ML such as scalar data (e.g., formation energies, bandgaps),
+vector/spectra data (e.g., density of states, dielectric function,
+charge density, X-ray diffraction patterns, etc.), image-based data
+(such as scanning tunneling microscopy and transmission electron
+microscopy images), and natural language processing-based data (such as
+scientific papers). In addition, ML can be applied on a variety of
+materials classes such as bulk crystals, molecules, proteins and
+free-surfaces. **
 
 **3.2 Methodology**
 
-**Currently, there are two types of data that are machine-learned in JARVIS-ML: discrete and image-based. The discrete target is obtained from the JARVIS-DFT database for 3D and 2D materials. There have been several descriptor developments as attempts to capture the complex chemical-structural information of a material. We compute CFID descriptors for most crystal structures in various databases. Many of these structures are non-unique but can still be used for pre-screening applications. The CFID can also be applied to other materials classes such as molecules, proteins, point defects, free surfaces, and heterostructures, which are currently ongoing projects. These descriptor datasets, along with JARVIS-DFT and other databases, act as input and outputs for machine learning algorithms. The CFID consists of 1557 descriptors for each material: 438 average chemical, 4 simulation-box-size, 378 radial charge-distribution, 100 radial distribution, 179 angle-distribution up to first neighbor, and another 179 for the second neighbor, 179 dihedral angle up to fist neighbor and 100 nearest neighbor descriptors.**
+**Currently, there are two types of data that are machine-learned in
+JARVIS-ML: discrete and image-based. The discrete target is obtained
+from the JARVIS-DFT database for 3D and 2D materials. There have been
+several descriptor developments as attempts to capture the complex
+chemical-structural information of a material. We compute CFID
+descriptors for most crystal structures in various databases. Many of
+these structures are non-unique but can still be used for pre-screening
+applications. The CFID can also be applied to other materials classes
+such as molecules, proteins, point defects, free surfaces, and
+heterostructures, which are currently ongoing projects. These descriptor
+datasets, along with JARVIS-DFT and other databases, act as input and
+outputs for machine learning algorithms. The CFID consists of 1557
+descriptors for each material: 438 average chemical, 4
+simulation-box-size, 378 radial charge-distribution, 100 radial
+distribution, 179 angle-distribution up to first neighbor, and another
+179 for the second neighbor, 179 dihedral angle up to fist neighbor and
+100 nearest neighbor descriptors.**
 
-![C:\\Users\\knc6\\Desktop\\Work\\JARVIS\\JARVIS-ML\\Figure-1.png]
+![C:\\Users\\knc6\\Desktop\\Work\\JARVIS\\JARVIS-ML\\Figure-1.png](./myMediaFolder/media/image74.png){width="6.5in"
+height="3.6567574365704285in"}
 
-*Fig. Figure showing different components of classical force-field inspired descriptors (CFID) for Si diamond structure. a) average radial-charge density distribution of constituent elements. b) total radial distribution function of the crystal structure, c) total angle distribution function up to the first-nearest neighbor, d) total dihedral-angle distribution up to the first-nearest neighbor, e) average chemical properties of constituent elements. The nearest neighbor distribution was obtained like the RDF. *
+*Fig. Figure showing different components of classical force-field
+inspired descriptors (CFID) for Si diamond structure. a) average
+radial-charge density distribution of constituent elements. b) total
+radial distribution function of the crystal structure, c) total angle
+distribution function up to the first-nearest neighbor, d) total
+dihedral-angle distribution up to the first-nearest neighbor, e) average
+chemical properties of constituent elements. The nearest neighbor
+distribution was obtained like the RDF. *
 
 **3.3 Quality assessment**
 
-JARVIS-ML model accuracy is evaluated on the test-set (usually 10 %) representing newly computed and previously unseen DFT data for both regression and classifications models. Accuracy of regression and classification models are reported in terms of mean absolute error (MAE) and Receiver Operating Characteristic (ROC) Area Under Curve (AUC) metric respectively. A brief summary of regression and classification model accuracy results is given below in Table.
+JARVIS-ML model accuracy is evaluated on the test-set (usually 10 %)
+representing newly computed and previously unseen DFT data for both
+regression and classifications models. Accuracy of regression and
+classification models are reported in terms of mean absolute error (MAE)
+and Receiver Operating Characteristic (ROC) Area Under Curve (AUC)
+metric respectively. A brief summary of regression and classification
+model accuracy results is given below in Table.
 
-*Table. Performance of regression machine learning models in JARVIS-ML with JARVIS-DFT data using OptB88vdW (OPT) and TBmBJ (MBJ) with mean absolute error (MAE). The mean absolute deviation (MAD) of properties are also included.*
+*Table. Performance of regression machine learning models in JARVIS-ML
+with JARVIS-DFT data using OptB88vdW (OPT) and TBmBJ (MBJ) with mean
+absolute error (MAE). The mean absolute deviation (MAD) of properties
+are also included.*
 
   Property                               Training data   MAE     MAD
   -------------------------------------- --------------- ------- -------
@@ -1186,7 +2055,10 @@ JARVIS-ML model accuracy is evaluated on the test-set (usually 10 %) representin
   K-point length (OPT)(Å)                24549           9.09    22.23
   2D-Exfoliation energy(OPT) (eV/atom)   616             37.3    46.09
 
-*Table. Performance of the classification machine learning models in JARVIS-ML with JARVIS-DFT data using OptB88vdW (OPT) and TBmBJ (MBJ) with Receiver Operating Characteristic (ROC) Area Under Curve (AUC) metric. Random guessing and perfect ROC AUC are 0.5 and 1 respectively.*
+*Table. Performance of the classification machine learning models in
+JARVIS-ML with JARVIS-DFT data using OptB88vdW (OPT) and TBmBJ (MBJ)
+with Receiver Operating Characteristic (ROC) Area Under Curve (AUC)
+metric. Random guessing and perfect ROC AUC are 0.5 and 1 respectively.*
 
   Property                                 Number of datapoints   ROC AUC
   ---------------------------------------- ---------------------- ---------
@@ -1200,87 +2072,42 @@ JARVIS-ML model accuracy is evaluated on the test-set (usually 10 %) representin
   High/low p-Seebeck coeff                 21899                  0.96
   High/low p-power factor                  21899                  0.82
 
-![C:\\Users\\knc6\\Downloads\\form-all.png]
+![C:\\Users\\knc6\\Downloads\\form-all.png](./myMediaFolder/media/image75.png){width="6.5in"
+height="4.333333333333333in"}
 
-*Fig. Performance and interpretation of formation energy ML model. a) learning curve, b) ML prediction on 10 % held samples, c) group wise feature importance of descriptors, d) comparison of model performance by incrementally adding various structural descriptors.*
+*Fig. Performance and interpretation of formation energy ML model. a)
+learning curve, b) ML prediction on 10 % held samples, c) group wise
+feature importance of descriptors, d) comparison of model performance by
+incrementally adding various structural descriptors.*
 
 **3.4 References**
 
-*1.     Machine learning with force-field inspired descriptors for materials: fast screening and mapping energy landscape, Phys. Rev. Mat., 2, 083801 (2018).*
+*1.     Machine learning with force-field inspired descriptors for
+materials: fast screening and mapping energy landscape, Phys. Rev. Mat.,
+2, 083801 (2018).*
 
-*2.     Materials Science in the AI age: high-throughput library generation, machine learning and a pathway from correlations to the underpinning physics, MRS Comm., 9, 821 (2019).*
+*2.     Materials Science in the AI age: high-throughput library
+generation, machine learning and a pathway from correlations to the
+underpinning physics, MRS Comm., 9, 821 (2019).*
 
-*3.     Enhancing materials property prediction by leveraging computational and experimental data using deep transfer learning, Nat. Comm., 10, 5316 (2019).*
+*3.     Enhancing materials property prediction by leveraging
+computational and experimental data using deep transfer learning, Nat.
+Comm., 10, 5316 (2019).*
 
-*4.     Convergence and machine learning predictions of Monkhorst-Pack k-points and plane-wave cut-off in high-throughput DFT calculations, Comp. Mat. Sci. 161, 300 (2019).*
+*4.     Convergence and machine learning predictions of Monkhorst-Pack
+k-points and plane-wave cut-off in high-throughput DFT calculations,
+Comp. Mat. Sci. 161, 300 (2019).*
 
-*5.   Accelerated Discovery of Efficient Solar-cell Materials using Quantum and Machine-learning Methods, Chem. Mater., 31, 15, 5900 (2019).*
+*5.   Accelerated Discovery of Efficient Solar-cell Materials using
+Quantum and Machine-learning Methods, Chem. Mater., 31, 15, 5900
+(2019).*
 
-*6.     Data-driven Discovery of 3D and 2D Thermoelectric Materials, arXiv:1906.06024.*
+*6.     Data-driven Discovery of 3D and 2D Thermoelectric Materials,
+arXiv:1906.06024.*
 
-*7.   High-throughput Density Functional Perturbation Theory and Machine Learning Predictions of Infrared, Piezoelectric and Dielectric Responses, npj Computational Materials, 6, 64 (2020).*
+*7.   High-throughput Density Functional Perturbation Theory and Machine
+Learning Predictions of Infrared, Piezoelectric and Dielectric
+Responses, npj Computational Materials, 6, 64 (2020).*
 
-*8.  Density Functional Theory and Deep-learning to Accelerate Data Analytics in Scanning Tunneling Microscopy, arXiv:1912.09027.*
-
-  [JARVIS-DFT overview]: media/image1.png {width="6.5in" height="3.2083333333333335in"}
-  [1]: media/image2.png {width="3.9618055555555554in" height="3.7233923884514435in"}
-  [2]: media/image22.wmf {width="0.22916666666666666in" height="0.2604166666666667in"}
-  [3]: media/image23.wmf {width="0.19791666666666666in" height="0.2604166666666667in"}
-  [4]: media/image26.png {width="4.840277777777778in" height="5.703875765529308in"}
-  [5]: media/image27.png {width="6.5in" height="2.16875in"}
-  [6]: media/image28.png {width="6.5in" height="1.992361111111111in"}
-  [7]: media/image29.png {width="6.5in" height="1.5631944444444446in"}
-  [C:\\Users\\knc6\\Downloads\\Ef.png]: media/image31.png {width="5.236111111111111in" height="3.9270833333333335in"}
-  [8]: media/image32.png {width="6.5in" height="1.16875in"}
-  [9]: media/image33.png {width="6.5in" height="1.875in"}
-  [10]: media/image34.png {width="3.2881944444444446in" height="1.402049431321085in"}
-  [11]: media/image35.png {width="5.357638888888889in" height="2.7446456692913386in"}
-  [18]: #_ENREF_18
-  [21]: #_ENREF_21
-  [46]: #_ENREF_46
-  [47]: #_ENREF_47
-  [12]: media/image36.png {width="5.540277777777778in" height="7.540972222222222in"}
-  [13]: media/image37.png {width="3.8020833333333335in" height="0.5609700349956256in"}
-  [14]: media/image38.png {width="2.6898075240594927in" height="3.4420417760279967in"}
-  [15]: media/image39.png {width="6.5in" height="3.6159120734908137in"}
-  [16]: media/image40.png {width="6.5in" height="3.529861111111111in"}
-  [C:\\Users\\knc6\\Downloads\\mbj\_op3.png]: media/image41.png {width="6.5in" height="4.875in"}
-  [17]: media/image42.png {width="6.5in" height="2.073611111111111in"}
-  [18]: media/image43.png {width="4.284722222222222in" height="0.9146237970253718in"}
-  [C:\\Users\\kamal\\AppData\\Local\\Microsoft\\Windows\\INetCache\\Content.MSO\\9A11865B.tmp]: media/image44.png {width="6.5in" height="5.411111111111111in"}
-  [19]: media/image45.png {width="6.5in" height="3.7083333333333335in"}
-  [20]: media/image46.png {width="5.449422572178477in" height="4.236111111111111in"}
-  [21]: media/image47.png {width="4.423611111111111in" height="1.2377602799650045in"}
-  [22]: media/image48.png {width="3.3641524496937882in" height="2.629861111111111in"}
-  [23]: media/image49.png {width="3.6006944444444446in" height="0.7562992125984253in"}
-  [24]: media/image50.png {width="4.222222222222222in" height="2.8274453193350833in"}
-  [C:\\Users\\kamal\\AppData\\Local\\Microsoft\\Windows\\INetCache\\Content.MSO\\1F32B701.tmp]: media/image51.png {width="6.5in" height="6.5in"}
-  [25]: media/image52.png {width="6.5in" height="1.7680555555555555in"}
-  [C:\\Users\\knc6\\Downloads\\Allcij.png]: media/image53.png {width="3.5766601049868765in" height="2.6805555555555554in"}
-  [C:\\Users\\knc6\\Desktop\\Work\\JARVIS\\JARVIS-DFT-20160822T155347Z\\JARVIS-DFT\\JARVIS-ELAST\\kvbokeh\_plot.png]: media/image54.png {width="6.5in" height="3.71505249343832in"}
-  [26]: media/image55.png {width="6.5in" height="1.9673611111111111in"}
-  [27]: media/image56.png {width="4.527777777777778in" height="4.191580271216098in"}
-  [^1-4^]: #_ENREF_1
-  [^5^]: #_ENREF_5
-  [^6^]: #_ENREF_6
-  [7]: #_ENREF_7
-  [8]: #_ENREF_8
-  [28]: media/image57.png {width="6.5in" height="4.003472222222222in"}
-  [29]: media/image58.png {width="4.3125in" height="0.9868985126859142in"}
-  [C:\\Users\\kamal\\AppData\\Local\\Microsoft\\Windows\\INetCache\\Content.MSO\\39BDF3E3.tmp]: media/image59.png {width="6.5in" height="4.011111111111111in"}
-  [30]: media/image60.png {width="6.5in" height="3.714583333333333in"}
-  [31]: media/image61.png {width="6.5in" height="2.611111111111111in"}
-  [32]: media/image62.png {width="6.5in" height="4.833333333333333in"}
-  [33]: media/image63.png {width="6.5in" height="2.598611111111111in"}
-  [34]: media/image64.png {width="6.5in" height="4.343055555555556in"}
-  [35]: media/image65.png {width="6.5in" height="1.0159722222222223in"}
-  [36]: media/image66.png {width="6.020485564304462in" height="4.7025404636920385in"}
-  [37]: media/image67.png {width="6.5in" height="2.3875in"}
-  [C:\\Users\\knc6\\Desktop\\Work\\JARVIS\\JARVIS-DFT-20160822T155347Z\\JARVIS-DFT\\JARVIS-CONVRG\\NewFigs\\Fig2.jpg]: media/image68.jpeg {width="6.5in" height="4.64338801399825in"}
-  [Screen shot of JARVIS-FF]: media/image69.png {width="6.5in" height="3.4194444444444443in"}
-  [38]: media/image70.png {width="3.2520931758530183in" height="4.214865485564305in"}
-  [C:\\Users\\Kamal\\AppData\\Local\\Microsoft\\Windows\\INetCacheContent.Word\\Fig.3.tif]: media/image71.tiff {width="6.637962598425196in" height="3.7338549868766404in"}
-  [C:\\Users\\knc6\\Desktop\\Work\\JARVIS\\Bv.png]: media/image72.png {width="5.086666666666667in" height="3.6333333333333333in"}
-  [C:\\Users\\knc6\\Downloads\\VacSurfMPJF.png]: media/image73.png {width="6.499200568678915in" height="3.267716535433071in"}
-  [C:\\Users\\knc6\\Desktop\\Work\\JARVIS\\JARVIS-ML\\Figure-1.png]: media/image74.png {width="6.5in" height="3.6567574365704285in"}
-  [C:\\Users\\knc6\\Downloads\\form-all.png]: media/image75.png {width="6.5in" height="4.333333333333333in"}
+*8.  Density Functional Theory and Deep-learning to Accelerate Data
+Analytics in Scanning Tunneling Microscopy, arXiv:1912.09027.*
