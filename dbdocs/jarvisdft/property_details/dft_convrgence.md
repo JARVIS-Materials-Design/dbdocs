@@ -1,5 +1,2 @@
 Although density functional theory is exact in theory, its implementation requires several approximations such as the choice of basis-set, exchange-correlation functional, mesh-size for Brillouin zone (BZ) integration and plane-wave cut-off for plane-wave basis. These parameters need to be converged prior to geometric optimization and property predictions. Such convergences are performed for k-point and plane wave cut-off only in JARVIS-DFT leading to high quality of the data.
- 
-Fig.  An example of convergence in a) cut-off and b) k-points for Bi2Se3
- 
-Fig. Histogram for ranges of the number of k-points. The ‘energy per cell’ and ‘energy per atom’ methods are denoted by ‘EPC’ and ‘EPA’ respectively. EPA values are derived from EPC.  Fig. a) shows the length-based k-points distribution of all the materials in the database using EPC, b) the per reciprocal-atom-based distribution of k-points using EPC, c) length-based k-points distribution of all the materials in the database using EPA, d) the per reciprocal atom-based distribution of k-points using EPA. Similar distributions for non-metals are shown in e-h and for metals in i-l. Metals are in general observed to require more k-points. 
+
