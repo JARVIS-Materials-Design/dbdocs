@@ -1,6 +1,7 @@
 We use finite difference method on conventional cells of systems for ET calculations. For bulk material, the compliance tensor can be obtained as the inverse.
 										     
 Now, several other elastic properties calculated from Cij and sij. Some of the important properties are given below:
+
 KV = ((C11+C22+C33) + 2(C12+C23+C31))/9							      
 GV = ((C11+C22+C33) − (C12+C23 + C31) +3 (C44+C55+C66))/15				       
 KR = ((s11+s22+s33) + 2(s12+s23+s31))-1								      
