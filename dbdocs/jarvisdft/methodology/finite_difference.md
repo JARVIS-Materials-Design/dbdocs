@@ -1,0 +1,5 @@
+The elastic tensor is determined by performing six finite distortions of the lattice and deriving the elastic constants from the strain-stress relationship. A set of strains ε   where ε1, ε2, and ε3 are the normal strains and the others are the shear strains imposed on a crystal with lattice vectors R specified in Cartesian coordinates,
+R                                                                                                                        
+where a1 is the x-component of the lattice vector  , b2 the y-component of the lattice vector  , and so on. Corresponding to a set of strains discussed above, a set of stresses σ   are determined with VASP code. The stress-strain can then be related by general Hooke’s law
+σ = Cε                                                                                                                                           
+where C is a 6x6 elastic constant matrix, which can be obtained by matrix-inverse operations. Finite difference method-based phonons were also obtained at Gamma-points only.
