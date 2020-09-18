@@ -1,51 +1,298 @@
-Table.  A brief summary of datasets available in the JARVIS-DFT.
-Material classes	Numbers
-3D-bulk	33482
-2D-bulk	2293
-1D-bulk	235
-0D-bulk	413
-2D-monolayer	1105
-2D-bilayer	102
-Molecules	12
-Heterostructure	3
-Total DFT calculated systems	37646
+|
+| **Method** | #Materials| **MAE (_a_)** | **MAE (_b_)** | **MAE (_c_)** | **RMSE (_a_)** | **RMSE (_b_)** | **RMSE (_c_)** | 
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| **OPT (All)** | 10052 | 0.11 | 0.11 | 0.18 | 0.29 | 0.30 | 0.58 |
+| **PBE (All)** | 10052 | 0.13 | 0.14 | 0.23 | 0.30 | 0.29 | 0.61 |
+| **OPT (vdW)** | 2241 | 0.20 | 0.21 | 0.44 | 0.44 | 0.44 | 0.99 |
+| **PBE (vdW)** | 2241 | 0.26 | 0.29 | 0.62 | 0.45 | 0.51 | 1.09 |
+| **OPT (non-vdW)** | 7811 | 0.08 | 0.08 | 0.11 | 0.23 | 0.24 | 0.39 |
+| **PBE (non-vdW)** | 7811 | 0.09 | 0.09 | 0.12 | 0.22 | 0.25 | 0.36 |
 
-Table.  A brief summary of functionals used in optimizing crystal geometry in the JARVIS-DFT.
-Functionals	Numbers
-vdW-DF-OptB88 (OPT)	37646
-vdW-DF-OptB86b (MK)	109
-vdW-DF-OptPBE (OR)	111
-PBE	99
-LDA	92
 
-Table.  A brief summary of material-properties available in the JARVIS-DFT. The database is continuously expanding.
-JARVIS-DFT DATA Property	Numbers
-Optimized crystal-structure (OPT)	37646
-Formation-energy (OPT)	37646
-Bandgap (OPT)	37646
-Exfoliation energy (OPT)	819
-Bandgap (TBmBJ)	15655
-Bandgap (HSE06)	40
-Bandgap (PBE0)	40
-Bandgap (G0W0)	15
-Bandgap (DMFT)	11
-Frequency dependent dielectric tensor (OPT)	34045
-Frequency dependent dielectric tensor (TBmBJ)	15655
-Elastic-constants (OPT)	15500
-Finite-difference phonons at Г-point (OPT)	15500
-Work-function, electron-affinity (OPT)	1105
-Theoretical solar-cell efficiency (SLME) (TBmBJ)	5097
-Topological spin-orbit spillage (PBE+SOC)	11500
-Wannier tight-binding Hamiltonians (PBE+SOC)	1771
-Seebeck coefficient (OPT, BoltzTrap)	22190
-Power factor (OPT, BoltzTrap)	22190
-Effective mass (OPT, BoltzTrap)	22190
-Magnetic moment (OPT)	37528
-Piezoelectric constant (OPT, DFPT)	5015
-Dielectric tensor (OPT, DFPT)	5015
-Infrared intensity (OPT, DFPT)	5015
-DFPT phonons at Г-point (OPT)	5015
-Electric field gradient (OPT)	15187
-Non-resonant Raman intensity (OPT, DFPT)	250
-Scanning tunneling microscopy images (PBE+SOC)	770
+_Table: Comparison of bandgaps obtained from OPT functional and MBJ potential schemes compared with experimental results and DFT data available in different databases. Materials, space-group (SG), Inorganic Crystal Structure Database (ICSD#) id, Materials-Project (MP#) id, JARVIS-DFT id (JV#), bandgap from MP (MP), bandgap from AFLOW, bandgap from OQMD, our OptB88vdW bandgap (OPT), Tran-Blah modified Becke-Johnson potential bandgap (MBJ), Heyd-Scuseria-Ernzerhof (HSE06) and experimental bandgaps (eV) data are shown. Experimental data were obtained from_ _18,21,46,47__. MAE denotes the mean absolute error, while SC is the Spearman&#39;s coefficient._
+
+| **Mats.** | **SG** | **ICSD#** | **MP#** | **JV#** | **MP** | **AFLOW** | **OQMD** | **OPT** | **MBJ** | **HSE06** | **Exp.** |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| C | Fd-3m | 28857 | 66 | 91 | 4.11 | 4.12 | 4.4 | 4.46 | 5.04 | 5.26 | 5.5 |
+| Si | Fd-3m | 29287 | 149 | 1002 | 0.61 | 0.61 | 0.8 | 0.73 | 1.28 | 1.22 | 1.17 |
+| Ge | Fd-3m | 41980 | 32 | 890 | 0.0 | 0 | 0.4 | 0.01 | 0.61 | 0.82 | 0.74 |
+| BN | P63/mmc | 167799 | 984 | 17 | 4.48 | 4.51 | 4.4 | 4.46 | 6.11 | 5.5 | 6.2 |
+| AlN | P63mc | 31169 | 661 | 39 | 4.06 | 4.06 | 4.5 | 4.47 | 5.20 | 5.49 | 6.19 |
+| AlN | F-43m | 67780 | 1700 | 7844 | 3.31 | 3.31 | - | 3.55 | 4.80 | 4.55 | 4.9 |
+| GaN | P63mc | 34476 | 804 | 30 | 1.74 | 1.91 | 2.1 | 1.94 | 3.08 | 3.15 | 3.5 |
+| GaN | F-43m | 157511 | 830 | 8169 | 1.57 | 1.75 | - | 1.79 | 2.9 | 2.85 | 3.28 |
+| InN | P63mc | 162684 | 22205 | 1180 | 0.0 | 0.0 | - | 0.23 | 0.76 | - | 0.72 |
+| BP | F-43m | 29050 | 1479 | 1312 | 1.24 | 1.25 | 1.4 | 1.51 | 1.91 | 1.98 | 2.1 |
+| GaP | F-43m | 41676 | 2490 | 1393 | 1.59 | 1.64 | 1.7 | 1.48 | 2.37 | 2.28 | 2.35 |
+| AlP | F-43m | 24490 | 1550 | 1327 | 1.63 | 1.63 | 1.7 | 1.79 | 2.56 | 2.30 | 2.50 |
+| InP | F-43m | 41443 | 20351 | 1183 | 0.47 | 0.58 | 0.7 | 0.89 | 1.39 | 1.43 | 1.42 |
+| Mats. | SG | ICSD# | MP# | JV# | MP | AFLOW | OQMD | OPT | MBJ | HSE | Exp. |
+| AlSb | F-43m | 24804 | 2624 | 1408 | 1.23 | 1.23 | 1.4 | 1.32 | 1.77 | 1.80 | 1.69 |
+| InSb | F-43m | 24519 | 20012 | 1189 | 0.0 | 0.0 | 0.0 | 0.02 | 0.80 | 0.45 | 0.24 |
+| GaAs | F-43m | 41674 | 2534 | 1174 | 0.19 | 0.30 | 0.8 | 0.75 | 1.32 | 1.40 | 1.52 |
+| InAs | F-43m | 24518 | 20305 | 97 | 0.0 | 0.0 | 0.3 | 0.15 | 0.40 | 0.45 | 0.42 |
+| BAs | F-43m | 43871 | 10044 | 7630 | 1.2 | 1.2 | 1.4 | 1.42 | 1.93 | 1.86 | 1.46 |
+| **MoS2** | P63/mmc | 24000 | 2815 | 54 | 1.23 | 1.25 | 1.3 | 0.92 | 1.33 | 1.49 | 1.29 |
+| **MoSe2** | P63/mmc | 49800 | 1634 | 57 | 1.42 | 1.03 | 1.0 | 0.91 | 1.32 | 1.40 | 1.11 |
+| **WS2** | P63/mmc | 56014 | 224 | 72 | 1.56 | 1.29 | 1.4 | 0.72 | 1.51 | 1.6 | 1.38 |
+| **WSe2** | P63/mmc | 40752 | 1821 | 75 | 1.45 | 1.22 | 1.2 | 1.05 | 1.44 | 1.52 | 1.23 |
+| **Al2O3** | R-3c | 600672 | 1143 | 32 | 5.85 | 5.85 | 6.3 | 6.43 | 7.57 | 8.34 | 8.8 |
+| CdTe | F-43m | 31844 | 406 | 23 | 0.59 | 0.71 | 1.1 | 0.83 | 1.64 | 1.79 | 1.61 |
+| SnTe | Fm-3m | 52489 | 1883 | 7860 | 0.04 | 0.25 | 0.3 | 0.04 | 0.16 | 0.17 | 0.36 |
+| SnSe | Pnma | 60933 | 691 | 299 | 0.52 | - | 0.6 | 0.71 | 1.25 | 0.89 | 0.90 |
+| MgO | Fm-3m | 9863 | 1265 | 116 | 4.45 | 4.47 | 5.3 | 5.13 | 6.80 | 7.13 | 7.83 |
+| CaO | Fm-3m | 26959 | 2605 | 1405 | 3.63 | 3.64 | 3.8 | 3.74 | 5.29 | 5.35 | 7.0 |
+| CdS | P6\_3mc | 31074 | 672 | 95 | 1.2 | 1.25 | 1.4 | 1.06 | 2.61 | - | 2.5 |
+| CdS | F-43m | 29278 | 2469 | 8003 | 1.05 | 1.19 | 1.4 | 0.99 | 2.52 | 2.14 | 2.50 |
+| CdSe | F-43m | 41528 | 2691 | 1192 | 0.51 | 0.64 | 1.0 | 0.79 | 1.84 | 1.52 | 1.85 |
+| MgS | F-43m | 159401 | 1315 | 1300 | 2.76 | 3.39 | 3.6 | 2.95 | 4.26 | 4.66 | 4.78 |
+| MgSe | Fm-3m | 53946 | 10760 | 7678 | 1.77 | 1.77 | 1.8 | 2.12 | 3.37 | 2.74 | 2.47 |
+| Mats. | SG | ICSD# | MP# | JV# | MP | AFLOW | OQMD | OPT | MBJ | HSE | Exp. |
+| MgTe | F-43m | 159402 | 13033 | 7762 | 2.32 | 2.32 | 2.5 | 2.49 | 3.49 | 3.39 | 3.60 |
+| BaS | Fm-3m | 30240 | 1500 | 1315 | 2.15 | 2.15 | 2.4 | 2.15 | 3.23 | 3.11 | 3.88 |
+| BaSe | Fm-3m | 43655 | 1253 | 1294 | 1.95 | 1.95 | 2.9 | 1.97 | 2.85 | 2.79 | 3.58 |
+| BaTe | Fm-3m | 29152 | 1000 | 1267 | 1.59 | 1.59 | 1.7 | 1.61 | 2.15 | 2.31 | 3.08 |
+| **TiO2** | P42/mnm | 9161 | 2657 | 5 | 1.78 | 2.26 | 1.8 | 1.77 | 2.07 | 3.34 | 3.30 |
+| **TiO2** | I41/amd | 9852 | 390 | 104 | 2.05 | 2.53 | 2.0 | 2.02 | 2.47 | - | 3.4 |
+| **Cu2O** | Pn-3m | 26183 | 361 | 1216 | 0.5 | - | 0.8 | 0.13 | 0.49 | 1.98 | 2.17 |
+| **CuAlO2** | R-3m | 25593 | 3748 | 1453 | 1.8 | 2.0 | 2.4 | 2.06 | 2.06 | - | 3.0 |
+| **ZrO2** | P21/c | 15983 | 2858 | 113 | 3.47 | 3.56 | 4.0 | 3.62 | 4.21 | - | 5.5 |
+| **HfO2** | P21/c | 27313 | 352 | 9147 | 4.02 | 4.02 | 4.5 | 4.12 | 5.66 | - | 5.7 |
+| CuCl | F-43m | 23988 | 22914 | 1201 | 0.56 | 1.28 | 0.8 | 0.45 | 1.59 | 2.37 | 3.4 |
+| **SrTiO3** | Pm-3m | 23076 | 5229 | 8082 | 2.1 | 2.29 | 1.8 | 1.81 | 2.30 | - | 3.3 |
+| ZnS | F-43m | 41985 | 10695 | 1702 | 2.02 | 2.67 | 2.4 | 2.09 | 3.59 | 3.30 | 3.84 |
+| ZnSe | F-43m | 41527 | 1190 | 96 | 1.17 | 1.70 | 1.5 | 1.22 | 2.63 | 2.37 | 2.82 |
+| ZnTe | F-43m | 104196 | 2176 | 1198 | 1.08 | 1.48 | 1.5 | 1.07 | 2.23 | 2.25 | 2.39 |
+| SiC | F-43m | 28389 | 8062 | 8158 | 1.37 | 1.37 | 1.5 | 1.62 | 2.31 | - | 2.42 |
+| LiF | Fm-3m | 41409 | 1138 | 1130 | 8.72 | 8.75 | 11.0 | 9.48 | 11.2 | - | 14.2 |
+| KCl | Fm-3m | 18014 | 23193 | 1145 | 5.03 | 5.05 | 5.3 | 5.33 | 8.41 | 6.53 | 8.50 |
+| AgCl | Fm-3m | 56538 | 22922 | 1954 | 0.95 | 1.97 | 1.1 | 0.93 | 2.88 | 2.41 | 3.25 |
+| AgBr | Fm-3m | 52246 | 23231 | 8583 | 0.73 | 1.57 | 0.9 | 1.00 | 2.52 | 2.01 | 2.71 |
+| AgI | Fm-3m | 52361 | 22919 | 8566 | 0.77 | 1.98 | 1.4 | 0.39 | 2.08 | 2.48 | 2.91 |
+| **MAE1** | - | - | - | - | 1.45 | 1.23 | 1.14 | 1.33 | 0.51 | 0.41 | - |
+| **MAE2** | - | - | - | - | 1.39 | 1.19 | 1.09 | 1.27 | 0.43 | 0.42 | - |
+| S.C. | - | - | - | - | 0.81 | 0.94 | 0.88 | 0.84 | 0.94 | 0.97 | - |
+
+_Table Bandgap and SLME properties of a selection of materials with TBmBJ and G __0__ W __0_ _methods in DFT to evaluate uncertainty in predictions. Here E__ g_ _denotes the bandgap in eV and ɳ the calculated SLME in percentage._
+
+| **Materials** | **JID** | **E**** g **** (TBmBJ) **|** E ****g** **(G****0 ****W**** 0****)** | **E**** g **** (G ****0**** W ****0**** +SOC) **|** Ƞ (TBmBJ) **|** Ƞ (G ****0**** W ****0**** ) **|** Ƞ (G ****0**** W ****0**** +SOC)** |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| **CuBr** | 5176 | 1.9 | 2.01 | 2.09 | 25.6 | 22.74 | 21.04 |
+| **AuI** | 3849 | 2.1 | 2.34 | 2.20 | 11.4 | 8.83 | 11.86 |
+| **SiAs** | 4216 | 1.6 | 1.36 | 1.33 | 26.1 | 23.85 | 23.20 |
+| **BiTeBr** | 8781 | 1.90 | 1.52 | 0.79 | 25.2 | 32.15 | 26.11 |
+| **TlPt**** 2 ****S**** 3** | 4630 | 1.30 | 1.45 | 1.35 | 32.70 | 30.99 | - |
+| **MAD** | - | - | 0.22 | 0.34 | - | 3.23 | 2.21 |
+
+
+
+_Table. Comparison of static dielectric constant for DFPT, MBJ and experiment. Experimental data were obtained from. MBJ data were obtained from our optoelectronic property database._
+
+| **Materials** | **JID** | **DFPT** | **MBJ** | **Experiment** |
+| --- | --- | --- | --- | --- |
+| **MoS2** | 54 | _ε_11 =15.56 | _ε_11=15.34 | _ε_11=17.0 |
+| **MoSe2** | 57 | _ε_11=16.90 | _ε_11=16.53 | _ε_11=18.0 |
+| **MoTe2** | 60 | _ε_11=21.72 | _ε_11=18.74 | _ε_11=20.0 |
+| **WS2** | 72 | _ε_11=13.91 | _ε_11=13.95 | _ε_11=11.5 |
+| **WSe2** | 75 | _ε_11=15.21 | _ε_11=14.32 | _ε_11=11.7 |
+| **SiC** | 182 | 7.10 | 6.01 | 6.552 |
+| **AlP** | 1327 | 10.33 | 6.94 | 7.54 |
+| **BN** | 17 | _ε_11=4.75 | _ε_11=3.72 | _ε_11=5.06 |
+| **BP** | 1312 | 9.03 | 7.94 | 11.0 |
+| **GaP** | 1393 | 13.22 | 8.33 | 11.11 |
+| **AlSb** | 1408 | 12.27 | 9.87 | 12.04 |
+| **ZnS** | 1702 | 9.39 | 4.8 | 8.0 |
+| **CdTe** | 23 | 19.59 | 6.54 | 10.6 |
+| **HgTe** | 8041 | _ε_11=29.44 | _ε_11=11.22 | _ε_11=20 |
+| **ZnSiP2** | 2376 | _ε_11=12.44 | _ε_11=8.56 | _ε_11=11.15 |
+| **ZnGeP2** | 2355 | _ε_11=14.75 | _ε_11=9.02 | _ε_11=15 |
+| **MAE** | - | 2.46 | 2.78 | - |
+
+
+
+_Table Comparison of piezoelectric coefficient max(e __ij__ ) data for experiments and DFT. We take average values for the cases where the experimental data are in a range._
+
+| **Mats.** | **JID** | **Max(eij)** | **DFT** | **Reference** |
+| --- | --- | --- | --- | --- |
+| **BN** | 57695 | 1.55 | 1.15 | 9 |
+| **AlN** | 39 | 1.39-1.55 | 1.39 | 10-12 |
+| **ZnS** | 7648 | 0.38 | 0.13 | 9 |
+| **ZnSe** | 8047 | 0.35 | 0.06 | 9 |
+| **SiO2** | 41 | 0.171 | 0.16 | 13,14 |
+| **BaTiO3** | 110 | 1.94-5.48 | 4.13 | 15,1617,18 |
+| **LiNbO3** | 1240 | 1.33 | 1.59 | 19 |
+| **GaSb** | 35711 | -0.07 | -0.102 | 9 |
+| **PbTiO3** | 3450 | 3.35-5.0 | 3.96 | 20 |
+| **GaN** | 30 | 0.73 | 0.47 | 21 |
+| **InN** | 1180 | 0.97 | 0.90 | 22 |
+| **AlP** | 1327 | -0.1 | 0.004 | 9 |
+| **AlAs** | 1372 | -0.16 | 0 | 9 |
+| **AlSb** | 1408 | -0.13 | 0.06 | 9 |
+| **ZnO** | 1195 | 1.00-1.55,0.89 | 1.10 | 23 |
+| **BeO** | 20778 | 0.1 | 0.22 | 23 |
+| **MAD** |
+ |
+ | 0.21 |
+ |
+ 
+ 
+ _Table Comparison of experimental and DFPT IR frequencies (cm __-1__ )._
+
+| **Mats.** | **JID** | **DFPT** | **Experiment** |
+| --- | --- | --- | --- |
+| **ZnO** | 1195 | 379, 410 | 389,4131 |
+| **AlN** | 39 | 600, 653 | 620,6692 |
+| **GaN** | 30 | 532 | 5313,4 |
+| **SnS** | 1109 | 93, 144, 178, 214 | 99, 145, 178, 220 5 |
+| **SnSe** | 299 | 72.6, 98.44, 125.01, 160.3 | 80,96,123, 150 5 |
+| **KMgF3** | 20882 | 160.0, 287.0, 470.8 | 168, 299, 4586 |
+| **LiNbO3** | 1240 | 145.0, 216.6 | 160, 2207 |
+| **GeS** | 2169 | 106.4, 196.2, 236.5, 253.0, 276.9 | 118, 201,238,258, 2808 |
+| **MAD** |
+ |
+ | 8.36 |
+ 
+ _Table. Comparison of bulk modulus, K__V_ _(GPa), from vdW-DF-optB88 (OPT) and experiments. The experimental data are however not data corrected for zero-point energy effects, which would lead to a slight increase__of the values._
+
+ 
+ | **Material** | **JVASP#** | **OPT** | **Expt.** |
+ | --- | --- | --- | --- | 
+ | **Cu** | 14648 | 141.4 | 142 |
+ | **V** | 1041 | 183.4 | 161.9 |
+ | **C (diamond)** | 91 | 437.4 | 443 |
+ | **Fe** | 882 | 193 | 168.3 |
+ | **Si** | 1002 | 87.3 | 99.2 |
+ | **Ni** | 14630 | 200.4 | 186 |
+ | **Ge** | 890 | 58.1 | 75.8 |
+ | **Nb** | 934 | 176 | 170.2 |
+ | **Ag** | 813 | 100.3 | 109 |
+ | **Mo** | 925 | 262 | 272.5 |
+ | **Pd** | 14644 | 176 | 195 |
+ | **Ta** | 14750 | 199 | 200 |
+ | **Rh** | 14817 | 260.8 | 269 |
+ | **W** | 14830 | 305.2 | 323.2 |
+ | **Li** | 913 | 13.9 | 13.3 |
+ | **Ir** | 901 | 348 | 355 |
+ | **Na** | 25140 | 7.7 | 7.5 |
+ | **Pt** | 972 | 251.6 | 278.3 |
+ | **K** | 14800 | 3.9 | 3.7 |
+ | **Au** | 825 | 148 | 173.2 |
+ | **Rb** | 978 | 3.1 | 2.9 |
+ | **Pb** | 961 | 42.6 | 46.8 |
+ | **Ca** | 846 | 17.7 | 18.4 |
+ | **LiCl** | 23864 | 35.5 | 35.4 |
+ | **Sr** | 21208 | 12.5 | 12.4 |
+ | **NaCl** | 23862 | 27.7 | 26.6 |
+ | **Ba** | 831 | 9.9 | 9.3 |
+ | **NaF** | 20326 | 53.7 | 51.4 |
+ | **Al** | 816 | 70 | 79.4 |
+ | **MgO** | 116 | 160.7 | 165 |
+ | **LiF** | 1130 | 73.9 | 69.8 |
+ | **SiC** | 182 | 213.3 | 225 |
+ | **TiO2-anatase** | 314 | 196 | 191.9 |
+ | **GaAs** | 1174 | 62 | 75.6 |
+ | **TiO2-rutile** | 10036 | 226.3 | 243.5 |
+ | **P (black)** | 7818 | 41 | 36 |
+ | MAE (GPa): | 8.51 |
+
+ 
+ 
+ 
+ _Table : Chemical formula, experimental Seebeck value (_μV/K)_, DFT value, JARVIS-ID, doping concentration, doping type, temperature, space-group and reference data for the experimental vs DFT comparisons._
+
+| **Formula** | **Exp** | **DFT** | **JID** | **Dop.conc.**** (/cm3) **|** type **|** T****(K)** | **Spg.** |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| **Bi2Te3** | 116 | 124.7357 | JVASP-25 | 7.78E+19 | p | 420 | 166 |
+| **Bi2Se3** | -70 | -136.9 | JVASP-1067 | -2.20E+19 | n | 420 | 166 |
+| **CuInTe2** | 254 | 203.5364 | JVASP-3495 | 1.60E+19 | P | 300 | 122 |
+| **CuGaTe2** | 380 | 448.9839 | JVASP-2295 | 1.00E+18 | p | 300 | 122 |
+| **AgTlTe** | 550 | 721 | JVASP-9744 | 1.00E+17 | p | 320 | 62 |
+| **ErNiSb** | 258 | 268.71 | JVASP-1903 | 1.42E+19 | p | 335 | 216 |
+| **Cu2ZnSnSe4** | -26.02 | -23.98 | JVASP-17430 | 1.00E+18 | p | 293 | 121 |
+| **CoNbSn** | -69 | -2.22 | JVASP-18668 | 5.97E+16 | p | 318 | 216 |
+| **AlFe2V** | -107 | -32.3911 | JVASP-15637 | 5.00E+20 | n | 300 | 225 |
+| **CoSbZr** | -62 | -43.9953 | JVASP-18207 | 2.72E+20 | n | 335 | 216 |
+| **SnSe** | 586 | 674.7 | JVASP-299 | 3.16E+17 | p | 523 | 62 |
+| **SnTe** | 103 | 111.855 | JVASP-7860 | 1.00E+21 | p | 817 | 225 |
+| **Cu2Se** | 258 | 148.2624 | JVASP-18192 | 2.00E+21 | p | 900 | 216 |
+| **Mg2Sn** | -71.5 | -91.3387 | JVASP-14507 | -2.00E+19 | n | 400 | 225 |
+
+
+_Table Comparison of current density functional (J-DFT) predictions with experimental (Exp) and previously (Prev.-DFT) reported Electric Field Gradient, V__zz_ _(10__21 __Vm__ -2__) data. The MAD (Mean Absolute Deviation), and MAPD (Mean Absolute Percentage Difference) values are calculated for the whole data. Details of each material are provided at its corresponding webpage. Please look into the references (and references therein) for experimental and previously calculated data._
+
+| **Material** | **JID** | **Atom** | **V zz (Exp) ** | **V zz (J-DFT) **| **V zz (Prev.-DFT) **| **Δ** | **Δ%** |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| Cl2 | 855 | Cl | 55.1858 | 52.85 | 54.2343 | 2.33 | 4.22 |
+| Br2 | 840 | Br | 95.6958 | 88.86 | 94.4443 | 6.83 | 7.14 |
+| I2 | 895 | I | 113.0058 | 108.70 | 119.0143 | 4.30 | 3.81 |
+| Be | 25056 | Be | 0.04459 | 0.072 | 0.0660 | 0.028 | 63.64 |
+| Mg | 14840 | Mg | 0.04859 | 0.079 | 0.0460 | 0.031 | 64.58 |
+| Sc | 996 | Sc | 0.3859 | 1.78 | 0.9660 | 1.40 | 368.4 |
+| Ti | 14815 | Ti | 1.6159,61 | 1.64 | 1.7560 | 0.03 | 1.86 |
+| Co | 858 | Co | 2.959 | 0.52 | 0.2960 | 2.38 | 82.06 |
+| Zn | 1056 | Zn | 3.4859 | 5.62 | 4.2960 | 2.14 | 61.50 |
+| Zr | 14612 | Zr | 4.4059 | 3.50 | 4.1460 | 0.90 | 20.45 |
+| Tc | 1020 | Tc | 1.8359 | 1.67 | 1.7460 | 0.16 | 8.74 |
+| Ru | 987 | Ru | 0.9759 | 1.52 | 1.6260 | 0.55 | 56.70 |
+| Cd | 14832 | Cd | 6.5059 | 7.56 | 8.1360 | 1.06 | 16.31 |
+| La | 910 | La | 1.6259 | 2.24 | 0.9160 | 0.62 | 38.27 |
+| Hf | 14590 | Hf | 7.3359 | 8.87 | 8.1260 | 1.54 | 21.01 |
+| Re | 981 | Re | 5.1259 | 6.14 | 6.4960 | 1.02 | 19.92 |
+| Os | 952 | Os | 4.1659 | 6.00 | 7.0260 | 1.84 | 44.23 |
+| BI3 | 3630 | I | 71.2962 | 68.98 | - | 2.31 | 3.24 |
+| CF3I | 32512 | I | 124.3463 | 123.22 | - | 1.12 | 0.90 |
+| CIN | 5758 | I | 157.2164 | 151.0 | - | 6.21 | 3.95 |
+| NaNO2 | 1429 | Na | 0.43865 | 0.552 | 0.57566 | 0.114 | 26.03 |
+| NaNO2 | 1429 | N | 11.1065 | 12.194 | 11.77266 | 1.094 | 9.86 |
+| Cu2O | 1216 | Cu | 9.8067 | 6.47 | 6.76566 | 3.33 | 33.98 |
+| TiO2 | 10036 | Ti | 2.2168 | 2.098 | 2.26966 | 0.112 | 5.07 |
+| TiO2 | 10036 | O | 2.3868 | 2.21 | 2.23566 | 0.17 | 7.14 |
+| SrTiO3 | 8082 | O | 1.6269 | 1.24 | 1.0070 | 0.38 | 23.46 |
+| BaTiO3 | 8029 | O | 2.4669 | 3.56 | 2.3570 | 1.10 | 44.72 |
+| Li3N | 1375 | N | 1.0471 | 1.25 | 1.0966 | 0.21 | 20.19 |
+| Li3N | 1375 | Li(2c) | 0.3071 | 0.225 | 0.29166 | 0.075 | 25.00 |
+| Li3N | 1375 | Li(1b) | 0.6071 | 0.50 | 0.61666 | 0.144 | 24.00 |
+| FeSi | 8178 | Fe | 4.4572,73 | 4.84 | 4.9243 | 0.39 | 8.76 |
+| FeS2(marcasite) | 2142 | Fe | 3.074 | 2.93 | 3.2143 | 0.07 | 2.33 |
+| FeS2(pyrite) | 9117 | Fe | 3.6674 | 3.51 | 3.4043 | 0.15 | 4.10 |
+| 2H-MoS2 | 54 | Mo | 7.0939,40 | 7.70 | - | 0.61 | 8.60 |
+| 2H-MoS2 | 54 | S | 5.5439,40 | 5.33 | - | 0.21 | 3.80 |
+| 2H-WS2 | 72 | S | 4.8239,40 | 4.53 | - | 0.29 | 6.22 |
+| CaGa2 | 16464 | Ga | 4.4475 | 3.55 | 3.7776 | 0.89 | 20.05 |
+| SrGa2 | 14853 | Ga | 5.2275 | 2.54 | 4.1376 | 2.68 | 51.34 |
+| BaGa2 | 19628 | Ga | 4.4875 | 5.10 | 4.3876 | 0.62 | 13.84 |
+| NaGa4 | 14728 | Ga(e) | 6.4976 | 5.20 | 6.1876 | 1.29 | 19.88 |
+| NaGa4 | 14728 | Ga(d) | 4.6476 | 4.33 | 4.4476 | 0.31 | 6.68 |
+| CaGa4 | 20533 | Ga(e) | 2.8976 | 2.67 | 2.8076 | 0.22 | 7.61 |
+| CaGa4 | 20533 | Ga(d) | 4.8776 | 4.99 | 4.7376 | 0.12 | 2.46 |
+| SrGa4 | 20206 | Ga(e) | 2.5176 | 1.67 | 2.2476 | 0.84 | 33.47 |
+| SrGa4 | 20206 | Ga(d) | 5.9576 | 5.31 | 5.6476 | 0.64 | 10.76 |
+| TaP | 79643 | Ta | 3.0077 | 2.5 | 3.5477 | 0.50 | 16.67 |
+| UAs2 | 19797 | U | 15.078 | 9.7 | 13.0357 | 5.3 | 35.3 |
+
+ 
+ 
+ 
+ 
+ 
+_Table. Mean Absolute Error (MAE) for JARVIS-DFT data with respect to available experimental data for various material properties._
+
+| **Property** | **#Materials** | **MAE** | **Typical range** |
+| --- | --- | --- | --- |
+| **Formation energy (eV/atom)** | 1317 | 0.128 | -4 to 2 |
+| **OptB88vdW-bandgaps (eV)** | 54 | 1.33 | 0 to 10 |
+| **TBmBJ-bandgaps (eV)** | 54 | 0.51 | 0 to 10 |
+| **Bulk modulus (GPa)** | 21 | 5.75 | 0 to 250 |
+| **Electronic (𝜀11) OPT** | 28 | 3.2 | 0 to 60 |
+| **Electronic (𝜀11) MBJ** | 28 | 2.62 | 0 to 60 |
+| **Solar-eff. (SLME) (%) (MBJ)** | 5 | 6.55 | 0 to 33.7 |
+| **Max. piezoelectric strain coeff (Cm-2)** | 16 | 0.21 | 0 to 2 |
+| **Dielectric constant (𝜀11) (DFPT)** | 16 | 2.46 | 0 to 60 |
+| **Seebeck coefficient (μV/K)** | 14 | 54.7 | -600 to 600 |
+| **Electric field gradient Vzz (1021Vm-2)** | 37 | 1.17 | 0 to 100 |
+| **IR mode (cm-1)** | 8 | 8.36 | 0 to 4000 |
+
+
+
+
 
