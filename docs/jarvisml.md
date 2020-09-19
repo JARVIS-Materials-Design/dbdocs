@@ -1,7 +1,7 @@
-# JARVIS-ML
+# ML
 
 ## Overview
-Currently, there are two types of data that are machine-learned in JARVIS-ML: discrete and image-based.
+Currently, there are two types of data that are machine-learned (ML) in JARVIS-ML: discrete and image-based.
 
 JARVIS-ML introduced Classical Force-field Inspired Descriptors (CFID) as a universal framework 
 to represent a material’s chemistry-structure-charge related data. These descriptors along with 

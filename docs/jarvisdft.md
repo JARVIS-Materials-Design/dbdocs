@@ -1,4 +1,4 @@
-# JARVIS-DFT
+# DFT
 
 ## Overview
 
