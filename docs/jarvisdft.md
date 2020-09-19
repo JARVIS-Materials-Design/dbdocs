@@ -81,7 +81,7 @@ Materials Project, OQMD, AFLOW, COD databases. These input structures are then s
 of geometric and electronic optimizations (discussed below) following JARVIS-DFT workflow protocols. 
 After the geometric optimization, several materials properties are calculated .
 ``` python hl_lines="3"
-# Make sure JVASP_PSP_DIR is correctly set for VASP pseudopotentials.
+# Make sure JARVIS_VASP_PSP_DIR is correctly set for VASP pseudopotentials.
 from jarvis.io.vasp.inputs import Poscar
 from jarvis.tasks.vasp.vasp import JobFactory
 p = Poscar.from_file("POSCAR")
