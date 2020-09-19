@@ -1,1 +1,0 @@
-DFT+U corrections are used only for special cases because it is somewhat tricky to get formation energies from the total energies obtained from such calculations. DFT+U calculations are used during magnetic topologic insulator search cases mainly. We generally use U=3.0 eV or complete U-scan (0 to 3 eV) for enumerating the effects of U-parameter. 

@@ -1,2 +1,0 @@
-After obtaining the initial structures from several databases, we optimize following JARVIS-DFT protocols of a) converging k-points, b) converging cut-off, c) converging energy, d) converging forces. These final optimized structures are analyzed in terms of scalar quantities such as density, volume etc. as well as statistical functions such as radial distribution function, angular distribution function, dihedral distribution function, X-ray diffraction pattern etc. to know about the local atomisitic environments that controls several material-properties.
-

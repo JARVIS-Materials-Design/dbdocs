@@ -1,2 +1,0 @@
-Since the invention of the scanning tunneling microscope (STM), this technique has become an essential tool for characterizing material surfaces and adsorbates. In addition to providing atomic insights, STM has been proven useful for characterizing the electronic structure, shapes of molecular orbitals, and vibrational and magnetic excitations. It can also be used for manipulating adsorbates and adatoms, and for catalysis and quantum information processing applications. We use Tershoff-Hamman approach to predict STM images of 2D materials.
-

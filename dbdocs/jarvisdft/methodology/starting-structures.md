@@ -1,1 +1,0 @@
-The initial/input crystal structures were obtained from the Inorganic Crystal Structure Database, Materials Project, OQMD, AFLOW, COD databases. These input structures are then subjected to a set of geometric and electronic optimizations (discussed below) following JARVIS-DFT workflow protocols. 

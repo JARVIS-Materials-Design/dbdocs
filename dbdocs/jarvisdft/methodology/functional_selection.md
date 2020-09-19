@@ -1,2 +1,0 @@
-We mainly use OptB88vdW method for our calculations, but we also carryout local density approximation (LDA) and generalized gradient approximation with Perdew-Burke-Ernzerhof (GGA-PBE)-based calculations for benchmarking purposes. OptB88vdW functional, has been shown to gives accurate lattice parameters for both van der Waals (vdW) and non-vdW solids. 
-TBmBJ potential is used as a meta-GGA method for better predicting the bandgaps and dielectric function of a material on the OptB88vdW optimized cell. 

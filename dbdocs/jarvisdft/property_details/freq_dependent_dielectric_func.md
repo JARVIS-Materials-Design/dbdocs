@@ -1,3 +1,0 @@
-We use linear optics theory at semilocal and meta-GGA levels to calculate frequency dependent real and imaginary part of dielectric function. The meta-GGA based data should predict better bandgaps hence dielectric function. Note that ionic contributions are ignored in such calculations. Several important properties such as absorption coefficient, electron energy loss spectrum, reflectivity, solar cell efficiency etc. can be calculated from the frequency dependent dielectric function. 
-
-Using the absorption coefficient and bandgap (indirect and direct gaps), we calculate theoretical solar cell efficiencies of a material.

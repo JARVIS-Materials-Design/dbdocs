@@ -1,1 +1,0 @@
-The infrared intensity is important for thermal-imaging, infrared-astronomy, food-quality control. Infrared frequencies are classified in three categories: far (30-400 cm-1), mid (400-4000 cm-1) and near (4000-14000 cm-1) IR frequencies. The IR intensity is calculated obtained from the gamma-point phonon data used in the DFPT calculations. 

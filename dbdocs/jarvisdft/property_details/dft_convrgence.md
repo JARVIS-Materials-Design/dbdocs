@@ -1,2 +1,0 @@
-Although density functional theory is exact in theory, its implementation requires several approximations such as the choice of basis-set, exchange-correlation functional, mesh-size for Brillouin zone (BZ) integration and plane-wave cut-off for plane-wave basis. These parameters need to be converged prior to geometric optimization and property predictions. Such convergences are performed for k-point and plane wave cut-off only in JARVIS-DFT leading to high quality of the data.
-
