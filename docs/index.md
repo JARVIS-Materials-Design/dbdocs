@@ -1,4 +1,4 @@
-# Home
+# Introduction
 
 NIST-JARVIS homepage [https://jarvis.nist.gov/](https://jarvis.nist.gov/).
 
