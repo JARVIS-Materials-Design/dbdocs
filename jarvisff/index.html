@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        
+        <link rel="shortcut icon" href="../img/favicon.ico">
+        <title>JARVIS-FF - JARVIS-DB</title>
+        <link href="../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../css/font-awesome.min.css" rel="stylesheet">
+        <link href="../css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+
+        <script src="../js/jquery-1.10.2.min.js" defer></script>
+        <script src="../js/bootstrap.min.js" defer></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script> 
+    </head>
+
+    <body>
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href="..">JARVIS-DB</a>
+                <!-- Expander button -->
+                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar-collapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Expanded navigation -->
+                <div id="navbar-collapse" class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li class="navitem">
+                                <a href=".." class="nav-link">Home</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="../jarvisdft/" class="nav-link">JARVIS-DFT</a>
+                            </li>
+                            <li class="navitem active">
+                                <a href="./" class="nav-link">JARVIS-FF</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="../jarvisml/" class="nav-link">JARVIS-ML</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="../jarvistools/" class="nav-link">JARVIS-Tools</a>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-toggle="modal" data-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                            <li class="nav-item">
+                                <a rel="prev" href="../jarvisdft/" class="nav-link">
+                                    <i class="fa fa-arrow-left"></i> Previous
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a rel="next" href="../jarvisml/" class="nav-link">
+                                    Next <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-light navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-toggle="collapse" data-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-level="1"><a href="#jarvis-ff" class="nav-link">JARVIS-FF</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-level="2"><a href="#overview" class="nav-link">Overview</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#methodology" class="nav-link">Methodology</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#property-details-and-assesment" class="nav-link">Property details and assesment</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#references" class="nav-link">References</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+        </ul>
+    </div>
+</div></div>
+                    <div class="col-md-9" role="main">
+
+<h1 id="jarvis-ff">JARVIS-FF</h1>
+<h2 id="overview">Overview</h2>
+<p>JARVIS-FF is a repository of classical force-field/potential calculation data 
+intended to help users select the most appropriate force-field for a specific application. 
+Many classical force-fields are developed for a particular set of properties (such as energies), 
+and may not have been tested for properties not included in training (such as elastic constants, 
+or defect formation energies). JARVIS-FF provides an automatic framework to consistently calculate and compare basic properties, 
+such as the bulk modulus, defect formation energies, phonons, etc. that may be critical for specific molecular-dynamics simulations. 
+JARVIS-FF relies on DFT and experimental data to evaluate accuracy.</p>
+<p><img src="https://www.nist.gov/sites/default/files/styles/960_x_960_limit/public/images/2020/08/23/JARVIS-FF.png" style="float: left; margin-right: 10px;" /></p>
+<p><em>Table. A summary of various types of force-fields available in the JARVIS-FF.</em></p>
+<table>
+<thead>
+<tr>
+<th><strong>Force-fields</strong></th>
+<th><strong>Numbers</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>EAM</strong></td>
+<td>92</td>
+</tr>
+<tr>
+<td><strong>Tersoff</strong></td>
+<td>9</td>
+</tr>
+<tr>
+<td><strong>ReaxFF</strong></td>
+<td>5</td>
+</tr>
+<tr>
+<td><strong>COMB</strong></td>
+<td>6</td>
+</tr>
+<tr>
+<td><strong>AIREBO</strong></td>
+<td>2</td>
+</tr>
+<tr>
+<td><strong>MEAM</strong></td>
+<td>1</td>
+</tr>
+<tr>
+<td><strong>EIM</strong></td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+<h2 id="methodology">Methodology</h2>
+<ul>
+<li>We started by downloading all the available potentials from the NIST interatomic potential repository 
+(IPR) and from LAMMPS software directory. </li>
+<li>For each element having at least a potential, we downloaded all the corresponding crystal structures from 
+the Materials Project or JARVIS-DFT database. </li>
+<li>We also downloaded all the energetics and mechanical properties data from and stored them in a separate database for a 
+later comparison with the classical results (LAMMPS calculations at T=0 K). </li>
+<li>The high-throughput setting of LAMMPS jobs was done using JARVIS-tools. </li>
+<li>In our runs we used 10-06 as strain, 10-10 eV/Å for force convergence during the minimization to optimize
+the structure and 1000 maximum iteration for structure optimization.<br />
+These are generalized computational set-up parameters, and the energetics and elastic constant data may or may not depend on them. </li>
+<li>We tested strain parameters for a range of values (10-04, 10-06 and 10-08) but obviously evaluating such set of parameters 
+for all the calculations was too extensive a work and was not carried out here. </li>
+<li>The relaxed structure was also stored along with the above files for later use such as for performing defect, 
+phonon or other similar calculations.
+After the minimization, the crystal structure is stored in LAMMPS data-format and JSON format. </li>
+<li>Using this JSON file, unique Wyckoff positions were identified and deleted to represent vacancy-structures. 
+The multiplicity of the Wyckoff positions is also recorded. </li>
+<li>After the defect structure generation, the LAMMPS energy minimization is carried out. 
+In a subsequent run, we calculate the chemical potential of the defect element using the specific force-field.</li>
+<li>The data for the vacancy structure, chemical potential of element and perfect structure energy were used 
+to calculate the defect formation energies. The most stable prototype for chemical potential calculation 
+was determined using the energy above convex hull data from DFT. The defect structures were required to 
+be at least 1.5 nm long in the x, y and z directions to avoid self-interactions with the periodic images 
+of the simulation cell. Similar to the defect structures, distinct surfaces were created up to 
+3 Miller indices with the relaxed structure stored in the JSON file. </li>
+<li>A generic code for generating 
+defect and surface structures is given at our github page. We enforce the surfaces to be at least 
+2.5 nm thick and with 2.5 nm vacuum in the simulation box.  The 2.5 nm vacuum is used to ensure no 
+self-interaction and the thickness is used to mimic actual experimental surface. Using the energies of 
+perfect bulk and surface structures, surface energies for a specific plane are calculated. </li>
+<li>We should point 
+out that only unreconstructed surfaces without any surface-segregation effects are computed, 
+as our high-throughput approach does not allow for taking into account specific, element dependent reconstructions yet.</li>
+<li>Phonons were obtained by making an interface of JARVIS-FF with Phonopy package at 0 K. For deformed-structures, constant volume ensemble was used. The deformed structures were taken of at least 1.5 nm size in all directions.</li>
+</ul>
+<pre><code class="python">from jarvis.tasks.lammps.lammps import LammpsJob, JobFactory
+from jarvis.core.atoms import Atoms
+atoms = Atoms.from_cif('abc.cif')
+parameters = {
+        &quot;pair_style&quot;: &quot;eam/alloy&quot;,
+        &quot;pair_coeff&quot;: &quot;/data/knc6/JARVIS-FF-NEW/FS/Al1.eam.fs&quot;,
+        &quot;atom_style&quot;: &quot;charge&quot;,
+        &quot;control_file&quot;: &quot;inelast.mod&quot;,
+    }
+lmp = LammpsJob(atoms=atoms, parameters=parameters, lammps_cmd=cmd).runjob()
+job_fact = JobFactory(pair_style='eam/alloy',name=&quot;my_first_lammps_run&quot;)
+cmd = 'lmp_serial&lt;in.main&gt;lmp.out'
+job_fact.all_props_eam_alloy(atoms=atoms,ff_path='Al1.eam.fs',lammps_cmd=cmd)
+</code></pre>
+
+<h2 id="property-details-and-assesment">Property details and assesment</h2>
+<ul>
+<li>Using jarvis.core.Atoms class several atomistic properties such as lattice parameters, density, 
+packing fraction etc. can be calculated. </li>
+<li>The optimized lattice parameters generally 
+compare well with DFT data except for the FFs where a particular phase was not trained 
+during FF-fitting. </li>
+<li>Similarly, energetics in terms of convex hull plot is compared between DFT and FF results.</li>
+<li>Elastic tensor and derived properties were predicted using LAMMPS runs and comapred with DFT data.</li>
+<li>For the defect formation energies, we consider vacancies and free-surfaces which are generated by the modules in the JARVIS-Tools. </li>
+<li>Phonon data from JARVIS-DFT and JARVIS-FF can be compared for a system to evaluate the phonon quality. 
+However, it is important to note that in DFT there might be only conventional cell Gamma-point phonon 
+data available whereas in JARVIS-FF we use supercell finite difference-based approach for obtaining phonon 
+density of states and bandstructures. </li>
+<li>For a known stable material if the phonon bandstructure shows high 
+negative values then it signifies the FF maynot be suitable to predict correct dynamical properties of the system.</li>
+</ul>
+<h2 id="references">References</h2>
+<ol>
+<li><a href="https://www.nature.com/articles/sdata2016125">Evaluation and comparison of classical interatomic potentials through a user-friendly interactive web-interface, Scientific Data 4, 160125 (2017).</a></li>
+<li><a href="http://iopscience.iop.org/article/10.1088/1361-648X/aadaff/meta">High-throughput assessment of vacancy formation and surface energies of materials using classical force-fields, J. Phys. Cond. Matt. 30, 395901(2018).</a></li>
+</ol></div>
+            </div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script>
+            var base_url = "..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../js/base.js" defer></script>
+        <script src="../search/main.js" defer></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+                <p>
+                    From here you can search these documents. Enter
+                    your search terms below.
+                </p>
+                <form>
+                    <div class="form-group">
+                        <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>
