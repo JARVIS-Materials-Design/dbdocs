@@ -15,6 +15,15 @@ Follow the instructions:
 
 [Installation instructions](https://github.com/usnistgov/jarvis/blob/master/Installation.rst)
 
+
+## Features
+
+- High-throughput density functional theory, classical force-field/moelcular dynamics, machine-learning calculations.
+- Post-processing and plotting tools for calulation results.
+- Uploading and downloading data to JARVIS-API and Figshare through REST framework.
+- Development of webpages for materials data.
+
+
 ## Modules
 JARVIS-Tools module list and respective documentation is available at:
 
