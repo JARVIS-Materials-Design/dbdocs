@@ -8,7 +8,7 @@ and [pytests modules](https://github.com/usnistgov/jarvis/tree/master/jarvis/tes
 get use JARVIS-DB and JARVIS-Tools.
 
 
-## Density functional theory calculations(DFT)
+## DFT
 
 ### Running calculations
 The JARVIS-Tools curretly allows to run DFT calculations with VASP and QE software. The JARVIS-DFT is mainly based on VASP software but 
@@ -157,7 +157,7 @@ tid="5f626925ece4b00035e5277f"
 a.upload_xml_file(filename='JVASP-1067.xml',template_id=tid)
 ``` 
 
-## JARVIS-FF
+## FF
 
 Molecular dynamics/classical force-field calculations can be carried out with LAMMPS software.
 An example for running LAMMPS is given below. Here, a LammpsJob module is defined with the help of 
@@ -203,7 +203,7 @@ from jarvis.db.lammps_to_xml import write_xml
 write_xml(data=data,filename='lmp.xml')
 ``` 
 
-## JARVIS-ML
+## ML/AI
 
 Currently JARVIS-ML allows prediction of material properties with machine learning. The materials information
 is converted into descriptors using Classical Force-field Inspired Descriptors (CFID) or Coulomb materix.
