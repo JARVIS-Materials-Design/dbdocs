@@ -9,6 +9,13 @@ data and methods, as shown in Fig. 3. It uses cloud-based continuous integration
 GitHubAction, CircleCI, TravisCI, CodeCov, and PEP8 linter to maintain consistency in the code and 
 its functionalities. The JARVIS-Tools is distributed through an open GitHub repository: [GitHub page](https://github.com/usnistgov/jarvis) .
 
+## Installation
+
+Follow the instructions:
+
+[Installation instructions](https://github.com/usnistgov/jarvis/blob/master/Installation.rst)
+
+
 ## Modules
 JARVIS-Tools module list and respective documentation is available at:
 
