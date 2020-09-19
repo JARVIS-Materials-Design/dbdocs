@@ -1,4 +1,4 @@
-# Derived apps
+# Other apps
 
 ## Overview
 
