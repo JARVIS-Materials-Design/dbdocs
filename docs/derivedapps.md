@@ -1,4 +1,4 @@
-# Other apps
+# JARVIS-OtherApps
 
 ## Overview
 
