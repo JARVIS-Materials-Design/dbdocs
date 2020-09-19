@@ -146,7 +146,7 @@ We alreay provide modules to convert the calculation informato to XML and module
 ``` python hl_lines="3"
 from jarvis.db.vasp_to_xml import VaspToApiXmlSchema 
 from jarvis.db.restapi import Api
-folder='/home/users/knc6/Software/jarvis/jarvis/examples/vasp/SiOptB88vdW"
+folder="/home/users/knc6/Software/jarvis/jarvis/examples/vasp/SiOptB88vdW"
 filename = "JVASP-1002.xml"
 VaspToApiXmlSchema(folder=folder).write_xml(filename=filename)
 a = Api(user_info_file_path="/users/knc6/myinfo")
