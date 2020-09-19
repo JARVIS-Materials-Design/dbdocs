@@ -2,7 +2,7 @@
 
 ## Overview
 
-JARVIS-API is a Django-REST API framework for uploading and downloading data from https://jarvis.nist.gov/.
+JARVIS-API is a Django-REST API framework for uploading and downloading data from [NIST-JARVIS](https://jarvis.nist.gov/).
 A user can request an account through the web-interface to access a large and diverse amount of materials-data.
 Click on the Log In/Sign Up button. The data is generated from several JARVIS resources 
 such as JARVIS-DFT, JARVIS-FF, and JARVIS-ML etc. A user can also upload there own data using the API. 
@@ -15,10 +15,10 @@ for uploading and downloading data.
 ## Methodology
 
 
-- A user can send GET/POST requests to the JARVIS-API using the tools provided here: https://github.com/usnistgov/jarvis/blob/master/jarvis/db/restapi.py
+- A user can send GET/POST requests to the JARVIS-API using the tools provided here: [REST-API](https://github.com/usnistgov/jarvis/blob/master/jarvis/db/restapi.py)
 
 - A user should upload using the Data curation button on the web and select a particular template. 
-If you need a custom made template, you can send an email to https://jarvis.nist.gov/contact.
+If you need a custom made template, you can send an email to [Contact](https://jarvis.nist.gov/contact).
 
 - There are several modules available right now to interact with the API such as: get XML data using ID, post text queries, upload files, delete your documents etc.
 
