@@ -14,6 +14,15 @@ and the foundation codes to build these apps are provided at JARVIS-Tools GitHub
 calculated DFT band structures on both the set of k-points used in 
 the Wannierization as well as independent k-points from high symmetry lines.
 
+_Table. Number available Wannier TB Hamiltonians_.
+
+| **Materials** | **Numbers** | 
+| --- | --- |
+| **3D-bulk** | 1406 | 
+| **2D-monolayer** | 365 |
+| **Total** | 5097 | 0.90 |
+| **High/low piezoelectric coeff** | 1771 |
+
 
 ## JARVIS-Heterostructure
 
@@ -21,6 +30,16 @@ the Wannierization as well as independent k-points from high symmetry lines.
  - Some of the properties available are: work function, band-alignment, and heterostructure classification. 
  - The band alignment data can be also used for identifying photocatalysts and high-work function 2D-metals for contacts. 
  - We validate our results by comparing them to experimental data as well as hybrid-functional predictions.
+
+_Table. Types of 2D heterostructures based on Anderson's rule_.
+
+| **Type** | **Numbers** | 
+| --- | --- |
+| **Type-I (Symmetric)** | 75744 | 
+| **Type-II (Staggered)** | 85723 |
+| **Type-III (Broken)** | 65312 |
+| **Total** | 	226779 | 
+
 
 
 ## References
