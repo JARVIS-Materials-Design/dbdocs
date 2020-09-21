@@ -4,7 +4,7 @@
 
 JARVIS-API is a Django-REST API framework for uploading and downloading data from [NIST-JARVIS](https://jarvis.nist.gov/).
 A user can request an account through the web-interface to access a large and diverse amount of materials-data.
-Click on the Log In/Sign Up button. The data is generated from several JARVIS resources 
+Click on the [Log In/Sign Up button](https://jarvis.nist.gov/login). The data is generated from several JARVIS resources 
 such as JARVIS-DFT, JARVIS-FF, and JARVIS-ML etc. A user can also upload there own data using the API. 
 Materials data can be uploaded in XML format or as binary blob files. The XML files are converted to HTML pages
 using XSLT. XML upload requires a corresponding XSD file schema, but the blob uploads are possible without any fixed schema.
