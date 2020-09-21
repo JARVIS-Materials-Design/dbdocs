@@ -5,7 +5,7 @@ NIST-JARVIS homepage [https://jarvis.nist.gov/](https://jarvis.nist.gov/).
 This project is a part of Materials-genome initiative at NIST.
 
 JARVIS (Joint Automated Repository for Various Integrated Simulations) is a 
-repository designed to automate materials discovery using:
+repository designed to automate materials discovery and optimization using:
 
  - Classical force-field,
  - Density functional theory, 
