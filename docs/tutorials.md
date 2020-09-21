@@ -25,6 +25,7 @@ from jarvis.tasks.vasp.vasp import VaspJob
 from jarvis.io.vasp.inputs import Incar, Poscar
 from jarvis.db.jsonutils import dumpjson
 from jarvis.core.atoms import Atoms
+from jarvis.core.kpoints import Kpoints3D
 
 # mat = Poscar.from_file('POSCAR')
 coords = [[0, 0, 0], [0.25, 0.25, 0.25]]
