@@ -258,7 +258,8 @@ k-direction of a dispersive band will result in a large energy error. We conside
 individual WTBH for their own applications.
 
 ``` python hl_lines="3"
-from jarvis.io.wannier.inputs import Wannier90winbox = [[2.715, 2.715, 0], [0, 2.715, 2.715], [2.715, 0, 2.715]]
+from jarvis.io.wannier.inputs import Wannier90win
+box = [[2.715, 2.715, 0], [0, 2.715, 2.715], [2.715, 0, 2.715]]
 coords = [[0, 0, 0], [0.25, 0.25, 0.25]]
 elements = ["Si", "Si"]
 Si = Atoms(lattice_mat=box, coords=coords, elements=elements)
