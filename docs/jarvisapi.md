@@ -17,10 +17,12 @@ for uploading and downloading data.
 
 - A user can send GET/POST requests to the JARVIS-API using the tools provided here: [REST-API](https://github.com/usnistgov/jarvis/blob/master/jarvis/db/restapi.py)
 
-- A user should upload using the Data curation button on the web and select a particular template. 
+- A user should upload using the (Data Curation button)[https://jarvis.nist.gov/curate/] on the web and select a particular template. 
 If you need a custom made template, you can send an email to [Contact](https://jarvis.nist.gov/contact).
 
 - There are several modules available right now to interact with the API such as: get XML data using ID, post text queries, upload files, delete your documents etc.
+
+- After curating the data, you can find it using (Data Exploration)[https://jarvis.nist.gov/explore/keyword/]
 
 
 
