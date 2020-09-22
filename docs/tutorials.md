@@ -167,27 +167,21 @@ This script first converges K-pints and plane-wave cutoff, then using the conver
 optimizes the simulation cell, and then runs several jobs for calculating properties such as 
 bandstructure on high-symmetry k-points, elastic constanats, optoelectronic properties etc.
 
-Next, let's see how to run High-throughput jibs for multiple JARVIS-IDs:
+Next, let's see how to run High-throughput jobs for multiple JARVIS-IDs:
 
 ``` python hl_lines="3"
-from jarvis.tasks.vasp.vasp import VaspJob, write_jobfact_optb88vdw
+from jarvis.tasks.vasp.vasp import VaspJob, write_jobfact_optb88vdw, JobFactory
 from jarvis.io.vasp.inputs import Potcar, Incar, Poscar
 from jarvis.db.jsonutils import dumpjson
 from jarvis.core.atoms import Atoms
 from jarvis.core.kpoints import Kpoints3D
 from jarvis.tasks.queue_jobs import Queue
 import os
-from jarvis.tasks.vasp.vasp import JobFactory, write_jobfact_optb88vdw
 from jarvis.db.figshare import get_jid_data
-
-
-tmp_dict = get_jid_data(jid="JVASP-816", dataset="dft_3d")["atoms"]
-atoms = Atoms.from_dict(tmp_dict)
-
 
 vasp_cmd = "/users/knc6/VASP/vasp54/src/vasp.5.4.1DobbySOC2/bin/vasp_std"
 copy_files = ["/users/knc6/bin/vdw_kernel.bindat"]
-submit_cmd = ["qsub", "-q", "francesca", "submit_job"]
+submit_cmd = ["qsub", "submit_job"]
 jids = ["JVASP-1002", "JVASP-1067"]
 
 for jid in jids:
