@@ -19,26 +19,32 @@ scaling up VASP related calculations and enhancing reproducibilty.
 Make sure JARVIS_VASP_PSP_DIR is declared as a PATH to VASP pseudopotential directory.
 The input file generation and output file parsing modules for VASP can be found 
 in jarvis.io.vasp.inputs and jarvis.io.vasp.outputs modules.
-
+We start by setting up and submitting a single VaspJob:
 ``` python hl_lines="3"
-from jarvis.tasks.vasp.vasp import VaspJob
-from jarvis.io.vasp.inputs import Incar, Poscar
+from jarvis.tasks.vasp.vasp import VaspJob, write_vaspjob
+from jarvis.io.vasp.inputs import Potcar, Incar, Poscar
 from jarvis.db.jsonutils import dumpjson
 from jarvis.core.atoms import Atoms
 from jarvis.core.kpoints import Kpoints3D
+from jarvis.tasks.queue_jobs import Queue
+import os
 
+# Load/build crystal structure
 # mat = Poscar.from_file('POSCAR')
 coords = [[0, 0, 0], [0.25, 0.25, 0.25]]
 elements = ["Si", "Si"]
+box = [[2.715, 2.715, 0], [0, 2.715, 2.715], [2.715, 0, 2.715]]
 atoms = Atoms(lattice_mat=box, coords=coords, elements=elements)
 mat = Poscar(atoms)
-mat.comment = 'Silicon'
+mat.comment = "Silicon"
+
+# Build INCAR file
 data = dict(
     PREC="Accurate",
     ISMEAR=0,
     SIGMA=0.01,
     IBRION=2,
-    ISIF = 3,
+    ISIF=3,
     GGA="BO",
     PARAM1=0.1833333333,
     PARAM2=0.2200000000,
@@ -47,7 +53,6 @@ data = dict(
     EDIFF="1E-7",
     EDIFFG="-1E-3",
     NELM=400,
-    ISIF=3,
     ISPIN=2,
     LCHARG=".FALSE.",
     LVTOT=".FALSE.",
@@ -55,34 +60,97 @@ data = dict(
     LWAVE=".FALSE.",
 )
 inc = Incar(data)
+# Build POTCAR info
+# export JARVIS_VASP_PSP_DIR = 'PATH_TO_YOUR_PSP'
 pot = Potcar(elements=mat.atoms.elements)
-kp = Kpoints3D().automatic_length_mesh(lattice_mat=mat.atoms.lattice_mat, length=20)
 
+# Build Kpoints info
+kp = Kpoints3D().automatic_length_mesh(
+    lattice_mat=mat.atoms.lattice_mat, length=20
+)
+
+vasp_cmd = "/users/knc6/VASP/vasp54/src/vasp.5.4.1DobbySOC2/bin/vasp_std"
+copy_files = ["/users/knc6/bin/vdw_kernel.bindat"]
+jobname = "MAIN-RELAX@JVASP-1002"
 job = VaspJob(
     poscar=mat,
     incar=inc,
     potcar=pot,
     kpoints=kp,
-    vasp_cmd="mpirun ~/bin/vasp_std",
-    copy_files=["~/bin/vdw_kernel.bindat"]
-    jobname=str("MAIN-RELAX"),
+    vasp_cmd=vasp_cmd,
+    copy_files=copy_files,
+    jobname=jobname,
 )
 
-dumpjson(data=v.to_dict(), filename='job.json')
-job.write_jobsub_py(filename="jobsub.py")
+dumpjson(data=job.to_dict(), filename="job.json")
+write_vaspjob(pyname="job.py", job_json="job.json")
+
 
 ``` 
 
-The jobsub.py can now be run on a cluster or on a PC as a python script.
+The job.py can now be run on a cluster or on a PC as a python script.
 For running this job on a PBS cluster,
 
+``` python hl_lines="3"
+submit_cmd = ["qsub", "submit_job"]
+# Example job commands, need to change based on your cluster
+job_line = (
+    "source activate my_jarvis \n"
+    + "python job.py"
+)
+name = "TestJob"
+directory = os.getcwd()
+Queue.pbs(
+    job_line=job_line,
+    jobname=name,
+    directory=directory,
+    submit_cmd=submit_cmd,
+
+ 
+``` 
+Currently, JARVIS-Tools can be used to submit job with SLURM and PBS clusters only.
+For high-throughput automated submissions one can use pre-build JobFactory module
+that allows automatic calculations for a series of properties.
+``` python hl_lines="3"
+
+from jarvis.tasks.vasp.vasp import VaspJob,write_jobfact_optb88vdw
+from jarvis.io.vasp.inputs import Potcar, Incar, Poscar
+from jarvis.db.jsonutils import dumpjson
+from jarvis.core.atoms import Atoms
+from jarvis.core.kpoints import Kpoints3D
+from jarvis.tasks.queue_jobs import Queue
+import os
+from jarvis.tasks.vasp.vasp import JobFactory,write_jobfact_optb88vdw
+
+# Load/build crystal structure
+# mat = Poscar.from_file('POSCAR')
+coords = [[0, 0, 0], [0.25, 0.25, 0.25]]
+elements = ["Si", "Si"]
+box = [[2.715, 2.715, 0], [0, 2.715, 2.715], [2.715, 0, 2.715]]
+atoms = Atoms(lattice_mat=box, coords=coords, elements=elements)
+mat = Poscar(atoms)
+mat.comment = 'bulk@Silicon'
+
+vasp_cmd = "/users/knc6/VASP/vasp54/src/vasp.5.4.1DobbySOC2/bin/vasp_std"
+copy_files = ['/users/knc6/bin/vdw_kernel.bindat']
+jobname = "MAIN-RELAX@JVASP-1002"
+job = JobFactory(
+    vasp_cmd=vasp_cmd,
+    poscar=mat,
+    copy_files=copy_files,
+)
+
+dumpjson(data=job.to_dict(), filename='job_fact.json')
+write_jobfact_optb88vdw(pyname="job_fact.py", job_json="job_fact.json")
+
+``` 
+We can now submit the JobFactory as:
 ``` python hl_lines="3"
 from jarvis.tasks.queue_jobs import Queue
 import os
 submit_cmd=["qsub", "submit_job"]
 # Example job commands, need to change based on your cluster
-job_line = "source activate my_jarvis \n"+
-           "python jobsub.py"
+job_line = "source activate my_jarvis \n"+"python job_fact.py"
 name = "TestJob"
 directory = os.getcwd()
 Queue.pbs(
@@ -91,23 +159,68 @@ Queue.pbs(
     directory=directory,
     submit_cmd=submit_cmd,
 )
- 
-``` 
-Currently, JARVIS-Tools can be used to submit job with SLURM and PBS clusters only.
-For high-throughput automated submissionsone can use pre-build JobFactory module
-that allows automatic calculations for a series of properties.
-``` python hl_lines="3"
 
-from jarvis.io.vasp.inputs import Poscar
-from jarvis.tasks.vasp.vasp import JobFactory
-p = Poscar.from_file("POSCAR")
-print (p)
-JobFactory().all_optb88vdw_props(mat=p)
+
 ``` 
+
 This script first converges K-pints and plane-wave cutoff, then using the converged paramerters
 optimizes the simulation cell, and then runs several jobs for calculating properties such as 
 bandstructure on high-symmetry k-points, elastic constanats, optoelectronic properties etc.
 
+Next, let's see how to run High-throughput jibs for multiple JARVIS-IDs:
+
+``` python hl_lines="3"
+from jarvis.tasks.vasp.vasp import VaspJob, write_jobfact_optb88vdw
+from jarvis.io.vasp.inputs import Potcar, Incar, Poscar
+from jarvis.db.jsonutils import dumpjson
+from jarvis.core.atoms import Atoms
+from jarvis.core.kpoints import Kpoints3D
+from jarvis.tasks.queue_jobs import Queue
+import os
+from jarvis.tasks.vasp.vasp import JobFactory, write_jobfact_optb88vdw
+from jarvis.db.figshare import get_jid_data
+
+
+tmp_dict = get_jid_data(jid="JVASP-816", dataset="dft_3d")["atoms"]
+atoms = Atoms.from_dict(tmp_dict)
+
+
+vasp_cmd = "/users/knc6/VASP/vasp54/src/vasp.5.4.1DobbySOC2/bin/vasp_std"
+copy_files = ["/users/knc6/bin/vdw_kernel.bindat"]
+submit_cmd = ["qsub", "-q", "francesca", "submit_job"]
+jids = ["JVASP-1002", "JVASP-1067"]
+
+for jid in jids:
+    d = get_jid_data(jid=jid, dataset="dft_3d")
+    atoms = Atoms.from_dict(d["atoms"])
+    mat = Poscar(atoms)
+    mat.comment = "bulk@" + str(jid)
+    cwd_home = os.getcwd()
+    dir_name = d["jid"] + "_" + str("PBEBO")
+    if not os.path.exists(dir_name):
+        os.makedirs(dir_name)
+    os.chdir(dir_name)
+    job = JobFactory(vasp_cmd=vasp_cmd, poscar=mat, copy_files=copy_files,)
+    dumpjson(data=job.to_dict(), filename="job_fact.json")
+    write_jobfact_optb88vdw(pyname="job_fact.py", job_json="job_fact.json")
+
+    # Example job commands, need to change based on your cluster
+    job_line = (
+        "source ~/anaconda2/envs/my_jarvis/bin/activate my_jarvis \n"
+        + "python job_fact.py"
+    )
+    name = jid
+    directory = os.getcwd()
+    Queue.pbs(
+        job_line=job_line,
+        jobname=name,
+        directory=directory,
+        submit_cmd=submit_cmd,
+    )
+    os.chdir(cwd_home)
+
+```
+In the above examples, use Queue.slurm if you want to use SLURM instead of TORQUE/PBS submission.
 A complete example of such run is available at: [VASP example](https://github.com/usnistgov/jarvis/tree/master/jarvis/examples/vasp)
 
 ### Post-processing and plotting
