@@ -232,7 +232,7 @@ for jid in jids:
         submit_cmd=submit_cmd,
     )
     os.chdir(cwd_home)
-
+    """
 ```
 In the above examples, use Queue.slurm if you want to use SLURM instead of TORQUE/PBS submission.
 A complete example of such run is available at: [VASP example](https://github.com/usnistgov/jarvis/tree/master/jarvis/examples/vasp)
