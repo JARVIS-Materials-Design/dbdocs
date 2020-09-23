@@ -170,6 +170,7 @@ bandstructure on high-symmetry k-points, elastic constanats, optoelectronic prop
 Next, let's see how to run High-throughput jobs for multiple JARVIS-IDs:
 
 ``` python hl_lines="3"
+# Complete workflow for running high-throughput calculations
 from jarvis.tasks.vasp.vasp import VaspJob, write_jobfact_optb88vdw, JobFactory
 from jarvis.io.vasp.inputs import Potcar, Incar, Poscar
 from jarvis.db.jsonutils import dumpjson
@@ -179,13 +180,18 @@ from jarvis.tasks.queue_jobs import Queue
 import os
 from jarvis.db.figshare import get_jid_data
 
-vasp_cmd = "/users/knc6/VASP/vasp54/src/vasp.5.4.1DobbySOC2/bin/vasp_std"
-copy_files = ["/users/knc6/bin/vdw_kernel.bindat"]
-submit_cmd = ["qsub", "submit_job"]
+#aoth to executable
+vasp_cmd = "mpirun /home/knc6/Software/vasp.5.4.1/bin/vasp_std"
+# Needed for vdW functionals only, else keep it an empty array
+copy_files = ["/home/knc6/bin/vdw_kernel.bindat"]
+# submit_cmd = ["qsub", "submit_job"] # For Torque clusters
+submit_cmd = ["sbatch", "submit_job"]
+# List of JARVIS-IDs for which structure would be fetched and subjected to high-throughput
 jids = ["JVASP-1002", "JVASP-1067"]
 
 for jid in jids:
     d = get_jid_data(jid=jid, dataset="dft_3d")
+    # Make Atoms class from python dictinary object
     atoms = Atoms.from_dict(d["atoms"])
     mat = Poscar(atoms)
     mat.comment = "bulk@" + str(jid)
@@ -194,17 +200,31 @@ for jid in jids:
     if not os.path.exists(dir_name):
         os.makedirs(dir_name)
     os.chdir(dir_name)
-    job = JobFactory(vasp_cmd=vasp_cmd, poscar=mat, copy_files=copy_files,)
+    job = JobFactory(
+        vasp_cmd=vasp_cmd,
+        poscar=mat,
+        copy_files=copy_files,
+    )
     dumpjson(data=job.to_dict(), filename="job_fact.json")
     write_jobfact_optb88vdw(pyname="job_fact.py", job_json="job_fact.json")
 
-    # Example job commands, need to change based on your cluster
+    # Example job commands, needs to be changed based on your cluster
     job_line = (
-        "source ~/anaconda2/envs/my_jarvis/bin/activate my_jarvis \n"
+        "source activate my_jarvis \n"
+        + "module load intel/2015 openmpi/1.10.2/intel-15 \n"
         + "python job_fact.py"
     )
     name = jid
     directory = os.getcwd()
+    Queue.slurm(
+        job_line=job_line,
+        jobname=name,
+        directory=directory,
+        submit_cmd=submit_cmd,
+    )
+    os.chdir(cwd_home)
+    """
+    # For Torque clusters
     Queue.pbs(
         job_line=job_line,
         jobname=name,
