@@ -355,7 +355,7 @@ Other descriptors and graph based predictions would be available soon also.
 For a series of atomistic structures, we can convert them into CFID, which act as input matrix.
 
 ### Running calculations
-Suppose we have 40000 materials, and we get 1557 descriptor for each material, we wull have a 
+Suppose we have 40000 materials, and we get 1557 descriptor for each material, we will have a 
 40000x1557 matrix. Let's call this matrix as 'x' or input matrix.
 Next, we can get target ('y') data either from DFT, FF calculations or experiments.
 For example, we can choose formation energies of 40000 materials in the JARVIS-DFT as the dtarget data
