@@ -11,15 +11,15 @@ get use JARVIS-DB and JARVIS-Tools.
 ## DFT
 
 ### Running calculations
-The JARVIS-Tools curretly allows to run DFT calculations with VASP and QE software. The JARVIS-DFT is mainly based on VASP software but 
-sooon there would be datasets with QE asl well. We can create for example a VaspJob with the help of
-atomic structure, input parameters, pseudopotential, k-points information. Similar to many other modules
+The [JARVIS-Tools](https://github.com/usnistgov/jarvis) (install using "pip install -U jarvis-tools") curretly allows to run DFT calculations with VASP and QE software. The [JARVIS-DFT](https://jarvis.nist.gov/jarvisdft/) is mainly based on the VASP software but 
+soon there would be datasets with QE and Wien2K asl well. We can create for example a [VaspJob](https://github.com/usnistgov/jarvis/blob/master/jarvis/tasks/vasp/vasp.py#L916) with the help of
+atomic structure, input parameters, pseudopotential, k-points [information](https://www.vasp.at/wiki/index.php/Input). Similar to many other modules
 VaspJob allows to 'ToDict' and 'FromDict' methods to store or load a complete job, which is very useful in
 scaling up VASP related calculations and enhancing reproducibilty.
-Make sure JARVIS_VASP_PSP_DIR is declared as a PATH to VASP pseudopotential directory.
+Make sure JARVIS_VASP_PSP_DIR is declared as a PATH to VASP pseudopotential directory i.e. export JARVIS_VASP_PSP_DIR=YOUR_PATH_TO_PSUEDOPTENTIALS in your ~/.bashrc file.
 The input file generation and output file parsing modules for VASP can be found 
 in jarvis.io.vasp.inputs and jarvis.io.vasp.outputs modules.
-We start by setting up and submitting a single VaspJob:
+Example-1: We start by setting up and submitting a single VaspJob:
 ``` python hl_lines="3"
 from jarvis.tasks.vasp.vasp import VaspJob, write_vaspjob
 from jarvis.io.vasp.inputs import Potcar, Incar, Poscar
@@ -111,6 +111,7 @@ Queue.pbs(
 Currently, JARVIS-Tools can be used to submit job with SLURM and PBS clusters only.
 For high-throughput automated submissions one can use pre-build JobFactory module
 that allows automatic calculations for a series of properties.
+Example-2:
 ``` python hl_lines="3"
 
 from jarvis.tasks.vasp.vasp import VaspJob,write_jobfact_optb88vdw
@@ -144,7 +145,7 @@ dumpjson(data=job.to_dict(), filename='job_fact.json')
 write_jobfact_optb88vdw(pyname="job_fact.py", job_json="job_fact.json")
 
 ``` 
-We can now submit the JobFactory as:
+We can now submit the [JobFactory](https://github.com/usnistgov/jarvis/blob/master/jarvis/tasks/vasp/vasp.py#L38) as:
 ``` python hl_lines="3"
 from jarvis.tasks.queue_jobs import Queue
 import os
@@ -168,31 +169,33 @@ optimizes the simulation cell, and then runs several jobs for calculating proper
 bandstructure on high-symmetry k-points, elastic constanats, optoelectronic properties etc.
 
 Next, let's see how to run High-throughput jobs for multiple JARVIS-IDs:
-
+Example-3:
 ``` python hl_lines="3"
-# Complete workflow for running high-throughput calculations
-from jarvis.tasks.vasp.vasp import VaspJob, write_jobfact_optb88vdw, JobFactory
+from jarvis.tasks.vasp.vasp import VaspJob, write_jobfact_optb88vdw
 from jarvis.io.vasp.inputs import Potcar, Incar, Poscar
 from jarvis.db.jsonutils import dumpjson
 from jarvis.core.atoms import Atoms
 from jarvis.core.kpoints import Kpoints3D
 from jarvis.tasks.queue_jobs import Queue
 import os
+from jarvis.tasks.vasp.vasp import JobFactory, write_jobfact_optb88vdw
 from jarvis.db.figshare import get_jid_data
 
-#aoth to executable
-vasp_cmd = "mpirun /home/knc6/Software/vasp.5.4.1/bin/vasp_std"
-# Needed for vdW functionals only, else keep it an empty array
-copy_files = ["/home/knc6/bin/vdw_kernel.bindat"]
-# submit_cmd = ["qsub", "submit_job"] # For Torque clusters
-submit_cmd = ["sbatch", "submit_job"]
-# List of JARVIS-IDs for which structure would be fetched and subjected to high-throughput
+
+tmp_dict = get_jid_data(jid="JVASP-816", dataset="dft_3d")["atoms"]
+atoms = Atoms.from_dict(tmp_dict)
+
+
+vasp_cmd = (
+    "mpirun /users/knc6/VASP/vasp54/src/vasp.5.4.1DobbySOC2/bin/vasp_std"
+)
+copy_files = ["/users/knc6/bin/vdw_kernel.bindat"]
+submit_cmd = ["qsub", "-q", "francesca", "submit_job"]
 jids = ["JVASP-1002", "JVASP-1067"]
 
 for jid in jids:
     d = get_jid_data(jid=jid, dataset="dft_3d")
-    # Make Atoms class from python dictinary object
-    atoms = Atoms.from_dict(d["atoms"])
+    atoms = Atoms.from_dict(d["atoms"]).get_primitive_atoms
     mat = Poscar(atoms)
     mat.comment = "bulk@" + str(jid)
     cwd_home = os.getcwd()
@@ -200,32 +203,28 @@ for jid in jids:
     if not os.path.exists(dir_name):
         os.makedirs(dir_name)
     os.chdir(dir_name)
-    job = JobFactory(
-        vasp_cmd=vasp_cmd,
-        poscar=mat,
-        copy_files=copy_files,
-    )
+    job = JobFactory(vasp_cmd=vasp_cmd, poscar=mat, copy_files=copy_files,)
     dumpjson(data=job.to_dict(), filename="job_fact.json")
     write_jobfact_optb88vdw(pyname="job_fact.py", job_json="job_fact.json")
 
-    # Example job commands, needs to be changed based on your cluster
+    # Example job commands, need to change based on your cluster
     job_line = (
-        "source activate my_jarvis \n"
-        + "module load intel/2015 openmpi/1.10.2/intel-15 \n"
+        "source ~/anaconda2/envs/my_jarvis/bin/activate my_jarvis \n"
         + "python job_fact.py"
     )
     name = jid
     directory = os.getcwd()
-    Queue.slurm(
+    Queue.pbs(
         job_line=job_line,
         jobname=name,
         directory=directory,
         submit_cmd=submit_cmd,
     )
     os.chdir(cwd_home)
+
     """
-    # For Torque clusters
-    Queue.pbs(
+    # For Slurm clusters
+    Queue.slurm(
         job_line=job_line,
         jobname=name,
         directory=directory,
@@ -238,7 +237,7 @@ In the above examples, use Queue.slurm if you want to use SLURM instead of TORQU
 A complete example of such run is available at: [VASP example](https://github.com/usnistgov/jarvis/tree/master/jarvis/examples/vasp)
 
 ### Post-processing and plotting
-There are a variety of post-processing analysis and plotting that can be done on the output data.
+There are a variety of post-processing analysis and plotting that can be done on the [output data](https://github.com/usnistgov/jarvis/blob/master/jarvis/io/vasp/outputs.py).
 A common example would be plotting electronic density of states and bandstructure as follows:
 ``` python hl_lines="3"
 from jarvis.io.vasp.outputs import Vasprun
@@ -258,17 +257,17 @@ plt.legend()
 
 vrun.get_bandstructure(kpoints_file_path='KPOINTS')
 ``` 
-There are many other modules available such as: scanning tunneling microscopy images, solar-cell efficiency, topological spin-
+There are many other [analysis modules](https://github.com/usnistgov/jarvis/tree/master/jarvis/analysis) available such as: scanning tunneling microscopy images, solar-cell efficiency, topological spin-
 orbit spillage, transport properties, phonons, infrared intensities, and its continously expanding.
 
 
 ### Developing database
 
 After generating the results, we can store the metadata in JARVIS-API. Please request an account if you haven't made it yet.
-Following the calculation protocal mentioned above, the generated files can be converted to an XML datafile which with the help of
+Following the calculation protocal mentioned above, the generated files can be converted to an [XML datafile](https://github.com/usnistgov/jarvis/blob/master/jarvis/db/vasp_to_xml.py) which with the help of
 an XSD schema can be converted to nice-looking HTML files with the help of XSLT programming and a bit of javascript.
 
-We alreay provide modules to convert the calculation informato to XML and module to upload data. An example is give below:
+We alreay provide modules to convert the calculation informato to XML and module to [upload data](https://github.com/usnistgov/jarvis/blob/master/jarvis/db/restapi.py). An example is give below:
 
 
 ``` python hl_lines="3"
@@ -287,8 +286,8 @@ a.upload_xml_file(filename='JVASP-1067.xml',template_id=tid)
 
 ## FF
 
-Molecular dynamics/classical force-field calculations can be carried out with LAMMPS software.
-An example for running LAMMPS is given below. Here, a LammpsJob module is defined with the help of 
+Molecular dynamics/classical force-field calculations can be carried out with LAMMPS software as in [JARVIS-FF](https://jarvis.nist.gov/jarvis).
+An example for running LAMMPS is given below. Here, a [LammpsJob](https://github.com/usnistgov/jarvis/blob/master/jarvis/tasks/lammps/lammps.py#L144) module is defined with the help of 
 atoms, pair-style, coefficient, and template file (*.mod file) to control the calculations.
 
 ### Running calculations
@@ -325,13 +324,13 @@ job_fact = JobFactory(pair_style="eam/alloy", name="my_first_lammps_run")
 job_fact.all_props_eam_alloy(atoms=cvn_atoms, ff_path=ff, lammps_cmd=cmd)
 ```
 The above lines can be written on a file such as job.py and can be run on a PC or a cluster with the
-from jarvis.tasks.queue_jobs import Queue module.
+from [jarvis.tasks.queue_jobs](https://github.com/usnistgov/jarvis/blob/master/jarvis/tasks/queue_jobs.py) import Queue module.
 
 
 ### Post-processing and plotting
 
 Important quantities such asn total energy, forces etc. can be obtained with the help of
-jarvis.io.lammps.outputs module. 
+[jarvis.io.lammps.outputs](https://github.com/usnistgov/jarvis/blob/master/jarvis/io/lammps/outputs.py) module. 
 
 ``` python hl_lines="3"
 from jarvis.io.lammps.outputs import parse_material_calculation_folder
@@ -341,7 +340,7 @@ data = parse_material_calculation_folder(folder)
 
 ### Developing database
 
-The calculation data can now be converted into XML files as follows:
+The calculation data can now be [converted into XML](https://github.com/usnistgov/jarvis/blob/master/jarvis/db/lammps_to_xml.py) files as follows:
 
 ``` python hl_lines="3"
 from jarvis.db.lammps_to_xml import write_xml
@@ -350,7 +349,7 @@ write_xml(data=data,filename='lmp.xml')
 
 ## ML/AI
 
-Currently JARVIS-ML allows prediction of material properties with machine learning. The materials information
+Currently [JARVIS-ML](https://jarvis.nist.gov/jarvisml/) allows prediction of material properties with machine learning. The materials information
 is converted into descriptors using Classical Force-field Inspired Descriptors (CFID) or Coulomb materix.
 Other descriptors and graph based predictions would be available soon also.
 For a series of atomistic structures, we can convert them into CFID, which act as input matrix.
@@ -367,10 +366,10 @@ Once trained we get a trained model, which can be stored in say pickle or joblib
 
 For a new material now, it can be converted into CFID i.e. 1x1557 matrix which when fed to the model
 will give 1x1 prediction hence the ML prediction. We can use a range of ML algorithms such as 
-linear regression, decision trees, Gaussian processes etc. We find with CFID descriptors, gradient boosting
+linear regression, decision trees, Gaussian processes etc. We find with CFID [descriptors](https://github.com/usnistgov/jarvis/tree/master/jarvis/ai/descriptors), gradient boosting
 decision trees (especially in LightGBM) gives one of the most accurate results. 
-We provide tools to run with major ML packages such as scikit-learn, tensorflow, pytorch, lightgbm etc.
-
+We provide tools to run with major [ML packages](https://github.com/usnistgov/jarvis/tree/master/jarvis/ai/pkgs) such as scikit-learn, tensorflow, pytorch, lightgbm etc.
+Example-1:
 ``` python hl_lines="3"
 # An example of JARVIS-ML training
 from jarvis.ai.pkgs.utils import get_ml_data
@@ -389,6 +388,7 @@ print (reg_sc['mae'])
 ```
 
 Another full example for regression
+Example-2:
 ``` python hl_lines="3"
 from jarvis.ai.pkgs.lgbm.regression import parameters_dict
 from scipy.stats import median_absolute_deviation as mad
@@ -398,7 +398,7 @@ import numpy as np
 from sklearn.model_selection import train_test_split
 from jarvis.ai.pkgs.utils import regr_scores
 import joblib
-
+# Some of the previously found hyper-parameters
 params = parameters_dict()
 
 print(params)
