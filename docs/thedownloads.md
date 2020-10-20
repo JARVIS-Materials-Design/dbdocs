@@ -42,7 +42,7 @@ The dataset contains vacancy formation energy of materials with several potentia
 
 # JARVIS-ML
 
-## [CFID descriptors for JARVIS-DFT 3D data](https://doi.org/10.6084/m9.figshare.6870101)
+## [JARVIS-CFID descriptors datasets for JARVIS-DFT, MP, OQMD, QM9, AFLOW](https://figshare.com/projects/JARVIS-CFID-Descriptor_dataset/90383)
 The dataset contains CFID descriptor of materials with several properties. 
 
 ## [Data-driven Discovery of 3D and 2D Thermoelectric Materials](https://figshare.com/articles/dataset/Data-driven_Discovery_of_3D_and_2D_Thermoelectric_Materials/12095658)
