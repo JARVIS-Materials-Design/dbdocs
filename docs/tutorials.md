@@ -16,7 +16,7 @@ soon there would be datasets with QE and Wien2K asl well. We can create for exam
 atomic structure, input parameters, pseudopotential, k-points [information](https://www.vasp.at/wiki/index.php/Input). Similar to many other modules
 VaspJob allows to 'ToDict' and 'FromDict' methods to store or load a complete job, which is very useful in
 scaling up VASP related calculations and enhancing reproducibilty.
-Make sure JARVIS_VASP_PSP_DIR is declared as a PATH to VASP pseudopotential directory i.e. export JARVIS_VASP_PSP_DIR=YOUR_PATH_TO_PSUEDOPTENTIALS in your ~/.bashrc file.
+Make sure VASP_PSP_DIR is declared as a PATH to VASP pseudopotential directory i.e. export VASP_PSP_DIR=YOUR_PATH_TO_PSUEDOPTENTIALS in your ~/.bashrc file.
 The input file generation and output file parsing modules for VASP can be found 
 in jarvis.io.vasp.inputs and jarvis.io.vasp.outputs modules.
 Example-1: We start by setting up and submitting a single VaspJob:
@@ -61,7 +61,7 @@ data = dict(
 )
 inc = Incar(data)
 # Build POTCAR info
-# export JARVIS_VASP_PSP_DIR = 'PATH_TO_YOUR_PSP'
+# export VASP_PSP_DIR = 'PATH_TO_YOUR_PSP'
 pot = Potcar(elements=mat.atoms.elements)
 
 # Build Kpoints info
