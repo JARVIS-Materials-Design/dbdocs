@@ -13,6 +13,6 @@ repository designed to automate materials discovery and optimization using:
  - Experiments. 
  
  
-Find more details [https://www.nature.com/articles/s41524-020-00440-1](https://arxiv.org/abs/2007.01831) .
+Find more details [https://www.nature.com/articles/s41524-020-00440-1](https://www.nature.com/articles/s41524-020-00440-1) .
 
 <img src="https://www.ctcms.nist.gov/~knc6/images/logo/jarvis-mission.png" style="float: left; margin-right: 10px;" />
