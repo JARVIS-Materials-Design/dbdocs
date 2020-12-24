@@ -1,7 +1,7 @@
 # Publications
 
 ## JARVIS-overview
-[JARVIS: An Integrated Infrastructure for Data-driven Materials Design.](https://arxiv.org/abs/2007.01831)
+[The joint automated repository for various integrated simulations (JARVIS) for data-driven materials design.](https://www.nature.com/articles/s41524-020-00440-1)
 
 ## JARVIS-FF related 
 [Evaluation and comparison of classical interatomic potentials through a user-friendly interactive web-interface, Nature: Sci Data. 4, 160125 (2017).](https://www.nature.com/articles/sdata2016125)
@@ -19,9 +19,11 @@
 
 [Computational Search for Magnetic and Non-magnetic 2D Topological Materials using Unified Spin-orbit Spillage Screening, npj Comp. Mat., 6, 49 (2020).](https://www.nature.com/articles/s41524-020-0319-4)
 
-[Density Functional Theory based Electric Field Gradient Database.](https://arxiv.org/abs/2005.09255)
+[Density Functional Theory based Electric Field Gradient Database.](https://www.nature.com/articles/s41597-020-00707-8)
 
 [Database of Wannier Tight-binding Hamiltonians using High-throughput Density Functional Theory.](https://arxiv.org/abs/2007.01205)
+
+[Predicting Anomalous Quantum Confinement Effect in van der Waals Materials.](https://arxiv.org/abs/2011.10139)
 
 ## JARVIS-ML related
 [Machine learning with force-field inspired descriptors for materials: fast screening and mapping energy landscape, Phys. Rev. Mat., 2, 083801 (2018).](https://journals.aps.org/prmaterials/abstract/10.1103/PhysRevMaterials.2.083801)
