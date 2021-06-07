@@ -1,0 +1,733 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        
+        <link rel="shortcut icon" href="../img/favicon.ico">
+        <title>Tutorials - JARVIS-DB</title>
+        <link href="../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../css/font-awesome.min.css" rel="stylesheet">
+        <link href="../css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+
+        <script src="../js/jquery-1.10.2.min.js" defer></script>
+        <script src="../js/bootstrap.min.js" defer></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script> 
+    </head>
+
+    <body>
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href="..">JARVIS-DB</a>
+                <!-- Expander button -->
+                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar-collapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Expanded navigation -->
+                <div id="navbar-collapse" class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li class="navitem">
+                                <a href=".." class="nav-link">Introduction</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="../jarvisapi/" class="nav-link">API</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="../jarvisdft/" class="nav-link">DFT</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="../jarvisff/" class="nav-link">FF</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="../jarvisml/" class="nav-link">ML</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="../jarvistools/" class="nav-link">Tools</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="../publications/" class="nav-link">Publications</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="../thederivedapps/" class="nav-link">Others</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="../thedownloads/" class="nav-link">Downloads</a>
+                            </li>
+                            <li class="navitem active">
+                                <a href="./" class="nav-link">Tutorials</a>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-toggle="modal" data-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                            <li class="nav-item">
+                                <a rel="prev" href="../thedownloads/" class="nav-link">
+                                    <i class="fa fa-arrow-left"></i> Previous
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a rel="next" class="nav-link disabled">
+                                    Next <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-light navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-toggle="collapse" data-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-level="1"><a href="#tutorials" class="nav-link">Tutorials</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-level="2"><a href="#overview" class="nav-link">Overview</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#dft" class="nav-link">DFT</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#ff" class="nav-link">FF</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#mlai" class="nav-link">ML/AI</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+        </ul>
+    </div>
+</div></div>
+                    <div class="col-md-9" role="main">
+
+<h1 id="tutorials">Tutorials</h1>
+<h2 id="overview">Overview</h2>
+<p>This page introduces several tools and dataset in JARVIS though examples.
+In addition to the following examples, the <a href="https://github.com/JARVIS-Materials-Design/jarvis-tools-notebooks">Colab notebooks</a>
+and <a href="https://github.com/usnistgov/jarvis/tree/master/jarvis/tests/testfiles">pytests modules</a> can be helpful to 
+get use JARVIS-DB and JARVIS-Tools.</p>
+<h2 id="dft">DFT</h2>
+<h3 id="running-calculations">Running calculations</h3>
+<p>The <a href="https://github.com/usnistgov/jarvis">JARVIS-Tools</a> (install using "pip install -U jarvis-tools") curretly allows to run DFT calculations with VASP and QE software. The <a href="https://jarvis.nist.gov/jarvisdft/">JARVIS-DFT</a> is mainly based on the VASP software but 
+soon there would be datasets with QE and Wien2K asl well. We can create for example a <a href="https://github.com/usnistgov/jarvis/blob/master/jarvis/tasks/vasp/vasp.py#L916">VaspJob</a> with the help of
+atomic structure, input parameters, pseudopotential, k-points <a href="https://www.vasp.at/wiki/index.php/Input">information</a>. Similar to many other modules
+VaspJob allows to 'ToDict' and 'FromDict' methods to store or load a complete job, which is very useful in
+scaling up VASP related calculations and enhancing reproducibilty.
+Make sure VASP_PSP_DIR is declared as a PATH to VASP pseudopotential directory i.e. export VASP_PSP_DIR=YOUR_PATH_TO_PSUEDOPTENTIALS in your ~/.bashrc file.
+The input file generation and output file parsing modules for VASP can be found 
+in jarvis.io.vasp.inputs and jarvis.io.vasp.outputs modules.
+Example-1: We start by setting up and submitting a single VaspJob:</p>
+<pre><code class="language-python">from jarvis.tasks.vasp.vasp import VaspJob, write_vaspjob
+from jarvis.io.vasp.inputs import Potcar, Incar, Poscar
+from jarvis.db.jsonutils import dumpjson
+from jarvis.core.atoms import Atoms
+from jarvis.core.kpoints import Kpoints3D
+from jarvis.tasks.queue_jobs import Queue
+import os
+
+# Load/build crystal structure
+# mat = Poscar.from_file('POSCAR')
+coords = [[0, 0, 0], [0.25, 0.25, 0.25]]
+elements = [&quot;Si&quot;, &quot;Si&quot;]
+box = [[2.715, 2.715, 0], [0, 2.715, 2.715], [2.715, 0, 2.715]]
+atoms = Atoms(lattice_mat=box, coords=coords, elements=elements)
+mat = Poscar(atoms)
+mat.comment = &quot;Silicon&quot;
+
+# Build INCAR file
+data = dict(
+    PREC=&quot;Accurate&quot;,
+    ISMEAR=0,
+    SIGMA=0.01,
+    IBRION=2,
+    ISIF=3,
+    GGA=&quot;BO&quot;,
+    PARAM1=0.1833333333,
+    PARAM2=0.2200000000,
+    LUSE_VDW=&quot;.TRUE.&quot;,
+    AGGAC=0.0000,
+    EDIFF=&quot;1E-7&quot;,
+    EDIFFG=&quot;-1E-3&quot;,
+    NELM=400,
+    ISPIN=2,
+    LCHARG=&quot;.FALSE.&quot;,
+    LVTOT=&quot;.FALSE.&quot;,
+    LVHAR=&quot;.FALSE.&quot;,
+    LWAVE=&quot;.FALSE.&quot;,
+)
+inc = Incar(data)
+# Build POTCAR info
+# export VASP_PSP_DIR = 'PATH_TO_YOUR_PSP'
+pot = Potcar(elements=mat.atoms.elements)
+
+# Build Kpoints info
+kp = Kpoints3D().automatic_length_mesh(
+    lattice_mat=mat.atoms.lattice_mat, length=20
+)
+
+vasp_cmd = &quot;/users/knc6/VASP/vasp54/src/vasp.5.4.1DobbySOC2/bin/vasp_std&quot;
+copy_files = [&quot;/users/knc6/bin/vdw_kernel.bindat&quot;]
+jobname = &quot;MAIN-RELAX@JVASP-1002&quot;
+job = VaspJob(
+    poscar=mat,
+    incar=inc,
+    potcar=pot,
+    kpoints=kp,
+    vasp_cmd=vasp_cmd,
+    copy_files=copy_files,
+    jobname=jobname,
+)
+
+dumpjson(data=job.to_dict(), filename=&quot;job.json&quot;)
+write_vaspjob(pyname=&quot;job.py&quot;, job_json=&quot;job.json&quot;)
+
+
+</code></pre>
+<p>The job.py can now be run on a cluster or on a PC as a python script.
+For running this job on a PBS cluster,</p>
+<pre><code class="language-python">submit_cmd = [&quot;qsub&quot;, &quot;submit_job&quot;]
+# Example job commands, need to change based on your cluster
+job_line = (
+    &quot;source activate my_jarvis \n&quot;
+    + &quot;python job.py&quot;
+)
+name = &quot;TestJob&quot;
+directory = os.getcwd()
+Queue.pbs(
+    job_line=job_line,
+    jobname=name,
+    directory=directory,
+    submit_cmd=submit_cmd,
+    )
+
+
+</code></pre>
+<p>Currently, JARVIS-Tools can be used to submit job with SLURM and PBS clusters only.
+For high-throughput automated submissions one can use pre-build JobFactory module
+that allows automatic calculations for a series of properties.
+Example-2:</p>
+<pre><code class="language-python">
+from jarvis.tasks.vasp.vasp import VaspJob,write_jobfact_optb88vdw
+from jarvis.io.vasp.inputs import Potcar, Incar, Poscar
+from jarvis.db.jsonutils import dumpjson
+from jarvis.core.atoms import Atoms
+from jarvis.core.kpoints import Kpoints3D
+from jarvis.tasks.queue_jobs import Queue
+import os
+from jarvis.tasks.vasp.vasp import JobFactory,write_jobfact_optb88vdw
+
+# Load/build crystal structure
+# mat = Poscar.from_file('POSCAR')
+coords = [[0, 0, 0], [0.25, 0.25, 0.25]]
+elements = [&quot;Si&quot;, &quot;Si&quot;]
+box = [[2.715, 2.715, 0], [0, 2.715, 2.715], [2.715, 0, 2.715]]
+atoms = Atoms(lattice_mat=box, coords=coords, elements=elements)
+mat = Poscar(atoms)
+mat.comment = 'bulk@Silicon'
+
+vasp_cmd = &quot;/users/knc6/VASP/vasp54/src/vasp.5.4.1DobbySOC2/bin/vasp_std&quot;
+copy_files = ['/users/knc6/bin/vdw_kernel.bindat']
+jobname = &quot;MAIN-RELAX@JVASP-1002&quot;
+job = JobFactory(
+    vasp_cmd=vasp_cmd,
+    poscar=mat,
+    copy_files=copy_files,
+)
+
+dumpjson(data=job.to_dict(), filename='job_fact.json')
+write_jobfact_optb88vdw(pyname=&quot;job_fact.py&quot;, job_json=&quot;job_fact.json&quot;)
+
+</code></pre>
+<p>We can now submit the <a href="https://github.com/usnistgov/jarvis/blob/master/jarvis/tasks/vasp/vasp.py#L38">JobFactory</a> as:</p>
+<pre><code class="language-python">from jarvis.tasks.queue_jobs import Queue
+import os
+submit_cmd=[&quot;qsub&quot;, &quot;submit_job&quot;]
+# Example job commands, need to change based on your cluster
+job_line = &quot;source activate my_jarvis \n&quot;+&quot;python job_fact.py&quot;
+name = &quot;TestJob&quot;
+directory = os.getcwd()
+Queue.pbs(
+    job_line=job_line,
+    jobname=name,
+    directory=directory,
+    submit_cmd=submit_cmd,
+)
+
+
+</code></pre>
+<p>This script first converges K-pints and plane-wave cutoff, then using the converged paramerters
+optimizes the simulation cell, and then runs several jobs for calculating properties such as 
+bandstructure on high-symmetry k-points, elastic constanats, optoelectronic properties etc.</p>
+<p>Next, let's see how to run High-throughput jobs for multiple IDs:
+Example-3:</p>
+<pre><code class="language-python">from jarvis.tasks.vasp.vasp import (
+    JobFactory,
+    VaspJob,
+    GenericIncars,
+    write_jobfact,
+)
+from jarvis.io.vasp.inputs import Potcar, Incar, Poscar
+from jarvis.db.jsonutils import dumpjson
+from jarvis.db.figshare import data
+from jarvis.core.atoms import Atoms
+from jarvis.tasks.queue_jobs import Queue
+import os
+
+##############################################################################
+# Make sure you have latest version of jarvis-tools, pip install -U jarvis-tools
+# Specify your vasp_cmdcluster type etc. info here
+# VASP_PSP_DIR should be defined in the PATH as pseudopotential directory
+
+vasp_cmd = &quot;mpirun /users/knc6/VASP/vasp54/src/vasp.5.4.1DobbySOC2/bin/vasp_std&quot;
+
+# Change to your path of .bindat file
+copy_files = [&quot;/users/knc6/bin/vdw_kernel.bindat&quot;]
+
+submit_cmd = [&quot;qsub&quot;, &quot;submit_job&quot;]
+
+# For slurm
+# submit_cmd = [&quot;sbatch&quot;, &quot;submit_job&quot;]
+##############################################################################
+def get_atoms(jid=&quot;&quot;, mpid=&quot;&quot;, oqmd_id=&quot;&quot;, aflow_id=&quot;&quot;):
+    &quot;&quot;&quot;
+    Provide only one of these IDs.
+    Examples:
+    jid='JVASP-1002' or mpid='mp-149' or
+    oqmd_id='10215', or aflow_id='48708a4622918820'
+    &quot;&quot;&quot;
+    if mpid != &quot;&quot;:
+        mp = data(&quot;mp_3d&quot;)
+        for i in mp:
+            if i[&quot;id&quot;] == mpid:
+                atoms = Atoms.from_dict(i[&quot;atoms&quot;])
+                del mp
+                return atoms
+    if jid != &quot;&quot;:
+        jv = data(&quot;dft_3d&quot;)
+        for i in jv:
+            if i[&quot;jid&quot;] == jid:
+                atoms = Atoms.from_dict(i[&quot;atoms&quot;])
+                del jv
+                return atoms
+    if oqmd_id != &quot;&quot;:
+        oq = data(&quot;oqmd_3d&quot;)
+        for i in oq:
+            if i[&quot;id&quot;] == oqmd_id:
+                atoms = Atoms.from_dict(i[&quot;atoms&quot;])
+                del oq
+                return atoms
+    if aflow_id != &quot;&quot;:
+        af1 = data(&quot;aflow1&quot;)
+        for i in af1:
+            if i[&quot;id&quot;] == aflow_id:
+                atoms = Atoms.from_dict(i[&quot;atoms&quot;])
+                del af1
+                return atoms
+        af2 = data(&quot;aflow2&quot;)
+        for i in af2:
+            if i[&quot;id&quot;] == aflow_id:
+                atoms = Atoms.from_dict(i[&quot;atoms&quot;])
+                del af2
+                return atoms
+
+
+# If a user wants to run on its on ,aterials
+# atoms = Poscar.from_file('YourPOSCAR')
+# and send it to atoms in the script below
+# Select/desect you want to run
+# More detais in
+# https://github.com/usnistgov/jarvis/blob/master/jarvis/tasks/vasp/vasp.py#L81
+steps = [
+    &quot;ENCUT&quot;,
+    &quot;KPLEN&quot;,
+    &quot;RELAX&quot;,
+    &quot;BANDSTRUCT&quot;,
+    &quot;LOPTICS&quot;,
+    &quot;MBJOPTICS&quot;,
+    &quot;ELASTIC&quot;,
+]
+incs = GenericIncars().optb88vdw().incar.to_dict()
+
+
+# List of materials divided into chunks of 50
+
+
+ids = [&quot;JVASP-1002&quot;, &quot;JVASP-1067&quot;]
+
+
+for id in ids:
+    atoms = get_atoms(jid=id)
+    mat = Poscar(atoms)
+    mat.comment = &quot;bulk@&quot; + str(id)
+    cwd_home = os.getcwd()
+    dir_name = id + &quot;_&quot; + str(&quot;PBEBO&quot;)
+    if not os.path.exists(dir_name):
+        os.makedirs(dir_name)
+    os.chdir(dir_name)
+    job = JobFactory(
+        vasp_cmd=vasp_cmd,
+        poscar=mat,
+        steps=steps,
+        copy_files=copy_files,
+        use_incar_dict=incs,
+    )
+
+    dumpjson(data=job.to_dict(), filename=&quot;job_fact.json&quot;)
+    write_jobfact(
+        pyname=&quot;job_fact.py&quot;,
+        job_json=&quot;job_fact.json&quot;,
+        input_arg=&quot;v.step_flow()&quot;,
+    )
+
+    # Example job commands, need to change based on your cluster
+    job_line = (
+        &quot;source ~/anaconda2/envs/my_jarvis/bin/activate my_jarvis \n&quot;
+        + &quot;python job_fact.py&quot;
+    )
+    name = id
+    directory = os.getcwd()
+    Queue.pbs(
+        job_line=job_line,
+        jobname=name,
+        directory=directory,
+        submit_cmd=submit_cmd,
+    )
+    os.chdir(cwd_home)
+
+    &quot;&quot;&quot;
+    # For Slurm clusters
+    Queue.slurm(
+        job_line=job_line,
+        jobname=name,
+        directory=directory,
+        submit_cmd=submit_cmd,
+    )
+    os.chdir(cwd_home)
+    &quot;&quot;&quot;
+
+</code></pre>
+<p>In the above examples, use Queue.slurm if you want to use SLURM instead of TORQUE/PBS submission.
+A complete example of such run is available at: <a href="https://github.com/usnistgov/jarvis/tree/master/jarvis/examples/vasp">VASP example</a></p>
+<h3 id="post-processing-and-plotting">Post-processing and plotting</h3>
+<p>There are a variety of post-processing analysis and plotting that can be done on the <a href="https://github.com/usnistgov/jarvis/blob/master/jarvis/io/vasp/outputs.py">output data</a>.
+A common example would be plotting electronic density of states and bandstructure as follows:</p>
+<pre><code class="language-python">from jarvis.io.vasp.outputs import Vasprun
+# %matplotlib inline
+import matplotlib.pyplot as plt
+plt.switch_backend('agg')
+vrun = Vasprun('vasprun.xml')
+energies, spin_up, spin_dn=vrun.total_dos
+import matplotlib.pyplot as plt
+plt.rcParams.update({'font.size': 22})
+plt.plot(energies,spin_up,label='Spin-up')
+plt.plot(energies,spin_dn,label='Spin-down')
+plt.xlabel('Energy(E-Ef)')
+plt.ylabel('DOS(arb.unit)')
+plt.xlim(-4,4)
+plt.legend()
+
+vrun.get_bandstructure(kpoints_file_path='KPOINTS')
+</code></pre>
+<p>There are many other <a href="https://github.com/usnistgov/jarvis/tree/master/jarvis/analysis">analysis modules</a> available such as: scanning tunneling microscopy images, solar-cell efficiency, topological spin-
+orbit spillage, transport properties, phonons, infrared intensities, and its continously expanding.</p>
+<h3 id="developing-database">Developing database</h3>
+<p>After generating the results, we can store the metadata in JARVIS-API. Please request an account if you haven't made it yet.
+Following the calculation protocal mentioned above, the generated files can be converted to an <a href="https://github.com/usnistgov/jarvis/blob/master/jarvis/db/vasp_to_xml.py">XML datafile</a> which with the help of
+an XSD schema can be converted to nice-looking HTML files with the help of XSLT programming and a bit of javascript.</p>
+<p>We alreay provide modules to convert the calculation informato to XML and module to <a href="https://github.com/usnistgov/jarvis/blob/master/jarvis/db/restapi.py">upload data</a>. An example is give below:</p>
+<pre><code class="language-python">from jarvis.db.vasp_to_xml import VaspToApiXmlSchema 
+from jarvis.db.restapi import Api
+folder=&quot;/home/users/knc6/Software/jarvis/jarvis/examples/vasp/SiOptB88vdW&quot;
+filename = &quot;JVASP-1002.xml&quot;
+VaspToApiXmlSchema(folder=folder).write_xml(filename=filename)
+a = Api(user_info_file_path=&quot;/users/knc6/myinfo&quot;)
+# First line should be your username and secondline your password
+tid=&quot;5f626925ece4b00035e5277f&quot;
+# Find latest template ID with title &quot;jarvisdft&quot;  at the bottom of the page 
+# https://jarvis.nist.gov/rest/template-version-manager/global
+a.upload_xml_file(filename='JVASP-1067.xml',template_id=tid)
+</code></pre>
+<h2 id="ff">FF</h2>
+<p>Molecular dynamics/classical force-field calculations can be carried out with LAMMPS software as in <a href="https://jarvis.nist.gov/jarvis">JARVIS-FF</a>.
+An example for running LAMMPS is given below. Here, a <a href="https://github.com/usnistgov/jarvis/blob/master/jarvis/tasks/lammps/lammps.py#L144">LammpsJob</a> module is defined with the help of 
+atoms, pair-style, coefficient, and template file (*.mod file) to control the calculations.</p>
+<h3 id="running-calculations_1">Running calculations</h3>
+<pre><code class="language-python">from jarvis.tasks.lammps.lammps import LammpsJob, JobFactory
+from jarvis.core.atoms import Atoms
+from jarvis.db.figshare import get_jid_data
+from jarvis.analysis.structure.spacegroup import Spacegroup3D
+
+
+# atoms = Atoms.from_poscar('POSCAR')
+# Get Aluminum FCC
+tmp_dict = get_jid_data(jid=&quot;JVASP-816&quot;, dataset=&quot;dft_3d&quot;)[&quot;atoms&quot;]
+atoms = Atoms.from_dict(tmp_dict)
+# Get conventional cell
+spg = Spacegroup3D(atoms)
+cvn_atoms = spg.conventional_standard_structure
+ff = &quot;/users/knc6/Software/LAMMPS/lammps-master/potentials/Al_zhou.eam.alloy&quot;
+mod = &quot;/users/knc6/Software/Devs/jarvis/jarvis/tasks/lammps/templates/inelast.mod&quot;
+cmd = &quot;/users/knc6/Software/LAMMPS/lammps-master/src/lmp_serial&lt;in.main&gt;out&quot;
+parameters = {
+    &quot;pair_style&quot;: &quot;eam/alloy&quot;,
+    &quot;pair_coeff&quot;: ff,
+    &quot;atom_style&quot;: &quot;charge&quot;,
+    &quot;control_file&quot;: mod,
+}
+# Test LammpsJob
+lmp = LammpsJob(
+    atoms=cvn_atoms, parameters=parameters, lammps_cmd=cmd, jobname=&quot;Test&quot;
+).runjob()
+
+# Test high-throughput
+job_fact = JobFactory(pair_style=&quot;eam/alloy&quot;, name=&quot;my_first_lammps_run&quot;)
+job_fact.all_props_eam_alloy(atoms=cvn_atoms, ff_path=ff, lammps_cmd=cmd)
+</code></pre>
+<p>The above lines can be written on a file such as job.py and can be run on a PC or a cluster with the
+from <a href="https://github.com/usnistgov/jarvis/blob/master/jarvis/tasks/queue_jobs.py">jarvis.tasks.queue_jobs</a> import Queue module.</p>
+<h3 id="post-processing-and-plotting_1">Post-processing and plotting</h3>
+<p>Important quantities such asn total energy, forces etc. can be obtained with the help of
+<a href="https://github.com/usnistgov/jarvis/blob/master/jarvis/io/lammps/outputs.py">jarvis.io.lammps.outputs</a> module. </p>
+<pre><code class="language-python">from jarvis.io.lammps.outputs import parse_material_calculation_folder
+folder = '/home/users/knc6/Software/jarvis/jarvis/examples/lammps/Aleam'
+data = parse_material_calculation_folder(folder)
+</code></pre>
+<h3 id="developing-database_1">Developing database</h3>
+<p>The calculation data can now be <a href="https://github.com/usnistgov/jarvis/blob/master/jarvis/db/lammps_to_xml.py">converted into XML</a> files as follows:</p>
+<pre><code class="language-python">from jarvis.db.lammps_to_xml import write_xml
+write_xml(data=data,filename='lmp.xml')
+</code></pre>
+<h2 id="mlai">ML/AI</h2>
+<p>Currently <a href="https://jarvis.nist.gov/jarvisml/">JARVIS-ML</a> allows prediction of material properties with machine learning. The materials information
+is converted into descriptors using Classical Force-field Inspired Descriptors (CFID) or Coulomb materix.
+Other descriptors and graph based predictions would be available soon also.
+For a series of atomistic structures, we can convert them into CFID, which act as input matrix.</p>
+<h3 id="running-calculations_2">Running calculations</h3>
+<p>Suppose we have 40000 materials, and we get 1557 descriptor for each material, we will have a 
+40000x1557 matrix. Let's call this matrix as 'x' or input matrix.
+Next, we can get target ('y') data either from DFT, FF calculations or experiments.
+For example, we can choose formation energies of 40000 materials in the JARVIS-DFT as the dtarget data
+giving 40000x1 matrix.</p>
+<p>Now, we can use a ML/AI algorithm to establish statistical relation between the x and y data.
+Once trained we get a trained model, which can be stored in say pickle or joblib format.</p>
+<p>For a new material now, it can be converted into CFID i.e. 1x1557 matrix which when fed to the model
+will give 1x1 prediction hence the ML prediction. We can use a range of ML algorithms such as 
+linear regression, decision trees, Gaussian processes etc. We find with CFID <a href="https://github.com/usnistgov/jarvis/tree/master/jarvis/ai/descriptors">descriptors</a>, gradient boosting
+decision trees (especially in LightGBM) gives one of the most accurate results. 
+We provide tools to run with major <a href="https://github.com/usnistgov/jarvis/tree/master/jarvis/ai/pkgs">ML packages</a> such as scikit-learn, tensorflow, pytorch, lightgbm etc.
+Example-1:</p>
+<pre><code class="language-python"># An example of JARVIS-ML training
+from jarvis.ai.pkgs.utils import get_ml_data
+from jarvis.ai.pkgs.utils import regr_scores
+X,y,jid=get_ml_data()
+#Formation energy for 3D materials, you can choose other properties/dataset as well
+import lightgbm as lgb
+from sklearn.model_selection import train_test_split
+lgbm = lgb.LGBMRegressor(device= 'gpu',n_estimators= 1170,learning_rate= 0.15375236057119931,num_leaves= 273)       
+X_train, X_test, y_train, y_test, jid_train, jid_test = train_test_split(X, y, jid, random_state=1, test_size=.1)
+lgbm.fit(X_train,y_train)
+pred = lgbm.predict(X_test)
+reg_sc = regr_scores(y_test, pred)
+print (reg_sc['mae'])
+
+</code></pre>
+<p>Another full example for regression
+Example-2:</p>
+<pre><code class="language-python">from jarvis.ai.pkgs.lgbm.regression import parameters_dict
+from scipy.stats import median_absolute_deviation as mad
+from jarvis.ai.pkgs.utils import get_ml_data
+import lightgbm as lgb
+import numpy as np
+from sklearn.model_selection import train_test_split
+from jarvis.ai.pkgs.utils import regr_scores
+import joblib
+# Some of the previously found hyper-parameters
+params = parameters_dict()
+
+print(params)
+
+
+mem = []
+for i, j in params.items():
+    name = str(i) + &quot;.pkl&quot;
+    print(i)
+    print(name)
+    X, y, jid = get_ml_data(dataset=&quot;cfid_3d&quot;, ml_property=i)
+    lgbm = lgb.LGBMRegressor(
+        n_estimators=j[&quot;n_estimators&quot;],
+        learning_rate=j[&quot;learning_rate&quot;],
+        num_leaves=j[&quot;num_leaves&quot;],
+    )
+    if &quot;eps&quot; in i:  # fit refractive index, not dielectric constant
+        y = np.sqrt(y)
+    X_train, X_test, y_train, y_test, jid_train, jid_test = train_test_split(
+        X, y, jid, random_state=1, test_size=0.1
+    )
+    lgbm.fit(X_train, y_train)
+    pred = lgbm.predict(X_test)
+    joblib.dump(lgbm, name)
+    reg_sc = regr_scores(y_test, pred)
+    mae = reg_sc[&quot;mae&quot;]  # mean absolute error
+    madev = mad(y)  # mean absolute deviation
+    # mae_over_madev=float(mae)/float(madev)
+    mem.append([i, len(X), mae, madev])
+    print(&quot;Property,Length, MAE,MAD&quot;, i, len(X), mae, madev)
+    print()
+    print()
+</code></pre>
+<h3 id="post-processing-and-plotting_2">Post-processing and plotting</h3>
+<p>We can analyze basic ML metrics such as mean-absolute erros (MAE),  RMSE, R2 etc. for regression and
+ROC AUC, F1 score etc. for classification models. </p>
+<pre><code class="language-python">from jarvis.ai.pkgs.sklearn.regression import regression
+from jarvis.ai.pkgs.sklearn.classification import classification
+from jarvis.ai.pkgs.sklearn.hyper_params import (
+    classification_regression_params,
+)
+from jarvis.ai.pkgs.utils import get_ml_data, binary_class_dat
+from jarvis.ai.pkgs.lgbm.regression import regression as l_regression
+from jarvis.ai.pkgs.lgbm.regression import parameters_dict as l_params
+from jarvis.ai.pkgs.lgbm.classification import (
+    classification as l_classification,
+)
+from jarvis.ai.descriptors.cfid import feat_names
+from lightgbm import LGBMClassifier
+import matplotlib.pyplot as plt
+property = &quot;exfoliation_energy&quot;
+X, Y, jid = get_ml_data(dataset=&quot;cfid_3d&quot;, ml_property=property)
+
+# Regression
+params = l_params()[property]
+names = feat_names()
+info = l_regression(
+    X=X,
+    Y=Y,
+    jid=jid,
+    config=params,
+    feat_names=names,
+    plot=True,
+    save_model=True,
+)
+
+# Classification
+property = &quot;exfoliation_energy&quot;
+tol = 100
+models = [LGBMClassifier(n_estimators=10, num_leaves=2)]
+info = l_classification(
+    X=X,
+    Y=Y,
+    plot=True,
+    models=models,
+    preprocess=True,
+    save_model=True,
+    tol=tol,
+)
+</code></pre>
+<h3 id="developing-database_2">Developing database</h3>
+<p>The ML models in terms of joblib, pickle parameters, the descriptors sets and ML predicted properties
+can be stored in teh JARVIS-API.
+The descriptrs and the predicted properties can be stored as XML files , while the joblib and pickle files
+can be saved a blob binary files.</p></div>
+            </div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script>
+            var base_url = "..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../js/base.js" defer></script>
+        <script src="../search/main.js" defer></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+                <p>
+                    From here you can search these documents. Enter
+                    your search terms below.
+                </p>
+                <form>
+                    <div class="form-group">
+                        <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>

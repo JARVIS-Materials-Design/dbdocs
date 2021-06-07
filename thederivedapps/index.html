@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        
+        <link rel="shortcut icon" href="../img/favicon.ico">
+        <title>Others - JARVIS-DB</title>
+        <link href="../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../css/font-awesome.min.css" rel="stylesheet">
+        <link href="../css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+
+        <script src="../js/jquery-1.10.2.min.js" defer></script>
+        <script src="../js/bootstrap.min.js" defer></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script> 
+    </head>
+
+    <body>
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href="..">JARVIS-DB</a>
+                <!-- Expander button -->
+                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar-collapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Expanded navigation -->
+                <div id="navbar-collapse" class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li class="navitem">
+                                <a href=".." class="nav-link">Introduction</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="../jarvisapi/" class="nav-link">API</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="../jarvisdft/" class="nav-link">DFT</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="../jarvisff/" class="nav-link">FF</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="../jarvisml/" class="nav-link">ML</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="../jarvistools/" class="nav-link">Tools</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="../publications/" class="nav-link">Publications</a>
+                            </li>
+                            <li class="navitem active">
+                                <a href="./" class="nav-link">Others</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="../thedownloads/" class="nav-link">Downloads</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="../tutorials/" class="nav-link">Tutorials</a>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-toggle="modal" data-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                            <li class="nav-item">
+                                <a rel="prev" href="../publications/" class="nav-link">
+                                    <i class="fa fa-arrow-left"></i> Previous
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a rel="next" href="../thedownloads/" class="nav-link">
+                                    Next <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-light navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-toggle="collapse" data-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-level="1"><a href="#others" class="nav-link">Others</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-level="2"><a href="#overview" class="nav-link">Overview</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#jarvis-wanniertb" class="nav-link">JARVIS-WannierTB</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#jarvis-heterostructure" class="nav-link">JARVIS-Heterostructure</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#references" class="nav-link">References</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+        </ul>
+    </div>
+</div></div>
+                    <div class="col-md-9" role="main">
+
+<h1 id="others">Others</h1>
+<h2 id="overview">Overview</h2>
+<p>Based on the main JARVIS-apps such as JARVIS-DFT, we have developed several derived apps such as JARVIS-WannierTB, and JARVIS-Heterostructure etc.
+These apps allow to go beyond the existing data in JARVIS and let users obtain predictions on their custom inputs. These apps are based Django
+and the foundation codes to build these apps are provided at JARVIS-Tools GitHub page.</p>
+<h2 id="jarvis-wanniertb">JARVIS-WannierTB</h2>
+<ul>
+<li>JARVIS-WannierTB provides Wannier Tight binding Hamiltonians and an interface to solve these Hamiltonians for arbitrary k-points on-the-fly. </li>
+<li>The JARVIS-Wannier tight-binding Hamiltonians were generated for both 3D and 2D materials.</li>
+<li>We evaluate the accuracy of the WTBHs by comparing the Wannier band structures to directly 
+calculated DFT band structures on both the set of k-points used in 
+the Wannierization as well as independent k-points from high symmetry lines.</li>
+</ul>
+<p><em>Table. Number available Wannier TB Hamiltonians</em>.</p>
+<table>
+<thead>
+<tr>
+<th><strong>Materials</strong></th>
+<th><strong>Numbers</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>3D-bulk</strong></td>
+<td>1406</td>
+</tr>
+<tr>
+<td><strong>2D-monolayer</strong></td>
+<td>365</td>
+</tr>
+<tr>
+<td><strong>Total</strong></td>
+<td>5097</td>
+</tr>
+<tr>
+<td><strong>High/low piezoelectric coeff</strong></td>
+<td>1771</td>
+</tr>
+</tbody>
+</table>
+<h2 id="jarvis-heterostructure">JARVIS-Heterostructure</h2>
+<ul>
+<li>JARVIS-Heterostructure provide interface-design app and tools for 2D materials in the JARVIS-DFT database using Zur algorithm and Anderson rule.</li>
+<li>Some of the properties available are: work function, band-alignment, and heterostructure classification. </li>
+<li>The band alignment data can be also used for identifying photocatalysts and high-work function 2D-metals for contacts. </li>
+<li>We validate our results by comparing them to experimental data as well as hybrid-functional predictions.</li>
+</ul>
+<p><em>Table. Types of 2D heterostructures based on Anderson's rule</em>.</p>
+<table>
+<thead>
+<tr>
+<th><strong>Type</strong></th>
+<th><strong>Numbers</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Type-I (Symmetric)</strong></td>
+<td>75744</td>
+</tr>
+<tr>
+<td><strong>Type-II (Staggered)</strong></td>
+<td>85723</td>
+</tr>
+<tr>
+<td><strong>Type-III (Broken)</strong></td>
+<td>65312</td>
+</tr>
+<tr>
+<td><strong>Total</strong></td>
+<td>226779</td>
+</tr>
+</tbody>
+</table>
+<h2 id="references">References</h2>
+<ol>
+<li><a href="https://arxiv.org/abs/2007.01205">Database of Wannier Tight-binding Hamiltonians using High-throughput Density Functional Theory, arXiv:2007.01205</a></li>
+<li><a href="https://arxiv.org/abs/2004.03025">Efficient Computational Design of 2D van der Waals Heterostructures: Band-Alignment, Lattice-Mismatch, Web-app Generation and Machine-learning, arXiv:2004.03025</a>.</li>
+</ol></div>
+            </div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script>
+            var base_url = "..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../js/base.js" defer></script>
+        <script src="../search/main.js" defer></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+                <p>
+                    From here you can search these documents. Enter
+                    your search terms below.
+                </p>
+                <form>
+                    <div class="form-group">
+                        <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>
