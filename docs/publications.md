@@ -46,7 +46,7 @@
 
 [21. Efficient Computational Design of 2D van der Waals Heterostructures: Band-Alignment, Lattice-Mismatch, Web-app Generation and Machine-learning.](https://arxiv.org/abs/2004.03025)
 
-[22. Atomistic Line Graph Neural Network for Improved Materials Property Predictions, Lattice-Mismatch, Web-app Generation and Machine-learning.](https://arxiv.org/abs/2106.01829)
+[22. Atomistic Line Graph Neural Network for Improved Materials Property Predictions.](https://arxiv.org/abs/2106.01829)
 
 ## JARVIS-QC related
 [23. Quantum Computation for Predicting Solids-state Material Properties.](https://arxiv.org/abs/2102.11452)
