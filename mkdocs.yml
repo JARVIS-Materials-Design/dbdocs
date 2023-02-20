@@ -1,1 +1,19 @@
 site_name: JARVIS-DB
+site_url: https://github.com/JARVIS-Materials-Design/dbdocs
+theme:
+
+  # +------------------------------------------------------------------------------------------------------+
+  # |                                                                                                      |
+  # | The "name" option is where you define the theme to use.                                              |
+  # |                                                                                                      |
+  # | Note that not all themes are included by default and will require you to install them first.         |
+  # | The Material theme is one of them. See the "Read More" link for instructions on how to install it.   |
+  # |                                                                                                      |
+  # | Read More:                                                                                           |
+  # | - https://squidfunk.github.io/mkdocs-material/getting-started/                                       |
+  # |                                                                                                      |
+  # +------------------------------------------------------------------------------------------------------+
+  name: material
+  custom_dir: overrides
+repo_name: dbdocs
+repo_url: https://github.com/JARVIS-Materials-Design/dbdocs
