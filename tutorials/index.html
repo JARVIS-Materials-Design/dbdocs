@@ -1,0 +1,1249 @@
+<!--https://github.com/notenverwaltung/Notenverwaltungssoftware/blob/54aa0515f3b1b2c5db8471306eecfed18e154e7e/docs/overrides/main.html -->
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://github.com/JARVIS-Materials-Design/dbdocs/tutorials/">
+      
+      
+        <link rel="prev" href="../thedownloads/">
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-9.0.13">
+    
+    
+      
+        <title>Tutorials - JARVIS-DB</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.ffa9267a.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.a0c5b2b5.min.css">
+      
+      
+
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="" data-md-color-accent="">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#tutorials" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+        <aside class="md-banner">
+          <div class="md-banner__inner md-grid md-typeset">
+            
+            
+Moved to JARVIS-Tools: <a href="https://jarvis-tools.readthedocs.io/en/master/databases.html">https://jarvis-tools.readthedocs.io/en/master/databases.html</a>
+<!--
+<link rel="stylesheet" href="https://pages.nist.gov/nist-header-footer/css/nist-combined.css">
+<script src="https://code.jquery.com/jquery-3.6.2.min.js" type="text/javascript" defer="defer"></script>
+<script src="https://pages.nist.gov/nist-header-footer/js/nist-header-footer.js" type="text/javascript" defer="defer"></script>
+
+<script async type="text/javascript" id="_fed_an_ua_tag" src="https://dap.digitalgov.gov/Universal-Federated-Analytics-Min.js?agency=NIST&subagency=github&pua=UA-66610693-1&yt=true&exts=ppsx,pps,f90,sch,rtf,wrl,txz,m1v,xlsm,msi,xsd,f,tif,eps,mpg,xml,pl,xlt,c">
+</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-1Q89M6QHG7"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-1Q89M6QHG7');
+</script>
+-->
+
+          </div>
+          
+        </aside>
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="JARVIS-DB" class="md-header__button md-logo" aria-label="JARVIS-DB" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            JARVIS-DB
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Tutorials
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/JARVIS-Materials-Design/dbdocs" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.3.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    dbdocs
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="JARVIS-DB" class="md-nav__button md-logo" aria-label="JARVIS-DB" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    JARVIS-DB
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/JARVIS-Materials-Design/dbdocs" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.3.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    dbdocs
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        Introduction
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../jarvisapi/" class="md-nav__link">
+        API
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../jarvisdft/" class="md-nav__link">
+        DFT
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../jarvisff/" class="md-nav__link">
+        FF
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../jarvisml/" class="md-nav__link">
+        ML
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../jarvistools/" class="md-nav__link">
+        Tools
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../publications/" class="md-nav__link">
+        Publications
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../thederivedapps/" class="md-nav__link">
+        Others
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../thedownloads/" class="md-nav__link">
+        Downloads
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Tutorials
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Tutorials
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    Overview
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dft" class="md-nav__link">
+    DFT
+  </a>
+  
+    <nav class="md-nav" aria-label="DFT">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#running-calculations" class="md-nav__link">
+    Running calculations
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#post-processing-and-plotting" class="md-nav__link">
+    Post-processing and plotting
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#developing-database" class="md-nav__link">
+    Developing database
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ff" class="md-nav__link">
+    FF
+  </a>
+  
+    <nav class="md-nav" aria-label="FF">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#running-calculations_1" class="md-nav__link">
+    Running calculations
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#post-processing-and-plotting_1" class="md-nav__link">
+    Post-processing and plotting
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#developing-database_1" class="md-nav__link">
+    Developing database
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mlai" class="md-nav__link">
+    ML/AI
+  </a>
+  
+    <nav class="md-nav" aria-label="ML/AI">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#running-calculations_2" class="md-nav__link">
+    Running calculations
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#post-processing-and-plotting_2" class="md-nav__link">
+    Post-processing and plotting
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#developing-database_2" class="md-nav__link">
+    Developing database
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    Overview
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dft" class="md-nav__link">
+    DFT
+  </a>
+  
+    <nav class="md-nav" aria-label="DFT">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#running-calculations" class="md-nav__link">
+    Running calculations
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#post-processing-and-plotting" class="md-nav__link">
+    Post-processing and plotting
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#developing-database" class="md-nav__link">
+    Developing database
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ff" class="md-nav__link">
+    FF
+  </a>
+  
+    <nav class="md-nav" aria-label="FF">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#running-calculations_1" class="md-nav__link">
+    Running calculations
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#post-processing-and-plotting_1" class="md-nav__link">
+    Post-processing and plotting
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#developing-database_1" class="md-nav__link">
+    Developing database
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mlai" class="md-nav__link">
+    ML/AI
+  </a>
+  
+    <nav class="md-nav" aria-label="ML/AI">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#running-calculations_2" class="md-nav__link">
+    Running calculations
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#post-processing-and-plotting_2" class="md-nav__link">
+    Post-processing and plotting
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#developing-database_2" class="md-nav__link">
+    Developing database
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+  
+
+
+<h1 id="tutorials">Tutorials</h1>
+<h2 id="overview">Overview</h2>
+<p>This page introduces several tools and dataset in JARVIS though examples.
+In addition to the following examples, the <a href="https://github.com/JARVIS-Materials-Design/jarvis-tools-notebooks">Colab notebooks</a>
+and <a href="https://github.com/usnistgov/jarvis/tree/master/jarvis/tests/testfiles">pytests modules</a> can be helpful to 
+get use JARVIS-DB and JARVIS-Tools.</p>
+<h2 id="dft">DFT</h2>
+<h3 id="running-calculations">Running calculations</h3>
+<p>The <a href="https://github.com/usnistgov/jarvis">JARVIS-Tools</a> (install using "pip install -U jarvis-tools") curretly allows to run DFT calculations with VASP and QE software. The <a href="https://jarvis.nist.gov/jarvisdft/">JARVIS-DFT</a> is mainly based on the VASP software but 
+soon there would be datasets with QE and Wien2K asl well. We can create for example a <a href="https://github.com/usnistgov/jarvis/blob/master/jarvis/tasks/vasp/vasp.py#L916">VaspJob</a> with the help of
+atomic structure, input parameters, pseudopotential, k-points <a href="https://www.vasp.at/wiki/index.php/Input">information</a>. Similar to many other modules
+VaspJob allows to 'ToDict' and 'FromDict' methods to store or load a complete job, which is very useful in
+scaling up VASP related calculations and enhancing reproducibilty.
+Make sure VASP_PSP_DIR is declared as a PATH to VASP pseudopotential directory i.e. export VASP_PSP_DIR=YOUR_PATH_TO_PSUEDOPTENTIALS in your ~/.bashrc file.
+The input file generation and output file parsing modules for VASP can be found 
+in jarvis.io.vasp.inputs and jarvis.io.vasp.outputs modules.
+Example-1: We start by setting up and submitting a single VaspJob:</p>
+<pre><code class="language-python">from jarvis.tasks.vasp.vasp import VaspJob, write_vaspjob
+from jarvis.io.vasp.inputs import Potcar, Incar, Poscar
+from jarvis.db.jsonutils import dumpjson
+from jarvis.core.atoms import Atoms
+from jarvis.core.kpoints import Kpoints3D
+from jarvis.tasks.queue_jobs import Queue
+import os
+
+# Load/build crystal structure
+# mat = Poscar.from_file('POSCAR')
+coords = [[0, 0, 0], [0.25, 0.25, 0.25]]
+elements = [&quot;Si&quot;, &quot;Si&quot;]
+box = [[2.715, 2.715, 0], [0, 2.715, 2.715], [2.715, 0, 2.715]]
+atoms = Atoms(lattice_mat=box, coords=coords, elements=elements)
+mat = Poscar(atoms)
+mat.comment = &quot;Silicon&quot;
+
+# Build INCAR file
+data = dict(
+    PREC=&quot;Accurate&quot;,
+    ISMEAR=0,
+    SIGMA=0.01,
+    IBRION=2,
+    ISIF=3,
+    GGA=&quot;BO&quot;,
+    PARAM1=0.1833333333,
+    PARAM2=0.2200000000,
+    LUSE_VDW=&quot;.TRUE.&quot;,
+    AGGAC=0.0000,
+    EDIFF=&quot;1E-7&quot;,
+    EDIFFG=&quot;-1E-3&quot;,
+    NELM=400,
+    ISPIN=2,
+    LCHARG=&quot;.FALSE.&quot;,
+    LVTOT=&quot;.FALSE.&quot;,
+    LVHAR=&quot;.FALSE.&quot;,
+    LWAVE=&quot;.FALSE.&quot;,
+)
+inc = Incar(data)
+# Build POTCAR info
+# export VASP_PSP_DIR = 'PATH_TO_YOUR_PSP'
+pot = Potcar(elements=mat.atoms.elements)
+
+# Build Kpoints info
+kp = Kpoints3D().automatic_length_mesh(
+    lattice_mat=mat.atoms.lattice_mat, length=20
+)
+
+vasp_cmd = &quot;/users/knc6/VASP/vasp54/src/vasp.5.4.1DobbySOC2/bin/vasp_std&quot;
+copy_files = [&quot;/users/knc6/bin/vdw_kernel.bindat&quot;]
+jobname = &quot;MAIN-RELAX@JVASP-1002&quot;
+job = VaspJob(
+    poscar=mat,
+    incar=inc,
+    potcar=pot,
+    kpoints=kp,
+    vasp_cmd=vasp_cmd,
+    copy_files=copy_files,
+    jobname=jobname,
+)
+
+dumpjson(data=job.to_dict(), filename=&quot;job.json&quot;)
+write_vaspjob(pyname=&quot;job.py&quot;, job_json=&quot;job.json&quot;)
+
+
+</code></pre>
+<p>The job.py can now be run on a cluster or on a PC as a python script.
+For running this job on a PBS cluster,</p>
+<pre><code class="language-python">submit_cmd = [&quot;qsub&quot;, &quot;submit_job&quot;]
+# Example job commands, need to change based on your cluster
+job_line = (
+    &quot;source activate my_jarvis \n&quot;
+    + &quot;python job.py&quot;
+)
+name = &quot;TestJob&quot;
+directory = os.getcwd()
+Queue.pbs(
+    job_line=job_line,
+    jobname=name,
+    directory=directory,
+    submit_cmd=submit_cmd,
+    )
+
+
+</code></pre>
+<p>Currently, JARVIS-Tools can be used to submit job with SLURM and PBS clusters only.
+For high-throughput automated submissions one can use pre-build JobFactory module
+that allows automatic calculations for a series of properties.
+Example-2:</p>
+<pre><code class="language-python">
+from jarvis.tasks.vasp.vasp import VaspJob,write_jobfact_optb88vdw
+from jarvis.io.vasp.inputs import Potcar, Incar, Poscar
+from jarvis.db.jsonutils import dumpjson
+from jarvis.core.atoms import Atoms
+from jarvis.core.kpoints import Kpoints3D
+from jarvis.tasks.queue_jobs import Queue
+import os
+from jarvis.tasks.vasp.vasp import JobFactory,write_jobfact_optb88vdw
+
+# Load/build crystal structure
+# mat = Poscar.from_file('POSCAR')
+coords = [[0, 0, 0], [0.25, 0.25, 0.25]]
+elements = [&quot;Si&quot;, &quot;Si&quot;]
+box = [[2.715, 2.715, 0], [0, 2.715, 2.715], [2.715, 0, 2.715]]
+atoms = Atoms(lattice_mat=box, coords=coords, elements=elements)
+mat = Poscar(atoms)
+mat.comment = 'bulk@Silicon'
+
+vasp_cmd = &quot;/users/knc6/VASP/vasp54/src/vasp.5.4.1DobbySOC2/bin/vasp_std&quot;
+copy_files = ['/users/knc6/bin/vdw_kernel.bindat']
+jobname = &quot;MAIN-RELAX@JVASP-1002&quot;
+job = JobFactory(
+    vasp_cmd=vasp_cmd,
+    poscar=mat,
+    copy_files=copy_files,
+)
+
+dumpjson(data=job.to_dict(), filename='job_fact.json')
+write_jobfact_optb88vdw(pyname=&quot;job_fact.py&quot;, job_json=&quot;job_fact.json&quot;)
+
+</code></pre>
+<p>We can now submit the <a href="https://github.com/usnistgov/jarvis/blob/master/jarvis/tasks/vasp/vasp.py#L38">JobFactory</a> as:</p>
+<pre><code class="language-python">from jarvis.tasks.queue_jobs import Queue
+import os
+submit_cmd=[&quot;qsub&quot;, &quot;submit_job&quot;]
+# Example job commands, need to change based on your cluster
+job_line = &quot;source activate my_jarvis \n&quot;+&quot;python job_fact.py&quot;
+name = &quot;TestJob&quot;
+directory = os.getcwd()
+Queue.pbs(
+    job_line=job_line,
+    jobname=name,
+    directory=directory,
+    submit_cmd=submit_cmd,
+)
+
+
+</code></pre>
+<p>This script first converges K-pints and plane-wave cutoff, then using the converged paramerters
+optimizes the simulation cell, and then runs several jobs for calculating properties such as 
+bandstructure on high-symmetry k-points, elastic constanats, optoelectronic properties etc.</p>
+<p>Next, let's see how to run High-throughput jobs for multiple IDs:
+Example-3:</p>
+<pre><code class="language-python">from jarvis.tasks.vasp.vasp import (
+    JobFactory,
+    VaspJob,
+    GenericIncars,
+    write_jobfact,
+)
+from jarvis.io.vasp.inputs import Potcar, Incar, Poscar
+from jarvis.db.jsonutils import dumpjson
+from jarvis.db.figshare import data
+from jarvis.core.atoms import Atoms
+from jarvis.tasks.queue_jobs import Queue
+import os
+
+##############################################################################
+# Make sure you have latest version of jarvis-tools, pip install -U jarvis-tools
+# Specify your vasp_cmdcluster type etc. info here
+# VASP_PSP_DIR should be defined in the PATH as pseudopotential directory
+
+vasp_cmd = &quot;mpirun /users/knc6/VASP/vasp54/src/vasp.5.4.1DobbySOC2/bin/vasp_std&quot;
+
+# Change to your path of .bindat file
+copy_files = [&quot;/users/knc6/bin/vdw_kernel.bindat&quot;]
+
+submit_cmd = [&quot;qsub&quot;, &quot;submit_job&quot;]
+
+# For slurm
+# submit_cmd = [&quot;sbatch&quot;, &quot;submit_job&quot;]
+##############################################################################
+def get_atoms(jid=&quot;&quot;, mpid=&quot;&quot;, oqmd_id=&quot;&quot;, aflow_id=&quot;&quot;):
+    &quot;&quot;&quot;
+    Provide only one of these IDs.
+    Examples:
+    jid='JVASP-1002' or mpid='mp-149' or
+    oqmd_id='10215', or aflow_id='48708a4622918820'
+    &quot;&quot;&quot;
+    if mpid != &quot;&quot;:
+        mp = data(&quot;mp_3d&quot;)
+        for i in mp:
+            if i[&quot;id&quot;] == mpid:
+                atoms = Atoms.from_dict(i[&quot;atoms&quot;])
+                del mp
+                return atoms
+    if jid != &quot;&quot;:
+        jv = data(&quot;dft_3d&quot;)
+        for i in jv:
+            if i[&quot;jid&quot;] == jid:
+                atoms = Atoms.from_dict(i[&quot;atoms&quot;])
+                del jv
+                return atoms
+    if oqmd_id != &quot;&quot;:
+        oq = data(&quot;oqmd_3d&quot;)
+        for i in oq:
+            if i[&quot;id&quot;] == oqmd_id:
+                atoms = Atoms.from_dict(i[&quot;atoms&quot;])
+                del oq
+                return atoms
+    if aflow_id != &quot;&quot;:
+        af1 = data(&quot;aflow1&quot;)
+        for i in af1:
+            if i[&quot;id&quot;] == aflow_id:
+                atoms = Atoms.from_dict(i[&quot;atoms&quot;])
+                del af1
+                return atoms
+        af2 = data(&quot;aflow2&quot;)
+        for i in af2:
+            if i[&quot;id&quot;] == aflow_id:
+                atoms = Atoms.from_dict(i[&quot;atoms&quot;])
+                del af2
+                return atoms
+
+
+# If a user wants to run on its on ,aterials
+# atoms = Poscar.from_file('YourPOSCAR')
+# and send it to atoms in the script below
+# Select/desect you want to run
+# More detais in
+# https://github.com/usnistgov/jarvis/blob/master/jarvis/tasks/vasp/vasp.py#L81
+steps = [
+    &quot;ENCUT&quot;,
+    &quot;KPLEN&quot;,
+    &quot;RELAX&quot;,
+    &quot;BANDSTRUCT&quot;,
+    &quot;LOPTICS&quot;,
+    &quot;MBJOPTICS&quot;,
+    &quot;ELASTIC&quot;,
+]
+incs = GenericIncars().optb88vdw().incar.to_dict()
+
+
+# List of materials divided into chunks of 50
+
+
+ids = [&quot;JVASP-1002&quot;, &quot;JVASP-1067&quot;]
+
+
+for id in ids:
+    atoms = get_atoms(jid=id)
+    mat = Poscar(atoms)
+    mat.comment = &quot;bulk@&quot; + str(id)
+    cwd_home = os.getcwd()
+    dir_name = id + &quot;_&quot; + str(&quot;PBEBO&quot;)
+    if not os.path.exists(dir_name):
+        os.makedirs(dir_name)
+    os.chdir(dir_name)
+    job = JobFactory(
+        vasp_cmd=vasp_cmd,
+        poscar=mat,
+        steps=steps,
+        copy_files=copy_files,
+        use_incar_dict=incs,
+    )
+
+    dumpjson(data=job.to_dict(), filename=&quot;job_fact.json&quot;)
+    write_jobfact(
+        pyname=&quot;job_fact.py&quot;,
+        job_json=&quot;job_fact.json&quot;,
+        input_arg=&quot;v.step_flow()&quot;,
+    )
+
+    # Example job commands, need to change based on your cluster
+    job_line = (
+        &quot;source ~/anaconda2/envs/my_jarvis/bin/activate my_jarvis \n&quot;
+        + &quot;python job_fact.py&quot;
+    )
+    name = id
+    directory = os.getcwd()
+    Queue.pbs(
+        job_line=job_line,
+        jobname=name,
+        directory=directory,
+        submit_cmd=submit_cmd,
+    )
+    os.chdir(cwd_home)
+
+    &quot;&quot;&quot;
+    # For Slurm clusters
+    Queue.slurm(
+        job_line=job_line,
+        jobname=name,
+        directory=directory,
+        submit_cmd=submit_cmd,
+    )
+    os.chdir(cwd_home)
+    &quot;&quot;&quot;
+
+</code></pre>
+<p>In the above examples, use Queue.slurm if you want to use SLURM instead of TORQUE/PBS submission.
+A complete example of such run is available at: <a href="https://github.com/usnistgov/jarvis/tree/master/jarvis/examples/vasp">VASP example</a></p>
+<h3 id="post-processing-and-plotting">Post-processing and plotting</h3>
+<p>There are a variety of post-processing analysis and plotting that can be done on the <a href="https://github.com/usnistgov/jarvis/blob/master/jarvis/io/vasp/outputs.py">output data</a>.
+A common example would be plotting electronic density of states and bandstructure as follows:</p>
+<pre><code class="language-python">from jarvis.io.vasp.outputs import Vasprun
+# %matplotlib inline
+import matplotlib.pyplot as plt
+plt.switch_backend('agg')
+vrun = Vasprun('vasprun.xml')
+energies, spin_up, spin_dn=vrun.total_dos
+import matplotlib.pyplot as plt
+plt.rcParams.update({'font.size': 22})
+plt.plot(energies,spin_up,label='Spin-up')
+plt.plot(energies,spin_dn,label='Spin-down')
+plt.xlabel('Energy(E-Ef)')
+plt.ylabel('DOS(arb.unit)')
+plt.xlim(-4,4)
+plt.legend()
+
+vrun.get_bandstructure(kpoints_file_path='KPOINTS')
+</code></pre>
+<p>There are many other <a href="https://github.com/usnistgov/jarvis/tree/master/jarvis/analysis">analysis modules</a> available such as: scanning tunneling microscopy images, solar-cell efficiency, topological spin-
+orbit spillage, transport properties, phonons, infrared intensities, and its continously expanding.</p>
+<h3 id="developing-database">Developing database</h3>
+<p>After generating the results, we can store the metadata in JARVIS-API. Please request an account if you haven't made it yet.
+Following the calculation protocal mentioned above, the generated files can be converted to an <a href="https://github.com/usnistgov/jarvis/blob/master/jarvis/db/vasp_to_xml.py">XML datafile</a> which with the help of
+an XSD schema can be converted to nice-looking HTML files with the help of XSLT programming and a bit of javascript.</p>
+<p>We alreay provide modules to convert the calculation informato to XML and module to <a href="https://github.com/usnistgov/jarvis/blob/master/jarvis/db/restapi.py">upload data</a>. An example is give below:</p>
+<pre><code class="language-python">from jarvis.db.vasp_to_xml import VaspToApiXmlSchema 
+from jarvis.db.restapi import Api
+folder=&quot;/home/users/knc6/Software/jarvis/jarvis/examples/vasp/SiOptB88vdW&quot;
+filename = &quot;JVASP-1002.xml&quot;
+VaspToApiXmlSchema(folder=folder).write_xml(filename=filename)
+a = Api(user_info_file_path=&quot;/users/knc6/myinfo&quot;)
+# First line should be your username and secondline your password
+tid=&quot;5f626925ece4b00035e5277f&quot;
+# Find latest template ID with title &quot;jarvisdft&quot;  at the bottom of the page 
+# https://jarvis.nist.gov/rest/template-version-manager/global
+a.upload_xml_file(filename='JVASP-1067.xml',template_id=tid)
+</code></pre>
+<h2 id="ff">FF</h2>
+<p>Molecular dynamics/classical force-field calculations can be carried out with LAMMPS software as in <a href="https://jarvis.nist.gov/jarvis">JARVIS-FF</a>.
+An example for running LAMMPS is given below. Here, a <a href="https://github.com/usnistgov/jarvis/blob/master/jarvis/tasks/lammps/lammps.py#L144">LammpsJob</a> module is defined with the help of 
+atoms, pair-style, coefficient, and template file (*.mod file) to control the calculations.</p>
+<h3 id="running-calculations_1">Running calculations</h3>
+<pre><code class="language-python">from jarvis.tasks.lammps.lammps import LammpsJob, JobFactory
+from jarvis.core.atoms import Atoms
+from jarvis.db.figshare import get_jid_data
+from jarvis.analysis.structure.spacegroup import Spacegroup3D
+
+
+# atoms = Atoms.from_poscar('POSCAR')
+# Get Aluminum FCC
+tmp_dict = get_jid_data(jid=&quot;JVASP-816&quot;, dataset=&quot;dft_3d&quot;)[&quot;atoms&quot;]
+atoms = Atoms.from_dict(tmp_dict)
+# Get conventional cell
+spg = Spacegroup3D(atoms)
+cvn_atoms = spg.conventional_standard_structure
+ff = &quot;/users/knc6/Software/LAMMPS/lammps-master/potentials/Al_zhou.eam.alloy&quot;
+mod = &quot;/users/knc6/Software/Devs/jarvis/jarvis/tasks/lammps/templates/inelast.mod&quot;
+cmd = &quot;/users/knc6/Software/LAMMPS/lammps-master/src/lmp_serial&lt;in.main&gt;out&quot;
+parameters = {
+    &quot;pair_style&quot;: &quot;eam/alloy&quot;,
+    &quot;pair_coeff&quot;: ff,
+    &quot;atom_style&quot;: &quot;charge&quot;,
+    &quot;control_file&quot;: mod,
+}
+# Test LammpsJob
+lmp = LammpsJob(
+    atoms=cvn_atoms, parameters=parameters, lammps_cmd=cmd, jobname=&quot;Test&quot;
+).runjob()
+
+# Test high-throughput
+job_fact = JobFactory(pair_style=&quot;eam/alloy&quot;, name=&quot;my_first_lammps_run&quot;)
+job_fact.all_props_eam_alloy(atoms=cvn_atoms, ff_path=ff, lammps_cmd=cmd)
+</code></pre>
+<p>The above lines can be written on a file such as job.py and can be run on a PC or a cluster with the
+from <a href="https://github.com/usnistgov/jarvis/blob/master/jarvis/tasks/queue_jobs.py">jarvis.tasks.queue_jobs</a> import Queue module.</p>
+<h3 id="post-processing-and-plotting_1">Post-processing and plotting</h3>
+<p>Important quantities such asn total energy, forces etc. can be obtained with the help of
+<a href="https://github.com/usnistgov/jarvis/blob/master/jarvis/io/lammps/outputs.py">jarvis.io.lammps.outputs</a> module. </p>
+<pre><code class="language-python">from jarvis.io.lammps.outputs import parse_material_calculation_folder
+folder = '/home/users/knc6/Software/jarvis/jarvis/examples/lammps/Aleam'
+data = parse_material_calculation_folder(folder)
+</code></pre>
+<h3 id="developing-database_1">Developing database</h3>
+<p>The calculation data can now be <a href="https://github.com/usnistgov/jarvis/blob/master/jarvis/db/lammps_to_xml.py">converted into XML</a> files as follows:</p>
+<pre><code class="language-python">from jarvis.db.lammps_to_xml import write_xml
+write_xml(data=data,filename='lmp.xml')
+</code></pre>
+<h2 id="mlai">ML/AI</h2>
+<p>Currently <a href="https://jarvis.nist.gov/jarvisml/">JARVIS-ML</a> allows prediction of material properties with machine learning. The materials information
+is converted into descriptors using Classical Force-field Inspired Descriptors (CFID) or Coulomb materix.
+Other descriptors and graph based predictions would be available soon also.
+For a series of atomistic structures, we can convert them into CFID, which act as input matrix.</p>
+<h3 id="running-calculations_2">Running calculations</h3>
+<p>Suppose we have 40000 materials, and we get 1557 descriptor for each material, we will have a 
+40000x1557 matrix. Let's call this matrix as 'x' or input matrix.
+Next, we can get target ('y') data either from DFT, FF calculations or experiments.
+For example, we can choose formation energies of 40000 materials in the JARVIS-DFT as the dtarget data
+giving 40000x1 matrix.</p>
+<p>Now, we can use a ML/AI algorithm to establish statistical relation between the x and y data.
+Once trained we get a trained model, which can be stored in say pickle or joblib format.</p>
+<p>For a new material now, it can be converted into CFID i.e. 1x1557 matrix which when fed to the model
+will give 1x1 prediction hence the ML prediction. We can use a range of ML algorithms such as 
+linear regression, decision trees, Gaussian processes etc. We find with CFID <a href="https://github.com/usnistgov/jarvis/tree/master/jarvis/ai/descriptors">descriptors</a>, gradient boosting
+decision trees (especially in LightGBM) gives one of the most accurate results. 
+We provide tools to run with major <a href="https://github.com/usnistgov/jarvis/tree/master/jarvis/ai/pkgs">ML packages</a> such as scikit-learn, tensorflow, pytorch, lightgbm etc.
+Example-1:</p>
+<pre><code class="language-python"># An example of JARVIS-ML training
+from jarvis.ai.pkgs.utils import get_ml_data
+from jarvis.ai.pkgs.utils import regr_scores
+X,y,jid=get_ml_data()
+#Formation energy for 3D materials, you can choose other properties/dataset as well
+import lightgbm as lgb
+from sklearn.model_selection import train_test_split
+lgbm = lgb.LGBMRegressor(device= 'gpu',n_estimators= 1170,learning_rate= 0.15375236057119931,num_leaves= 273)       
+X_train, X_test, y_train, y_test, jid_train, jid_test = train_test_split(X, y, jid, random_state=1, test_size=.1)
+lgbm.fit(X_train,y_train)
+pred = lgbm.predict(X_test)
+reg_sc = regr_scores(y_test, pred)
+print (reg_sc['mae'])
+
+</code></pre>
+<p>Another full example for regression
+Example-2:</p>
+<pre><code class="language-python">from jarvis.ai.pkgs.lgbm.regression import parameters_dict
+from scipy.stats import median_absolute_deviation as mad
+from jarvis.ai.pkgs.utils import get_ml_data
+import lightgbm as lgb
+import numpy as np
+from sklearn.model_selection import train_test_split
+from jarvis.ai.pkgs.utils import regr_scores
+import joblib
+# Some of the previously found hyper-parameters
+params = parameters_dict()
+
+print(params)
+
+
+mem = []
+for i, j in params.items():
+    name = str(i) + &quot;.pkl&quot;
+    print(i)
+    print(name)
+    X, y, jid = get_ml_data(dataset=&quot;cfid_3d&quot;, ml_property=i)
+    lgbm = lgb.LGBMRegressor(
+        n_estimators=j[&quot;n_estimators&quot;],
+        learning_rate=j[&quot;learning_rate&quot;],
+        num_leaves=j[&quot;num_leaves&quot;],
+    )
+    if &quot;eps&quot; in i:  # fit refractive index, not dielectric constant
+        y = np.sqrt(y)
+    X_train, X_test, y_train, y_test, jid_train, jid_test = train_test_split(
+        X, y, jid, random_state=1, test_size=0.1
+    )
+    lgbm.fit(X_train, y_train)
+    pred = lgbm.predict(X_test)
+    joblib.dump(lgbm, name)
+    reg_sc = regr_scores(y_test, pred)
+    mae = reg_sc[&quot;mae&quot;]  # mean absolute error
+    madev = mad(y)  # mean absolute deviation
+    # mae_over_madev=float(mae)/float(madev)
+    mem.append([i, len(X), mae, madev])
+    print(&quot;Property,Length, MAE,MAD&quot;, i, len(X), mae, madev)
+    print()
+    print()
+</code></pre>
+<h3 id="post-processing-and-plotting_2">Post-processing and plotting</h3>
+<p>We can analyze basic ML metrics such as mean-absolute erros (MAE),  RMSE, R2 etc. for regression and
+ROC AUC, F1 score etc. for classification models. </p>
+<pre><code class="language-python">from jarvis.ai.pkgs.sklearn.regression import regression
+from jarvis.ai.pkgs.sklearn.classification import classification
+from jarvis.ai.pkgs.sklearn.hyper_params import (
+    classification_regression_params,
+)
+from jarvis.ai.pkgs.utils import get_ml_data, binary_class_dat
+from jarvis.ai.pkgs.lgbm.regression import regression as l_regression
+from jarvis.ai.pkgs.lgbm.regression import parameters_dict as l_params
+from jarvis.ai.pkgs.lgbm.classification import (
+    classification as l_classification,
+)
+from jarvis.ai.descriptors.cfid import feat_names
+from lightgbm import LGBMClassifier
+import matplotlib.pyplot as plt
+property = &quot;exfoliation_energy&quot;
+X, Y, jid = get_ml_data(dataset=&quot;cfid_3d&quot;, ml_property=property)
+
+# Regression
+params = l_params()[property]
+names = feat_names()
+info = l_regression(
+    X=X,
+    Y=Y,
+    jid=jid,
+    config=params,
+    feat_names=names,
+    plot=True,
+    save_model=True,
+)
+
+# Classification
+property = &quot;exfoliation_energy&quot;
+tol = 100
+models = [LGBMClassifier(n_estimators=10, num_leaves=2)]
+info = l_classification(
+    X=X,
+    Y=Y,
+    plot=True,
+    models=models,
+    preprocess=True,
+    save_model=True,
+    tol=tol,
+)
+</code></pre>
+<h3 id="developing-database_2">Developing database</h3>
+<p>The ML models in terms of joblib, pickle parameters, the descriptors sets and ML predicted properties
+can be stored in teh JARVIS-API.
+The descriptrs and the predicted properties can be stored as XML files , while the joblib and pickle files
+can be saved a blob binary files.</p>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "..", "features": [], "search": "../assets/javascripts/workers/search.208ed371.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.2a6f1dda.min.js"></script>
+      
+    
+  </body>
+</html>

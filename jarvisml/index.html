@@ -1,0 +1,765 @@
+<!--https://github.com/notenverwaltung/Notenverwaltungssoftware/blob/54aa0515f3b1b2c5db8471306eecfed18e154e7e/docs/overrides/main.html -->
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://github.com/JARVIS-Materials-Design/dbdocs/jarvisml/">
+      
+      
+        <link rel="prev" href="../jarvisff/">
+      
+      
+        <link rel="next" href="../jarvistools/">
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-9.0.13">
+    
+    
+      
+        <title>ML - JARVIS-DB</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.ffa9267a.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.a0c5b2b5.min.css">
+      
+      
+
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="" data-md-color-accent="">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#ml" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+        <aside class="md-banner">
+          <div class="md-banner__inner md-grid md-typeset">
+            
+            
+Moved to JARVIS-Tools: <a href="https://jarvis-tools.readthedocs.io/en/master/databases.html">https://jarvis-tools.readthedocs.io/en/master/databases.html</a>
+<!--
+<link rel="stylesheet" href="https://pages.nist.gov/nist-header-footer/css/nist-combined.css">
+<script src="https://code.jquery.com/jquery-3.6.2.min.js" type="text/javascript" defer="defer"></script>
+<script src="https://pages.nist.gov/nist-header-footer/js/nist-header-footer.js" type="text/javascript" defer="defer"></script>
+
+<script async type="text/javascript" id="_fed_an_ua_tag" src="https://dap.digitalgov.gov/Universal-Federated-Analytics-Min.js?agency=NIST&subagency=github&pua=UA-66610693-1&yt=true&exts=ppsx,pps,f90,sch,rtf,wrl,txz,m1v,xlsm,msi,xsd,f,tif,eps,mpg,xml,pl,xlt,c">
+</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-1Q89M6QHG7"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-1Q89M6QHG7');
+</script>
+-->
+
+          </div>
+          
+        </aside>
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="JARVIS-DB" class="md-header__button md-logo" aria-label="JARVIS-DB" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            JARVIS-DB
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              ML
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/JARVIS-Materials-Design/dbdocs" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.3.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    dbdocs
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="JARVIS-DB" class="md-nav__button md-logo" aria-label="JARVIS-DB" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    JARVIS-DB
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/JARVIS-Materials-Design/dbdocs" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.3.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    dbdocs
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        Introduction
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../jarvisapi/" class="md-nav__link">
+        API
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../jarvisdft/" class="md-nav__link">
+        DFT
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../jarvisff/" class="md-nav__link">
+        FF
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          ML
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        ML
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    Overview
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#methodology" class="md-nav__link">
+    Methodology
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#property-details-and-assesment" class="md-nav__link">
+    Property details and assesment
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    References
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../jarvistools/" class="md-nav__link">
+        Tools
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../publications/" class="md-nav__link">
+        Publications
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../thederivedapps/" class="md-nav__link">
+        Others
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../thedownloads/" class="md-nav__link">
+        Downloads
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tutorials/" class="md-nav__link">
+        Tutorials
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    Overview
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#methodology" class="md-nav__link">
+    Methodology
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#property-details-and-assesment" class="md-nav__link">
+    Property details and assesment
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    References
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+  
+
+
+<h1 id="ml">ML</h1>
+<h2 id="overview">Overview</h2>
+<p>Currently, there are two types of data that are machine-learned (ML) in JARVIS-ML: discrete and image-based.</p>
+<p>JARVIS-ML introduced Classical Force-field Inspired Descriptors (CFID) as a universal framework 
+to represent a material’s chemistry-structure-charge related data. These descriptors along with 
+powerful AI/ML algortihms such as neural networks, Gaussain processes and decision trees etc. provide
+a powerful tool for materials informatics. With the help of CFID and 
+JARVIS-DFT data, several high-accuracy classifications and regression ML models were developed, 
+with applications to fast materials-screening and energy-landscape mapping. Some of the trained 
+property models include formation energies, exfoliation energies, bandgaps, magnetic moments, 
+refractive index, dielectric, thermoelectric, and maximum piezoelectric and infrared modes. 
+Also, several ML interpretability analysis revealed physical-insights beyond intuitive 
+understandings in materials-science. These models, the workflow, dataset etc. are disseminated 
+to enhance the transparency of the work. Recently, JARVIS-ML expanded to include STM-image ML models, 
+as they are reported to directly accelerate experiments. Graph convolution neural network models are 
+being developed for the image and crystal-structures.
+For image based convolution neural network based classification is carried out.</p>
+<p><img src="https://www.nist.gov/sites/default/files/styles/480_x_480_limit/public/images/2020/07/29/JARVIS-ML-7-2020.png"  margin-right: 10px;" />.</p>
+<h2 id="methodology">Methodology</h2>
+<ul>
+<li>Crystal structure specific information are converted into the Classical Force-field Inspred Descriptors (CFID). </li>
+<li>For each crystal (3D, 2D, 1D, 0D, molecule, proteins and surface) 1557 CFID descriptors are obtaines.</li>
+<li>The CFID consists of 1557 descriptors for each material: 438 average chemical, 4 simulation-box-size, 
+378 radial charge-distribution, 100 radial distribution, 179 angle-distribution up to first neighbor, and 
+another 179 for the second neighbor, 179 dihedral angle up to fist neighbor and 100 nearest neighbor descriptors. </li>
+<li>We have converted at least 1 million atomic structures to CFID descriptors and that 
+dataset will be made available soon. After generating the features, we trained several property models. </li>
+<li>JARVIS-ML model accuracy is evaluated on the test-set (usually 10 %) representing newly computed and 
+previously unseen DFT data for both regression and classifications models. Accuracy of regression and 
+classification models are reported in terms of mean absolute error (MAE) and Receiver Operating 
+Characteristic (ROC) Area Under Curve (AUC) metric respectively. </li>
+</ul>
+<pre><code class="language-python"># An example of JARVIS-ML training
+from jarvis.ai.pkgs.utils import get_ml_data
+from jarvis.ai.pkgs.utils import regr_scores
+X,y,jid=get_ml_data()
+#Formation energy for 3D materials, you can choose other properties/dataset as well
+import lightgbm as lgb
+from sklearn.model_selection import train_test_split
+lgbm = lgb.LGBMRegressor(device= 'gpu',n_estimators= 1170,learning_rate= 0.15375236057119931,num_leaves= 273)       
+X_train, X_test, y_train, y_test, jid_train, jid_test = train_test_split(X, y, jid, random_state=1, test_size=.1)
+lgbm.fit(X_train,y_train)
+pred = lgbm.predict(X_test)
+reg_sc = regr_scores(y_test, pred)
+print (reg_sc['mae'])
+
+</code></pre>
+<h2 id="property-details-and-assesment">Property details and assesment</h2>
+<p><em>Table. Performance of regression machine learning models in JARVIS-ML with JARVIS-DFT data using 
+OptB88vdW (OPT) and TBmBJ (MBJ) with mean absolute error (MAE). The mean absolute deviation (MAD) 
+of properties are also included.</em></p>
+<table>
+<thead>
+<tr>
+<th><strong>Property</strong></th>
+<th><strong>Training data</strong></th>
+<th><strong>MAE</strong></th>
+<th><strong>MAD</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Formation energy (eV/atom)</strong></td>
+<td>24549</td>
+<td>0.12</td>
+<td>0.81</td>
+</tr>
+<tr>
+<td><strong>OPT bandgap (eV)</strong></td>
+<td>22404</td>
+<td>0.32</td>
+<td>1.05</td>
+</tr>
+<tr>
+<td><strong>MBJ bandgap (eV)</strong></td>
+<td>10499</td>
+<td>0.44</td>
+<td>1.60</td>
+</tr>
+<tr>
+<td><strong>Bulk mod., Kv (GPa)</strong></td>
+<td>10954</td>
+<td>10.5</td>
+<td>49.95</td>
+</tr>
+<tr>
+<td><strong>Shear mod., Gv (GPa)</strong></td>
+<td>10954</td>
+<td>9.5</td>
+<td>23.26</td>
+</tr>
+<tr>
+<td><strong>Refr. Index(x) (OPT)</strong></td>
+<td>12299</td>
+<td>0.54</td>
+<td>1.15</td>
+</tr>
+<tr>
+<td><strong>Refr. Index(x) (MBJ)</strong></td>
+<td>6628</td>
+<td>0.45</td>
+<td>1.03</td>
+</tr>
+<tr>
+<td><strong>IR mode (OPT) (cm-1)</strong></td>
+<td>3411</td>
+<td>77.84</td>
+<td>316.7</td>
+</tr>
+<tr>
+<td><strong>Max. Born eff. charge (OPT)(e)</strong></td>
+<td>3411</td>
+<td>0.60</td>
+<td>1.48</td>
+</tr>
+<tr>
+<td><strong>Plane-wave cutoff (OPT)(eV)</strong></td>
+<td>24549</td>
+<td>85.0</td>
+<td>370.6</td>
+</tr>
+<tr>
+<td><strong>K-point length (OPT)(Å)</strong></td>
+<td>24549</td>
+<td>9.09</td>
+<td>22.23</td>
+</tr>
+<tr>
+<td><strong>2D-Exfoliation energy(OPT) (eV/atom)</strong></td>
+<td>616</td>
+<td>37.3</td>
+<td>46.09</td>
+</tr>
+</tbody>
+</table>
+<p><em>Table. Performance of the classification machine learning models in JARVIS-ML with JARVIS-DFT data using OptB88vdW (OPT) and TBmBJ (MBJ) with Receiver Operating Characteristic (ROC) Area Under Curve (AUC) metric. Random guessing and perfect ROC AUC are 0.5 and 1 respectively.</em></p>
+<table>
+<thead>
+<tr>
+<th><strong>Property</strong></th>
+<th><strong>Number of datapoints</strong></th>
+<th><strong>ROC AUC</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Metal/non-metal (OPT)</strong></td>
+<td>24549</td>
+<td>0.95</td>
+</tr>
+<tr>
+<td><strong>Magnetic/Non-magnetic (OPT)</strong></td>
+<td>24549</td>
+<td>0.96</td>
+</tr>
+<tr>
+<td><strong>High/low solar-cell efficiency (TBmBJ)</strong></td>
+<td>5097</td>
+<td>0.90</td>
+</tr>
+<tr>
+<td><strong>High/low piezoelectric coeff</strong></td>
+<td>3411</td>
+<td>0.86</td>
+</tr>
+<tr>
+<td><strong>High/low Dielectric</strong></td>
+<td>3411</td>
+<td>0.93</td>
+</tr>
+<tr>
+<td><strong>High/low n-Seebeck coeff</strong></td>
+<td>21899</td>
+<td>0.95</td>
+</tr>
+<tr>
+<td><strong>High/low n-power factor</strong></td>
+<td>21899</td>
+<td>0.80</td>
+</tr>
+<tr>
+<td><strong>High/low p-Seebeck coeff</strong></td>
+<td>21899</td>
+<td>0.96</td>
+</tr>
+<tr>
+<td><strong>High/low p-power factor</strong></td>
+<td>21899</td>
+<td>0.82</td>
+</tr>
+</tbody>
+</table>
+<h2 id="references">References</h2>
+<ol>
+<li>Machine learning with force-field inspired descriptors for materials: fast screening and mapping energy landscape, Phys. Rev. Mat., 2, 083801 (2018).</li>
+<li>Materials Science in the AI age: high-throughput library generation, machine learning and a pathway from correlations to the underpinning physics, MRS Comm., 9, 821 (2019).</li>
+<li>Enhancing materials property prediction by leveraging computational and experimental data using deep transfer learning, Nat. Comm., 10, 5316 (2019).</li>
+<li>Convergence and machine learning predictions of Monkhorst-Pack k-points and plane-wave cut-off in high-throughput DFT calculations, Comp. Mat. Sci. 161, 300 (2019).</li>
+<li>Accelerated Discovery of Efficient Solar-cell Materials using Quantum and Machine-learning Methods, Chem. Mater., 31, 15, 5900 (2019).</li>
+<li>Data-driven Discovery of 3D and 2D Thermoelectric Materials, arXiv:1906.06024.</li>
+<li>High-throughput Density Functional Perturbation Theory and Machine Learning Predictions of Infrared, Piezoelectric and Dielectric Responses, npj Computational Materials, 6, 64 (2020).</li>
+<li>Density Functional Theory and Deep-learning to Accelerate Data Analytics in Scanning Tunneling Microscopy, arXiv:1912.09027.</li>
+</ol>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "..", "features": [], "search": "../assets/javascripts/workers/search.208ed371.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.2a6f1dda.min.js"></script>
+      
+    
+  </body>
+</html>
